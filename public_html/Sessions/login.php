@@ -1,3 +1,4 @@
+<h1>Please login</h1>
 <form method="POST">
 	<label for="email">Email
 	<input type="email" id="email" name="email" autocomplete="off" />
@@ -13,7 +14,6 @@ session_start();
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
-<h1>Please login</h1>
 if(isset($_POST["login"])){
 	if(isset($_POST["password"]) && isset($_POST["email"])){
 		$password = $_POST["password"];

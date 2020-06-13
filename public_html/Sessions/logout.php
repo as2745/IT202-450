@@ -1,8 +1,8 @@
+<h1>You have been logged out</h1>
 <?php
 session_start();
 session_unset();
 session_destroy();
-<h1>You have been logged out</h1>
 echo var_export($_SESSION, true);
 //get session cookie and delete/clear it for this session
 if (ini_get("session.use_cookies")) { 
