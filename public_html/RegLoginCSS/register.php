@@ -51,8 +51,9 @@ if(isset($_POST["register"])){
 		else{
 			echo "<div>Passwords don't match</div>";
 		}
-		else 
+		else {
 			echo "<div>Please enter a password</div>";
+		}
 		}
 	}
 }
