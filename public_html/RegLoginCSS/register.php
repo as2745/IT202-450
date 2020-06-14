@@ -18,8 +18,13 @@
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
+
 if(isset($_POST["register"])){
 	if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"])){
+		$email1 = test_input($_POST["email"]);
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$emailErr = "Invalid email format";
+		}
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
