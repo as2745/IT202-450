@@ -1,8 +1,8 @@
 input {
-    background-color: aquamarine;
+    background-color: blue;
 }
 label {
-    border: 1px dotted black;
+    border: 1px dotted green;
 }
 form {
     width:80%;
