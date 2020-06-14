@@ -1,3 +1,5 @@
+<?php include("header.php");?>
+<h4>Register</h4>
 <form method="POST">
 	<label for="email">Email
 	<input type="email" id="email" name="email" autocomplete="off" />
@@ -12,6 +14,7 @@
 </form>
 
 <?php
+
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
@@ -22,7 +25,7 @@ if(isset($_POST["register"])){
 		$email = $_POST["email"];
 		if($password == $cpassword){
 			//echo "<div>Passwords Match</div>";
-			require("config.php");
+			//require("config.php");
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
