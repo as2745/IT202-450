@@ -13,15 +13,18 @@ include("header.php");
 </form>
 
 <?php
-
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
 if(isset($_POST["login"])){
 	if(isset($_POST["password"]) && isset($_POST["email"])){
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$emailErr = "Invalid email format";
+		}
+		if(strlen($password)>0 && strlen($email)>0)	{
 		$password = $_POST["password"];
 		$email = $_POST["email"];
-		//require("config.php");
+		require("config.php");
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
@@ -39,14 +42,6 @@ if(isset($_POST["login"])){
 						$rpassword = $result["password"];
 						if(password_verify($password, $rpassword)){
 							echo "<div>Passwords matched! You are technically logged in!</div>";
-							$_SESSION["user"] = array(
-								"id"=>$result["id"],
-								"email"=>$result["email"],
-								"first_name"=>$result["first_name"],
-								"last_name"=>$result["last_name"]
-							);
-							echo var_export($_SESSION, true);
-							header("Location: home.php");
 						}
 						else{
 							echo "<div>Invalid password!</div>";
@@ -61,6 +56,8 @@ if(isset($_POST["login"])){
 			catch (Exception $e){
 				echo $e->getMessage();
 			}
-	}
+	}else {
+			echo "<div>Email and/or password fields are empty.</div>";
+}
 }
 ?>
