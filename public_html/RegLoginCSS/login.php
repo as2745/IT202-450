@@ -18,12 +18,12 @@ include("header.php");
 //echo var_export($_REQUEST, true);
 if(isset($_POST["login"])){
 	if(isset($_POST["password"]) && isset($_POST["email"])){
+		$password = $_POST["password"];
+		$email = $_POST["email"];
 		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			$emailErr = "Invalid email format";
 		}
 		if(strlen($password)>0 && strlen($email)>0)	{
-		$password = $_POST["password"];
-		$email = $_POST["email"];
 		require("config.php");
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
