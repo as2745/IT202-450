@@ -1,3 +1,4 @@
+<h1>You have successfully logged out.</h1>
 <?php
 session_start();
 session_unset();
