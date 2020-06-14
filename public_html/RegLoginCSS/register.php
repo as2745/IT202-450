@@ -23,7 +23,7 @@ if(isset($_POST["register"])){
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
-		if(strlen($password)>0)	{
+		if(strlen($password)>0 && strlen($email)>0)	{
 		if($password == $cpassword){
 			//echo "<div>Passwords Match</div>";
 			//require("config.php");
@@ -53,7 +53,7 @@ if(isset($_POST["register"])){
 		}
 		
 		}else {
-			echo "<div>Please enter a password</div>";
+			echo "<div>Email and/or password fields are empty.</div>";
 		}
 	}
 }
