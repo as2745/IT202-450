@@ -60,4 +60,5 @@ if(isset($_POST["login"])){
 			echo "<div>Email and/or password fields are empty.</div>";
 }
 }
+}
 ?>
