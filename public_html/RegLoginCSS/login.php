@@ -1,3 +1,5 @@
+<h1>Welcome to the Login page.</h1>
+<h2>Please input your email and password.</h2>
 <?php
 include("header.php");
 ?>

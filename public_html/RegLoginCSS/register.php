@@ -1,3 +1,5 @@
+<h1>Welcome to the Registration page</h1>
+<h2>Please input an email and password and confirm your password.</h2>
 <?php include("header.php");?>
 <h4>Register</h4>
 <form method="POST">

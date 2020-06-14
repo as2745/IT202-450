@@ -1,3 +1,4 @@
+<h1>You have successfully logged out.</h1>
 <?php
 include("header.php");
 //session_start();//called from header.php
