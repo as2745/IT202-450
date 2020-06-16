@@ -7,8 +7,8 @@ try{
 	$stmt = $db->prepare("CREATE TABLE Bank_Account (
 	Name VARCHAR(50),
 	Account_Number INT(9),
-	Account_Type VARCHAR(8)
-	Balance DECIMAL(10,2)
+	Account_Type VARCHAR(8),
+	Balance DECIMAL(10,2),
 	PRIMARY KEY(Account_Number)
 	) CHARACTER SET utf8 COLLATE utf8_general_ci");
 	$r = $stmt->execute();
