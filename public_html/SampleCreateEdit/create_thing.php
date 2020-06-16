@@ -8,7 +8,7 @@
 	<label for="acctype">Account Type
 	<input type="text" id="AccTyp" name="Account_Type" />
 	</label>
-		<label for="balance">Balance
+	<label for="balance">Balance
 	<input type="number" id="balance" name="Balance" />
 	</label>
 	<input type="submit" name="Bank" value="Create Account"/>
@@ -25,7 +25,7 @@ if(isset($_POST["created"])){
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance) VALUES ($name, $Accnum, $Acctyp,$balance)");
+            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance) VALUES (:name, :Accnum, :Acctyp,:balance)");
             $result = $stmt->execute(array(
                 ":Name" => $name,
                 ":Account_Number" => $Accnum
