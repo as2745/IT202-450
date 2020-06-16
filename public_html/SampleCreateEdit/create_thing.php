@@ -1,26 +1,26 @@
 <form method="POST">
-	<label for="thing">Thing Name
-	<input type="text" id="thing" name="name" />
+	<label for="name">Account Name
+	<input type="text" id="Name" name="Name" />
 	</label>
-	<label for="q">Quantity
-	<input type="number" id="q" name="quantity" />
+	<label for="accnumber">Account Number
+	<input type="number" id="AccNum" name="Account_Number" />
 	</label>
-	<input type="submit" name="created" value="Create Thing"/>
+	<input type="submit" name="Bank" value="Create Account"/>
 </form>
 
 <?php
 if(isset($_POST["created"])){
-    $name = $_POST["name"];
-    $quantity = $_POST["quantity"];
-    if(!empty($name) && !empty($quantity)){
+    $name = $_POST["Name"];
+    $Accnum = $_POST["Account_Number"];
+    if(!empty($name) && !empty($Accnum)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Things (name, quantity) VALUES (:name, :quantity)");
+            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number) VALUES ($name, $Accnum)");
             $result = $stmt->execute(array(
-                ":name" => $name,
-                ":quantity" => $quantity
+                ":Name" => $name,
+                ":Account_Number" => $Accnum
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
@@ -41,7 +41,7 @@ if(isset($_POST["created"])){
         }
     }
     else{
-        echo "Name and quantity must not be empty.";
+        echo "Name and Account_Number must not be empty.";
     }
 }
 ?>
