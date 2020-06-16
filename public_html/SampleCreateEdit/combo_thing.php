@@ -15,6 +15,7 @@ if(isset($_GET["AccNum"])){
     $stmt = $db->prepare("SELECT * FROM Bank_Account where Account_Number = :AccNum");
     $stmt->execute([":AccNum"=>$AccNum]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+	var_dump($result);
     if(!$result){
         $AccNum = -1;
     }
