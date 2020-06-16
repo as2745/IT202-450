@@ -60,7 +60,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 					":balance" => $balance,
 					":AccNum1" => $Accnum1
                 ));
-				//var_dump($stmt);
+				var_dump($stmt);
             }
             else{
                 $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance) VALUES (:name, :Accnum, :Acctyp,:balance)");
