@@ -22,6 +22,8 @@ if(isset($_POST["created"])){
 	$balance = $_POST["Balance"];
     if(!empty($name) && !empty($Accnum)&& !empty($Acctyp)&& !empty($balance)){
         require("config.php");
+		echo $dbhost.'<br>';
+		echo $dbdatabase.'<br>';
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
