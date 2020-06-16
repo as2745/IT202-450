@@ -54,7 +54,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
     if(!empty($name) && !empty($Accnum1)&& !empty($Acctyp)&& !empty($balance)){
         try{
             if(isset($_POST["updated"])) {
-                $stmt = $db->prepare("UPDATE Bank_Account set Name='$name', Account_Type='$AccTyp', Balance=$balance where Account_Number=$Accnum1");
+                $stmt = $db->prepare("UPDATE Bank_Account set Name='$name', Account_Type='$Acctyp', Balance=$balance where Account_Number=$Accnum1");
                 $result = $stmt->execute();
 				var_dump($stmt);
             }
