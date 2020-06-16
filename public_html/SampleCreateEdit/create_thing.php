@@ -15,7 +15,7 @@
 </form>
 
 <?php
-if(isset($_POST["created"])){
+if(isset($_POST["Bank"])){
     $name = $_POST["Name"];
     $Accnum = $_POST["Account_Number"];
 	$Acctyp = $_POST["Account_Type"];
