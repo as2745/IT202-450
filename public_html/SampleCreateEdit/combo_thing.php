@@ -56,12 +56,12 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
                 $stmt = $db->prepare("UPDATE Bank_Account set Name = :name, Account_Number=:quantity,Account_Type=:AccTyp ,Balance=:balance where Account_Number=:AccNum1");
                 $result = $stmt->execute(array(
                     ":name" => $name,
-                    ":quantity" => $AccNum1,
+                    ":quantity" => $Accnum1,
                     ":AccTyp" => $AccTyp,
 					":balance" => $balance,
-					":AccNum1" => $AccNum1
+					":AccNum1" => $Accnum1
                 ));
-				var_dump($result);
+				//var_dump($result);
             }
             else{
                 $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance) VALUES (:name, :Accnum, :Acctyp,:balance)");
