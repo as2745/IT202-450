@@ -27,10 +27,10 @@ if(isset($_POST["created"])){
             $db = new PDO($connection_string, $dbuser, $dbpass);
             $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance) VALUES (:name, :Accnum, :Acctyp,:balance)");
             $result = $stmt->execute(array(
-                ":Name" => $name,
-                ":Account_Number" => $Accnum
-				":Account_Type"=> $Acctyp
-				":Balance"=> $balance
+                ":name" => $name,
+                ":Accnum" => $Accnum,
+				":Acctyp"=> $Acctyp,
+				":balance"=> $balance
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
