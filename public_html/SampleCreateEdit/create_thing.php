@@ -20,12 +20,6 @@ if(isset($_POST["Bank"])){
     $Accnum = $_POST["Account_Number"];
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
-	echo $dbhost.'<br>';
-	echo $dbdatabase.'<br>';
-	echo $name.'<br>';
-	echo $Accnum.'<br>';
-	echo $Acctyp.'<br>';
-	echo $balance.'<br>';
     if(!empty($name) && !empty($Accnum)&& !empty($Acctyp)&& !empty($balance)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -43,7 +37,7 @@ if(isset($_POST["Bank"])){
                 echo var_export($e, true);
             }
             else{
-                echo var_export($result, true);
+                //echo var_export($result, true);
                 if ($result){
                     echo "Successfully inserted new thing: " . $name;
                 }
