@@ -20,10 +20,14 @@ if(isset($_POST["created"])){
     $Accnum = $_POST["Account_Number"];
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
+	echo $dbhost.'<br>';
+	echo $dbdatabase.'<br>';
+	echo $name.'<br>';
+	echo $Accnum.'<br>';
+	echo $Acctyp.'<br>';
+	echo $balance.'<br>';
     if(!empty($name) && !empty($Accnum)&& !empty($Acctyp)&& !empty($balance)){
         require("config.php");
-		echo $dbhost.'<br>';
-		echo $dbdatabase.'<br>';
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
@@ -53,7 +57,7 @@ if(isset($_POST["created"])){
         }
     }
     else{
-        echo "Name, Account Number, Account Type and Balance must not be empty.";
+        echo "<div>Name, Account Number, Account Type and Balance must not be empty.<div>";
     }
 }
 ?>
