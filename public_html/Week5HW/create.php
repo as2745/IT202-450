@@ -1,6 +1,3 @@
-<?php
-require("common.inc.php");
-$db = getDB();
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
@@ -16,6 +13,10 @@ $db = getDB();
 	</label>
 	<input type="submit" name="Bank" value="Create Account"/>
 </form>
+<?php
+require("common.inc.php");
+$db = getDB();
+
 
 if(isset($_POST["Bank"])){
     $name = $_POST["Name"];
