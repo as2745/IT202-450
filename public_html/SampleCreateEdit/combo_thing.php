@@ -50,7 +50,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
     $Accnum1 = $_POST["Account_Number"];
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
-    if(!empty($name) && !empty($Accnum)&& !empty($Acctyp)&& !empty($balance)){
+    if(!empty($name) && !empty($Accnum1)&& !empty($Acctyp)&& !empty($balance)){
         try{
             if(isset($_POST["updated"])) {
                 $stmt = $db->prepare("UPDATE Bank_Account set Name = :name, Account_Number=:quantity,Account_Type=:AccTyp ,Balance=:balance where Account_Number=:AccNum1");
