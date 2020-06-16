@@ -58,8 +58,8 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
                     ":name" => $name,
                     ":quantity" => $Accnum1,
                     ":AccTyp" => $AccTyp,
-					":balance" => $balance,
-					":AccNum1" => $Accnum1
+					":balance" => $balance
+					//":AccNum1" => $Accnum1
                 ));
 				//var_dump($result);
             }
