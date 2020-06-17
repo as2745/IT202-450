@@ -63,7 +63,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"]) || isset($_POST["delete"
                 }
                 else {
 					$stmt = $db->prepare("UPDATE Bank_Account set Name='$name', Account_Type='$Acctyp', Balance=$balance where Account_Number=$Accnum1");
-					$result = $stmt->execute();));
+					$result = $stmt->execute();
                 }
             }
             else{
