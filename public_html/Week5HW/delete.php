@@ -18,8 +18,26 @@ require("common.inc.php");
 $db = getDB();
 $Accnum1 = $_POST["Account_Number"];
 //example usage, change/move as needed
-$stmt = $db->prepare("DELETE from Bank_Account where Account_Number=$Accnum1");
+		try{
+			$stmt = $db->prepare("DELETE from Bank_Account where Account_Number=$Accnum1");
                     $result = $stmt->execute(array(
                         ":id" => $Accnum1
                     ));
+					$e = $stmt->errorInfo();
+            if($e[0] != "00000"){
+                echo var_export($e, true);
+            }
+            else{
+                //echo var_export($result, true);
+                if ($result){
+                    echo "Successfully deleted thing: " . $name;
+                }
+                else{
+                    echo "Error deleting record";
+                }
+            }
+		}
+        catch (Exception $e){
+            echo $e->getMessage();
+        }
 ?>
