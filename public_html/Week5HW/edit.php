@@ -10,18 +10,7 @@ function get($arr, $key){
     }
     return "";
 }
-if(isset($_GET["AccNum"])){
-    $AccNum = $_GET["AccNum"];
-    $stmt = $db->prepare("SELECT * FROM Bank_Account where Account_Number = :AccNum");
-    $stmt->execute([":AccNum"=>$AccNum]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if(!$result){
-        $AccNum = -1;
-    }
-}
-else{
-    echo "No Account Number provided in url, don't forget this or sample won't work.";
-}
+
 ?>
 
 <form method="POST">
