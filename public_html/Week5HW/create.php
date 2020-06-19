@@ -1,4 +1,4 @@
-<form action="/Week5HW/create.php" method="POST">
+<form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
 	</label>
