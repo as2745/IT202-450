@@ -1,4 +1,3 @@
-<h1>Welcome to the Registration page</h1>
 <form method="POST">
 	<label for="email">Email
 	<input type="email" id="email" name="email" autocomplete="off" />
