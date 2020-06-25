@@ -1,0 +1,57 @@
+def doubleIt(a):
+   return a*2
+   
+def fact(a):
+    a= 1
+    for i in range(1,b+ 1):
+        a= a*i
+    return a
+	
+def strTimes(a,n):
+    return a * n
+   
+def incrementBy(a,n):
+    return a+n
+	
+def listcount_5(list):  
+     i=0
+     for x in list:
+         if(x==5):
+             i=i+1
+     return i
+   
+def tripleIt(a):
+    return a*3
+   
+def swap(list,a,b):
+    list1=list
+	list1[a]=list[b]
+	list1[b]=list[a]
+    return list1
+   
+def quadrupleIt(a):
+    return a*4
+	
+def count(list):  
+     i=0
+     for x in list:
+         if(x==6):
+             i=i+1
+     return i
+	
+def operation(op, a, b):
+	if op == '+':
+		return a + b
+	elif op == '-':
+		return a - b
+	elif op == "*":
+		return a * b
+	elif op == "/":
+		return a / b
+	else:
+		return -1
+		
+def count_code(a):
+   count = a.count("code")
+   print(count)
+   

@@ -1,5 +1,3 @@
-<h1>Welcome to the Registration page</h1>
-<h2>Please input an email and password and confirm your password.</h2>
 <?php include("header.php");?>
 <h4>Register</h4>
 <form method="POST">
@@ -20,16 +18,11 @@
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
-
 if(isset($_POST["register"])){
 	if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"])){
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$emailErr = "Invalid email format";
-		}
-		if(strlen($password)>0 && strlen($email)>0)	{
 		if($password == $cpassword){
 			//echo "<div>Passwords Match</div>";
 			//require("config.php");
@@ -56,10 +49,6 @@ if(isset($_POST["register"])){
 		}
 		else{
 			echo "<div>Passwords don't match</div>";
-		}
-		
-		}else {
-			echo "<div>Email and/or password fields are empty.</div>";
 		}
 	}
 }
