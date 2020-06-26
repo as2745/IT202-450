@@ -1,17 +1,12 @@
-<?php
-$search = "";
-if(isset($_POST["search"])){
-    $search = $_POST["search"];
-}
-?>
 <form method="POST">
-    <input type="text" name="search" placeholder="Search for Thing"
-    value="<?php echo $search;?>"/>
+    <label for="acctype">Account_Type
+	<input type="text" id="AccType" name="Account_Type" value="<?php echo get($result, "Account_Type");?>" />
+	</label>
     <input type="submit" value="Search"/>
 </form>
 <?php
 if(isset($search)) {
-
+	$Acctyp = $_POST["Account_Type"];
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_THINGS.sql");
     if (isset($query) && !empty($query)) {
