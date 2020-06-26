@@ -33,7 +33,6 @@ if(isset($search) && strlen($search)>0) {
 note the structure and the ":" -->
 <!-- note how we must close each check we're doing as well-->
 <?php if(isset($results) && count($results) > 0):?>
-    <p>This shows when we have results</p>
     <ul>
         <!-- Here we'll loop over all our results and reuse a specific template for each iteration,
         we're also using our helper function to safely return a value based on our key/column name.-->
@@ -46,5 +45,4 @@ note the structure and the ":" -->
         <?php endforeach;?>
     </ul>
 <?php else:?>
-    <p>This shows when we don't have results</p>
 <?php endif;?>
