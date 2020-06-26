@@ -9,6 +9,7 @@ if(isset($search)) {
 	$Acctyp = $_POST["Account_Type"];
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_THINGS.sql");
+	echo $query;
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
