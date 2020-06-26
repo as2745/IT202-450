@@ -5,8 +5,9 @@
     <input type="submit" value="Search"/>
 </form>
 <?php
-if(isset($search)) {
+//if(isset($search)) {
 	$Acctyp = $_POST["Account_Type"];
+	echo $Acctyp;
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_THINGS.sql");
 	echo $query;
@@ -28,5 +29,5 @@ if(isset($search)) {
             echo $e->getMessage();
         }
     }
-}
+//}
 ?>
