@@ -10,7 +10,7 @@ if(isset($_POST["search"])){
     <input type="submit" value="Search"/>
 </form>
 <?php
-if(isset($search)) {
+if(isset($search) && strlen($search)>0) {
 
     require("common.inc.php");
 	echo $search;
