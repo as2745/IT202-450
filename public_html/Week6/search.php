@@ -22,7 +22,7 @@
 				echo '<li>';
                 echo get($row, "name");
                 echo get($row, "quantity");
-                echo '<a href="delete.php?thingId=<?php echo get($row, "id");?>">Delete</a>';
+                echo '<a href="delete.php?thingId=<?php echo get($row, "id");?>"Delete</a>';
             echo '</li>';
 			}
         } catch (Exception $e) {
