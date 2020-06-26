@@ -39,9 +39,9 @@ note the structure and the ":" -->
         we're also using our helper function to safely return a value based on our key/column name.-->
         <?php foreach($results as $row):?>
             <li>
-                <?php echo get($row, "name")?>
-                <?php echo get($row, "quantity");?>
-                <a href="delete.php?thingId=<?php echo get($row, "id");?>">Delete</a>
+                <?php echo get($row, "Name")?>
+                <?php echo get($row, "Balance");?>
+                <a href="delete.php?thingId=<?php echo get($row, "Account_Number");?>">Delete</a>
             </li>
         <?php endforeach;?>
     </ul>
