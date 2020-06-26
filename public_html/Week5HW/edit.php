@@ -10,29 +10,16 @@ function get($arr, $key){
     }
     return "";
 }
-if(isset($_GET["AccNum"])){
-    $AccNum = $_GET["AccNum"];
-    $stmt = $db->prepare("SELECT * FROM Bank_Account where Account_Number = :AccNum");
-    $stmt->execute([":AccNum"=>$AccNum]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if(!$result){
-        $AccNum = -1;
-    }
-}
-else{
-    echo "No Account Number provided in url, don't forget this or sample won't work.";
-}
-
 ?>
 
 <form method="POST">
-	<label for="name">Account Name
+	<label for="name">Account_Name
 	<input type="text" id="Name" name="Name" value="<?php echo get($result, "Name");?>" />
 	</label>
-	<label for="accnumber">Account Number
+	<label for="accnumber">Account_Number
 	<input type="number" id="AccNum" name="Account_Number" value="<?php echo get($result, "Account_Number");?>" />
 	</label>
-	<label for="acctype">Account Type
+	<label for="acctype">Account_Type
 	<input type="text" id="AccType" name="Account_Type" value="<?php echo get($result, "Account_Type");?>" />
 	</label>
 		<label for="balance">Balance
