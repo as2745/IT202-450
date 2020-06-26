@@ -42,12 +42,14 @@ note the structure and the ":" -->
 	echo "<th>Balance</th>";
 	echo "</tr>";
         <?php foreach($results as $row):?>
-            //<li>
-                <?php echo get($row, "Name")?>
-                <?php echo get($row, "Account_Number");?>
-		<?php echo get($row, "Account_Type");?>
-		<?php echo get($row, "Balance");?>
-                <a href="delete.php?thingId=<?php echo get($row, "Account_Number");?>">Delete</a>
+		echo "<tr>";
+		//<li>
+                <?php echo "<td>". get($row, "Name")."</td>"?>
+		<?php echo "<td>". get($row, "Account_Number")."</td>"?>
+		<?php echo "<td>". get($row, "Account_Type")."</td>"?>
+		<?php echo "<td>". get($row, "Balance")."</td>"?>
+                echo "<td>"."<a href=\"delete.php?thingId=<?php echo get($row, \"Account_Number\");?>\">Delete</a>"."</td>";
+		echo "</tr>";
             //</li>
         <?php endforeach;?>
 	echo "</table>";
