@@ -1,6 +1,6 @@
 <form method="POST">
     <label for="acctype">Account_Type
-	<input type="text" id="AccType" name="Account_Type" value="<?php echo get($result, "Account_Type");?>" />
+	<input type="text" id="AccType" name="Account_Type" />
 	</label>
     <input type="submit" value="Search"/>
 </form>
@@ -14,7 +14,7 @@ if(isset($search)) {
         try {
             $stmt = getDB()->prepare($query);
             //Note: With a LIKE query, we must pass the % during the mapping
-            $stmt->execute([":thing"=>$search]);
+            $stmt->execute([":thing"=>$Acctyp]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
