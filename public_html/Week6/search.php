@@ -13,12 +13,10 @@ if(isset($_POST["search"])){
 if(isset($search) && strlen($search)>0) {
 
     require("common.inc.php");
-	echo $search;
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_THINGS.sql");
     if (isset($query) && !empty($query)) {
         try {
             $stmt = getDB()->prepare($query);
-			echo $query;
             //Note: With a LIKE query, we must pass the % during the mapping
             $stmt->execute([":thing"=>$search]);
             //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
@@ -39,7 +37,9 @@ note the structure and the ":" -->
         <?php foreach($results as $row):?>
             <li>
                 <?php echo get($row, "Name")?>
-                <?php echo get($row, "Balance");?>
+                <?php echo get($row, "Account_Number");?>
+		<?php echo get($row, "Account_Type");?>
+		<?php echo get($row, "Balance");?>
                 <a href="delete.php?thingId=<?php echo get($row, "Account_Number");?>">Delete</a>
             </li>
         <?php endforeach;?>
