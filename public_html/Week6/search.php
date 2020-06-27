@@ -40,7 +40,7 @@ note the structure and the ":" -->
 	echo "<th onclick=\"sortTable(0);\">Name</th>";
 	echo "<th>Number</th>";
 	echo "<th>Type</th>";
-	echo "<th>Balance</th>";
+	echo "<th onclick=\"sortTable(3);\">Balance</th>";
 	echo "</tr>";
 ?>
         <?php foreach($results as $row):?>
