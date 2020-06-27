@@ -59,7 +59,6 @@ note the structure and the ":" -->
 function sortTable() {
   var table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("myTable");
-  alert("aaa");
   switching = true;
   /*Make a loop that will continue until
   no switching has been done:*/
