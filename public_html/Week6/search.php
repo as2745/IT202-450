@@ -30,7 +30,6 @@ if(isset($search) && strlen($search)>0) {
 note the structure and the ":" -->
 <!-- note how we must close each check we're doing as well-->
 <?php if(isset($results) && count($results) > 0):?>
-    <ul>
         <!-- Here we'll loop over all our results and reuse a specific template for each iteration,
         we're also using our helper function to safely return a value based on our key/column name.-->
 <?php
@@ -44,16 +43,13 @@ note the structure and the ":" -->
 ?>
         <?php foreach($results as $row):?>
 		<?php echo "<tr>";?>
-		<li>
                 <?php echo "<td>". get($row, "Name")."</td>"?>
 		<?php echo "<td>". get($row, "Account_Number")."</td>"?>
 		<?php echo "<td>". get($row, "Account_Type")."</td>"?>
 		<?php echo "<td>". get($row, "Balance")."</td>"?>
 		<?php echo "<td>"."<a href=\"delete.php?thingId=".get($row, "Account_Number")."\">Delete</a></td>";?>
 		<?php echo "</tr>";?>
-            </li>
         <?php endforeach;?>
 	<?php echo "</table>";?>
-    </ul>
 <?php else:?>
 <?php endif;?>
