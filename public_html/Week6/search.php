@@ -4,6 +4,8 @@ if(isset($_POST["search"])){
     $search = $_POST["search"];
 }
 ?>
+<html>
+<body>
 <form method="POST">
     <input type="text" name="search" placeholder="Search for Thing"
     value="<?php echo $search;?>"/>
@@ -90,3 +92,5 @@ alert("aaaa");
   }
 }
 </script>
+</body>
+</html>
