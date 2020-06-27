@@ -35,7 +35,7 @@ note the structure and the ":" -->
 <?php
 	echo "<table>";
 	echo "<tr>";
-	echo "<th onclick=\"sortTable()\">Name</th>";
+	echo "<th onclick=\"sortTable();\">Name</th>";
 	echo "<th>Number</th>";
 	echo "<th>Type</th>";
 	echo "<th>Balance</th>";
