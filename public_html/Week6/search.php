@@ -58,8 +58,8 @@ note the structure and the ":" -->
 <script>
 function sortTable() {
   var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById(“myTable”);
-alert("aaaa");
+  table = document.getElementById("myTable");
+  alert("aaa");
   switching = true;
   /*Make a loop that will continue until
   no switching has been done:*/
@@ -74,8 +74,8 @@ alert("aaaa");
       shouldSwitch = false;
       /*Get the two elements you want to compare,
       one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName(“td”)[0];
-      y = rows[i + 1].getElementsByTagName(“td”)[0];
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
       //check if the two rows should switch place:
       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
         //if so, mark as a switch and break the loop:
