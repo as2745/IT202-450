@@ -33,7 +33,7 @@ note the structure and the ":" -->
         <!-- Here we'll loop over all our results and reuse a specific template for each iteration,
         we're also using our helper function to safely return a value based on our key/column name.-->
 <?php
-	echo "<table>";
+	echo "<table id=\"myTable\">";
 	echo "<tr>";
 	echo "<th onclick=\"sortTable();\">Name</th>";
 	echo "<th>Number</th>";
@@ -56,7 +56,7 @@ note the structure and the ":" -->
 <script>
 function sortTable() {
   var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementsByTagName(“table”)[0];
+  table = document.getElementById(“myTable”);
 alert("aaaa");
   switching = true;
   /*Make a loop that will continue until
