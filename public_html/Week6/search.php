@@ -11,7 +11,6 @@ if(isset($_POST["search"])){
 </form>
 <?php
 if(isset($search) && strlen($search)>0) {
-
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_THINGS.sql");
     if (isset($query) && !empty($query)) {
@@ -44,18 +43,17 @@ note the structure and the ":" -->
 	echo "</tr>";
 ?>
         <?php foreach($results as $row):?>
-		$accnum=get($row, "Account_Number");
 		<?php echo "<tr>";?>
-		//<li>
+		<li>
                 <?php echo "<td>". get($row, "Name")."</td>"?>
 		<?php echo "<td>". get($row, "Account_Number")."</td>"?>
 		<?php echo "<td>". get($row, "Account_Type")."</td>"?>
 		<?php echo "<td>". get($row, "Balance")."</td>"?>
-		<?php echo "<td>"."<a href=\"delete.php?thingId=$accnum\">Delete</a></td>";?>
+		<?php echo "<td>"."<a href=\"delete.php?thingId=".get($row, "Account_Number")."\">Delete</a></td>";?>
 		<?php echo "</tr>";?>
-            //</li>
+            </li>
         <?php endforeach;?>
-	echo "</table>";
+	<?php echo "</table>";?>
     </ul>
 <?php else:?>
 <?php endif;?>
