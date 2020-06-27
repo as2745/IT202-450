@@ -34,6 +34,7 @@ note the structure and the ":" -->
     <ul>
         <!-- Here we'll loop over all our results and reuse a specific template for each iteration,
         we're also using our helper function to safely return a value based on our key/column name.-->
+<?php
 	echo "<table>";
 	echo "<tr>";
 	echo "<th>Name</th>";
@@ -41,15 +42,17 @@ note the structure and the ":" -->
 	echo "<th>Type</th>";
 	echo "<th>Balance</th>";
 	echo "</tr>";
+?>
         <?php foreach($results as $row):?>
-		echo "<tr>";
+		$accnum=get($row, "Account_Number");
+		<?php echo "<tr>";?>
 		//<li>
                 <?php echo "<td>". get($row, "Name")."</td>"?>
 		<?php echo "<td>". get($row, "Account_Number")."</td>"?>
 		<?php echo "<td>". get($row, "Account_Type")."</td>"?>
 		<?php echo "<td>". get($row, "Balance")."</td>"?>
-                echo "<td>"."<a href=\"delete.php?thingId=<?php echo get($row, \"Account_Number\");?>\">Delete</a>"."</td>";
-		echo "</tr>";
+		<?php echo "<td>"."<a href=\"delete.php?thingId=$accnum\">Delete</a></td>";?>
+		<?php echo "</tr>";?>
             //</li>
         <?php endforeach;?>
 	echo "</table>";
