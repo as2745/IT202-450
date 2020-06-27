@@ -37,7 +37,7 @@ note the structure and the ":" -->
 <?php
 	echo "<table id=\"myTable\">";
 	echo "<tr>";
-	echo "<th onclick=\"sortTable();\">Name</th>";
+	echo "<th onclick=\"sortTable(0);\">Name</th>";
 	echo "<th>Number</th>";
 	echo "<th>Type</th>";
 	echo "<th>Balance</th>";
@@ -56,10 +56,12 @@ note the structure and the ":" -->
 <?php else:?>
 <?php endif;?>
 <script>
-function sortTable() {
-  var table, rows, switching, i, x, y, shouldSwitch;
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("myTable");
   switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
   /*Make a loop that will continue until
   no switching has been done:*/
   while (switching) {
@@ -73,13 +75,22 @@ function sortTable() {
       shouldSwitch = false;
       /*Get the two elements you want to compare,
       one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[0];
-      y = rows[i + 1].getElementsByTagName("TD")[0];
-      //check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
       }
     }
     if (shouldSwitch) {
@@ -87,9 +98,17 @@ function sortTable() {
       and mark that a switch has been done:*/
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
     }
   }
 }
-</script>
-</body>
+</script></body>
 </html>
