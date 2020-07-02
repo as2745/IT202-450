@@ -46,12 +46,12 @@ echo "before major if 2a";
 				));
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$user_id=$res["id"];
-			echo "AAAAAA ".$user_id;
-			$user_id=1;
+			echo "AAAAAA ".$user_id."<br>";
+			//$user_id=1;
 		}catch (Exception $e1){
             echo $e1->getMessage();
-			echo "setting<br>";
-			$user_id=16;
+			//echo "setting<br>";
+			//$user_id=16;
         }
             $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, Balance, User_id) VALUES (:name, :Acctyp,:balance,:user)");
             $result = $stmt->execute(array(
