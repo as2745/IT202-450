@@ -61,6 +61,7 @@ echo "before major if 2a";
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
+		    echo "setting eee <br>";
                 echo var_export($e, true);
             }
             else{
