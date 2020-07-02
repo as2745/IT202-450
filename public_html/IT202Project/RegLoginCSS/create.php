@@ -88,10 +88,9 @@ if(isset($_POST["Bank"])){
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
-		$stmt = $db->prepare("update Bank_Account balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum1");
+		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
-                ":accnum" => $account_num,
-		    ":accnum1"=>$account_num
+                ":accnum" => $account_num
             ));
             //$e = $stmt->errorInfo();
             //if($e[0] != "00000"){
