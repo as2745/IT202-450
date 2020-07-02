@@ -53,7 +53,7 @@ if(isset($_POST["Bank"])){
 			//echo "setting<br>";
 			//$user_id=16;
         }
-            /*$stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, User_id) VALUES (:name, :Acctyp,:user)");
+            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, User_id) VALUES (:name, :Acctyp,:user)");
             $result = $stmt->execute(array(
                 ":name" => $name,
 				":Acctyp"=> $Acctyp,
@@ -63,7 +63,7 @@ if(isset($_POST["Bank"])){
             if($e[0] != "00000"){
 		    echo "setting eee <br>";
                 echo var_export($e, true);
-            }*/
+            }
 		$stmt1 = $db->prepare("SELECT max(id) as id FROM Bank_Account where Name = :name and Account_Type=:Acctyp and User_id=:user");
 			//echo "before major if 3e ".$email."<br>";
 		$stmt1->execute(array(
