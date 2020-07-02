@@ -81,6 +81,13 @@ if(isset($_POST["Bank"])){
                 ":accnum" => $account_num,
 		    ":idnum"=>$acc_id
             ));
+		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Type,Amount,Expected_total) VALUES (:accnum, :typ,:balance,:exp_balance)");
+            $result = $stmt->execute(array(
+		    ":accnum" => $account_num,
+		    ":typ" => "Deposit",
+		    ":balance" => $balance,
+		    ":exp_balance" => $balance
+            ));
             //$e = $stmt->errorInfo();
             //if($e[0] != "00000"){
 		  //  echo "setting eee <br>";
