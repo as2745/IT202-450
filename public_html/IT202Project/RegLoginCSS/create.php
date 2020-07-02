@@ -16,14 +16,16 @@ echo "Hello". $email;?>
 	<input type="submit" name="Bank" value="Create Account"/>
 </form>
 <?php
+echo "before major if 1";
 require("common.inc.php");
+echo "before major if 2";
 $db = getDB();
 if(isset($_POST["Bank"])){
     $name = $_POST["Name"];
     
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
-	echo "before major if";
+	echo "before major if 3";
     if(!empty($name) && !empty($Acctyp)&& !empty($balance)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
