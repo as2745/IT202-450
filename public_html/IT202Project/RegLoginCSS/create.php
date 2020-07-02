@@ -45,7 +45,7 @@ echo "before major if 2a";
 					":email" => $email
 				));
 		$user_id=$res["id"];
-			echo $user_id;
+			echo "AAAAAA ".$user_id;
 		}catch (Exception $e1){
             echo $e1->getMessage();
 			echo "setting<br>";
