@@ -26,6 +26,7 @@ if(isset($_POST["Bank"])){
     if(!empty($name) && !empty($Acctyp)&& !empty($balance)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+	    echo "Inside major if";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
 		try{
@@ -63,8 +64,10 @@ if(isset($_POST["Bank"])){
             echo $e->getMessage();
         }
     }
+	
     else{
-        echo "<div>Name, Account Number, Account Type and Balance must not be empty.<div>";
+	    echo "did not go through if";
+        echo "<div>Name, Account Type and Balance must not be empty.<div>";
     }
 }
 $stmt = $db->prepare("SELECT * FROM Bank_Account");
