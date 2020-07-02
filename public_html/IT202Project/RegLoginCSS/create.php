@@ -82,14 +82,14 @@ if(isset($_POST["Bank"])){
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
-		    echo "setting eee <br>";
+		  //  echo "setting eee <br>";
                 echo var_export($e, true);
             }
 		//echo $acc_id;
-           // else{
+            else{
                 //echo var_export($result, true);
-                //if ($result){
-		if($res){
+                if ($result){
+		//if($res){
                     echo "Successfully inserted new thing: " . $name;
                 }
                 else{
