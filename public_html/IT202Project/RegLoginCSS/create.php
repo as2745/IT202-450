@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-echo "Hello". $_SESSION["user"]["Id"];?>
+echo "Hello". $_SESSION["user"]["email"];?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
@@ -22,6 +22,7 @@ if(isset($_POST["Bank"])){
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
 	$email=$_SESSION["user"]["email"];
+	echo $email;
     if(!empty($name) && !empty($Accnum)&& !empty($Acctyp)&& !empty($balance)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -37,7 +38,7 @@ if(isset($_POST["Bank"])){
                 ":name" => $name,
 				":Acctyp"=> $Acctyp,
 				":balance"=> $balance,
-		    ":user"=>$$user_id
+		    ":user"=>$user_id
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
