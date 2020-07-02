@@ -9,7 +9,7 @@ session_start();
 <nav>
     <ul>
         <li>
-            <a href="home.php">Home</a> \t <a href="login.php">Login</a> \t <a href="register.php">Register</a> \t <a href="logout.php">Logout</a>
+            <a href="home.php">Home</a>  <a href="login.php">Login</a>  <a href="register.php">Register</a>  <a href="logout.php">Logout</a>
         </li>
     </ul>
 </nav>
