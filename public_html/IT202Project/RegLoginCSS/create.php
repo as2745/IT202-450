@@ -31,13 +31,16 @@ echo "before major if 2a";
 	    echo "before major if 3a<br>";
         require("config.php");
 	    echo "before major if 3b<br>";
-	    echo "before major if 3c<br>";
+	    
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 	    echo "Inside major if";
         try{
+		echo "before major if 3c<br>";
             $db = new PDO($connection_string, $dbuser, $dbpass);
+		echo "before major if 3d<br>";
 		try{
 		$stmt1 = $db->prepare("SELECT id FROM Users where email = :email LIMIT 1");
+			echo "before major if 3e<br>";
 		$res=$stmt1->execute(array(
 					":email" => $email
 				));
