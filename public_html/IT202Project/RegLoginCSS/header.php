@@ -3,7 +3,7 @@
 ul {
   list-style-type: none;
   margin: 10px;
-  padding: 0;
+  padding: 10px;
 }
 </style>
     <title>My site</title>
