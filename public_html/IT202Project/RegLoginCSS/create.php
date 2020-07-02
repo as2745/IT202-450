@@ -18,9 +18,10 @@ echo "Hello". $email;?>
 <?php
 echo "before major if 1";
 require("common.inc.php");
-echo "before major if 2";
 $db = getDB();
+echo "before major if 2";
 if(isset($_POST["Bank"])){
+echo "before major if 2a";
     $name = $_POST["Name"];
     
 	$Acctyp = $_POST["Account_Type"];
