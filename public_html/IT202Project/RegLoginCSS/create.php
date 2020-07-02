@@ -39,11 +39,12 @@ echo "before major if 2a";
             $db = new PDO($connection_string, $dbuser, $dbpass);
 		echo "before major if 3d<br>";
 		try{
-		$stmt1 = $db->prepare("SELECT first_name FROM Users where email = :email LIMIT 1");
+		$stmt1 = $db->prepare("SELECT id FROM Users where email = :email LIMIT 1");
 			echo "before major if 3e ".$email."<br>";
-		$res=$stmt1->execute(array(
+		$stmt1->execute(array(
 					":email" => $email
 				));
+			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$user_id=$res["id"];
 			echo "AAAAAA ".$user_id;
 			$user_id=1;
