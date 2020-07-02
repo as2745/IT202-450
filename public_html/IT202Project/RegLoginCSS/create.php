@@ -1,4 +1,4 @@
-Hello <?php $_SESSION["user"]["id"] ?>
+Hello <?php $_SESSION["user"] ?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
