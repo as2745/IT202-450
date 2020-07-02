@@ -5,9 +5,6 @@ echo "Hello". $_SESSION["user"]["Id"];?>
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
 	</label>
-	<label for="accnumber">Account Number
-	<input type="number" id="AccNum" name="Account_Number" />
-	</label>
 	<label for="acctype">Account Type
 	<input type="text" id="AccTyp" name="Account_Type" />
 	</label>
@@ -21,20 +18,26 @@ require("common.inc.php");
 $db = getDB();
 if(isset($_POST["Bank"])){
     $name = $_POST["Name"];
-    $Accnum = $_POST["Account_Number"];
+    
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
+	$email=$_SESSION["user"]["email"];
     if(!empty($name) && !empty($Accnum)&& !empty($Acctyp)&& !empty($balance)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
-            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance) VALUES (:name, :Accnum, :Acctyp,:balance)");
+		$stmt1 = $db->prepare("SELECT id FROM Users where email = :email LIMIT 1");
+		$res=$stmt1->execute(array(
+					":email" => $email
+				));
+		$user_id=$res["id"];
+            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance,user_id) VALUES (:name, :Accnum, :Acctyp,:balance,:user)");
             $result = $stmt->execute(array(
                 ":name" => $name,
-                ":Accnum" => $Accnum,
 				":Acctyp"=> $Acctyp,
-				":balance"=> $balance
+				":balance"=> $balance,
+		    ":user"=>$$user_id
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
