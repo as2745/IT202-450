@@ -38,12 +38,12 @@ if(isset($_POST["Bank"])){
             echo $e1->getMessage();
 			$user_id=15;
         }
-            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Number, Account_Type,Balance,user_id) VALUES (:name, :Accnum, :Acctyp,:balance,:user)");
+            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, Balance, User_id) VALUES (:name, :Acctyp,:balance,:user)");
             $result = $stmt->execute(array(
                 ":name" => $name,
 				":Acctyp"=> $Acctyp,
 				":balance"=> $balance,
-		    ":user"=>$user_id
+		    ":user"=>$User_id
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
