@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-echo "Hello". $_SESSION["user"]["email"];?>
+echo "Hello". $_SESSION["user"]["Id"];?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
