@@ -2,7 +2,7 @@
 include("header.php");
 
 $email=$_SESSION["user"]["email"];
-echo "Hello". email;?>
+echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
