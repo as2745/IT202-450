@@ -11,8 +11,8 @@ form {
     margin-top: 50px;
     text-align: center;
 }
-li {
+a {
   list-style-type: none;
   margin: 10px;
-  padding: 0;
+  padding: 10px;
 }
