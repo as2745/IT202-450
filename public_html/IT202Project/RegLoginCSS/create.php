@@ -1,4 +1,4 @@
-<?php echo "Hello". $_SESSION["user"]["email"];?>
+<?php echo "Hello". $_SESSION["user"]["email"];echo var_export($_SESSION, true);?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
