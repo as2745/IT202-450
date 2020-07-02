@@ -23,7 +23,7 @@ if(isset($_POST["Bank"])){
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
 	
-    if(!empty($name) && !empty($Accnum)&& !empty($Acctyp)&& !empty($balance)){
+    if(!empty($name) && !empty($Acctyp)&& !empty($balance)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
