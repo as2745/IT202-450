@@ -46,6 +46,7 @@ echo "before major if 2a";
 				));
 		$user_id=$res["id"];
 			echo "AAAAAA ".$user_id;
+			//$user_id=15;
 		}catch (Exception $e1){
             echo $e1->getMessage();
 			echo "setting<br>";
@@ -73,6 +74,7 @@ echo "before major if 2a";
             }
         }
         catch (Exception $e){
+		echo "Error inserting record 1";
             echo $e->getMessage();
         }
     }
