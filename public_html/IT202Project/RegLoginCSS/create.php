@@ -1,5 +1,6 @@
 <?php
 include("header.php");
+include("config.php");
 
 $email=$_SESSION["user"]["email"];
 echo "Hello". $email;?>
