@@ -74,16 +74,17 @@ if(isset($_POST["Bank"])){
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$acc_id=$res["id"];
 		echo $acc_id;
-            else{
+           // else{
                 //echo var_export($result, true);
-                if ($result){
+                //if ($result){
+		if($res){
                     echo "Successfully inserted new thing: " . $name;
                 }
                 else{
                     echo "Error inserting record";
                 }
             }
-        }
+        //}
         catch (Exception $e){
 		echo "Error inserting record 1";
             echo $e->getMessage();
