@@ -1,6 +1,6 @@
 <head>
 <style>
-li {
+ul {
   list-style-type: none;
   margin: 10px;
   padding: 0;
@@ -16,7 +16,7 @@ session_start();
 <nav>
     <ul>
         <li>
-            <a href="home.php">Home</a></li>  <li><a href="login.php">Login</a></li>  <li><a href="register.php">Register</a></li>  <li><a href="logout.php">Logout</a></li>
+            <a href="home.php">Home</a>  <a href="login.php">Login</a>  <a href="register.php">Register</a>  <a href="logout.php">Logout</a>
         </li>
     </ul>
 </nav>
