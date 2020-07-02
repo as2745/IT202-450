@@ -44,14 +44,14 @@ echo "before major if 2a";
 		$user_id=$res["id"];
 		}catch (Exception $e1){
             echo $e1->getMessage();
-			$user_id=15;
+			$user_id=16;
         }
             $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, Balance, User_id) VALUES (:name, :Acctyp,:balance,:user)");
             $result = $stmt->execute(array(
                 ":name" => $name,
 				":Acctyp"=> $Acctyp,
 				":balance"=> $balance,
-		    ":user"=>$User_id
+		    ":user"=>$user_id
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
