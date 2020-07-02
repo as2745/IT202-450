@@ -2,7 +2,7 @@
 include("header.php");
 
 $email=$_SESSION["user"]["email"];
-echo "Hello". $email;?>
+echo "Hello". $_SESSION["user"]["id"];?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
@@ -46,7 +46,7 @@ echo "before major if 2a";
 				));
 		$user_id=$res["id"];
 			echo "AAAAAA ".$user_id;
-			//$user_id=15;
+			$user_id=1;
 		}catch (Exception $e1){
             echo $e1->getMessage();
 			echo "setting<br>";
