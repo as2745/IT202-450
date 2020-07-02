@@ -1,4 +1,11 @@
 <head>
+<style>
+li {
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+}
+</style>
     <title>My site</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
