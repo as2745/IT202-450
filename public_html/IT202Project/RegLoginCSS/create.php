@@ -1,7 +1,22 @@
 <?php
 include("header.php");
+require("common.inc.php");
+$db = getDB();
+require("config.php");
+$connection_str = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+$db1 = new PDO($connection_str, $dbuser, $dbpass);
+		try{
+		$stmt1 = $db->prepare("SELECT id FROM Users where email = :email LIMIT 1");
+		$res=$stmt1->execute(array(
+					":email" => $email
+				));
+		$user_id=$res["id"];
+		}catch (Exception $e1){
+            echo $e1->getMessage();
+			$user_id=15;
+        }
 $email=$_SESSION["user"]["email"];
-echo "Hello". $email;?>
+echo "Hello". $user_id;?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
