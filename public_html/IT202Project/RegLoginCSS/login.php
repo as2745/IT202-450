@@ -46,7 +46,7 @@ if(isset($_POST["login"])){
 								"last_name"=>$result["last_name"]
 							);
 							echo var_export($_SESSION, true);
-							header("Location: home.php");
+							header("Location: create.php");
 						}
 						else{
 							echo "<div>Invalid password!</div>";
