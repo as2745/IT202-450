@@ -1,6 +1,5 @@
 <?php
 include("header.php");
-include("config.php");
 
 $email=$_SESSION["user"]["email"];
 echo "Hello". $email;?>
@@ -19,6 +18,7 @@ echo "Hello". $email;?>
 <?php
 echo "before major if 1";
 require("common.inc.php");
+require("config.php");
 $db = getDB();
 echo "before major if 2";
 if(isset($_POST["Bank"])){
@@ -29,7 +29,7 @@ echo "before major if 2a";
 	$balance = $_POST["Balance"];
 	echo "before major if 3";
     if(!empty($name) && !empty($Acctyp)&& !empty($balance)){
-        require("config.php");
+        //require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 	    echo "Inside major if";
         try{
