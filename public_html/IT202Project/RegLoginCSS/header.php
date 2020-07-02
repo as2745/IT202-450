@@ -1,11 +1,5 @@
 <head>
-<style>
-a {
-  list-style-type: none;
-  margin: 10px;
-  padding: 10px;
-}
-</style>
+
     <title>My site</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
