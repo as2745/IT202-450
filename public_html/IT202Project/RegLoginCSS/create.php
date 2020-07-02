@@ -28,8 +28,11 @@ echo "before major if 2a";
 	$balance = $_POST["Balance"];
 	echo "before major if 3";
     if(!empty($name) && !empty($Acctyp)&& !empty($balance)){
+	    echo "before major if 3a<br>";
         require("config.php");
+	    echo "before major if 3b<br>";
 	$db = getDB();
+	    echo "before major if 3c<br>";
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 	    echo "Inside major if";
         try{
