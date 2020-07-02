@@ -86,7 +86,7 @@ if(isset($_POST["Bank"])){
                 //echo var_export($e, true);
            // }
 		//echo $acc_id;
-            else{
+            //else{
                 //echo var_export($result, true);
                 if ($result){
 		//if($res){
