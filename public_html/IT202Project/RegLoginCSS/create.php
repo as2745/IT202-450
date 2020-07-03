@@ -95,13 +95,14 @@ if(isset($_POST["Bank"])){
 		    echo "setting eee ".$e."<br>";
                 //echo var_export($e, true);
             }
+		$balance =$balance * -1
 		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum1,:accnum, :typ,:balance,:exp_balance)");
             $result1 = $stmt->execute(array(
 		    ":accnum1" => "000000000000",
 		    ":accnum" => $account_num,
 		    ":typ" => "WithDraw",
-		    ":balance" => $balance * -1,
+		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
 		$e = $stmt2->errorInfo();
