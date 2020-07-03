@@ -89,6 +89,11 @@ if(isset($_POST["Bank"])){
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
+		$e = $stmt->errorInfo();
+            if($e[0] != "00000"){
+		    echo "setting eee ".$e."<br>";
+                //echo var_export($e, true);
+            }
 		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum1,:accnum, :typ,:balance,:exp_balance)");
             $result1 = $stmt->execute(array(
@@ -100,7 +105,7 @@ if(isset($_POST["Bank"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    echo "setting eee <br>";
+		    echo "setting AAAAAeee ".$e."<br>";
                 //echo var_export($e, true);
             }
 		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
