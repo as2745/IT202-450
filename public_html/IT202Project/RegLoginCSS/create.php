@@ -109,6 +109,7 @@ if(isset($_POST["Bank"])){
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
 		    var_dump($e);
+		    $stmt2->debugDumpParams();
 		    echo "setting AAAAAeee ".$e."<br>";
                 //echo var_export($e, true);
             }
