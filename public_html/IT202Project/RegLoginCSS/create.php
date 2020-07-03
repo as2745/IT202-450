@@ -81,11 +81,21 @@ if(isset($_POST["Bank"])){
                 ":accnum" => $account_num,
 		    ":idnum"=>$acc_id
             ));
-		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Type,Amount,Expected_total) VALUES (:accnum, :typ,:balance,:exp_balance)");
+		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => $account_num,
+		    ":accnum1" => "000000000000",
 		    ":typ" => "Deposit",
 		    ":balance" => $balance,
+		    ":exp_balance" => $balance
+            ));
+		
+		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum1,:accnum, :typ,:balance,:exp_balance)");
+            $result = $stmt->execute(array(
+		    ":accnum1" => $account_num,
+		    ":accnum" => "000000000000",
+		    ":typ" => "Deposit",
+		    ":balance" => $balance * -1,
 		    ":exp_balance" => $balance
             ));
 		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
