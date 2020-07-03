@@ -73,7 +73,7 @@ if(isset($_POST["Bank"])){
 				));
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$acc_id=$res["id"];
-		$account_num=sprintf("%12d",$acc_id);
+		$account_num=str_pad($acc_id, 12, "0", STR_PAD_LEFT);
 		echo $acc_id;
 		echo " ".$account_num."<br>";
 		$stmt = $db->prepare("update Bank_Account set Account_number=:accnum where id=:idnum");
