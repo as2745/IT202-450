@@ -100,7 +100,7 @@ if(isset($_POST["Bank"])){
 		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
-		    ":acc" => "000000000000",
+		    ":acc1" => "000000000000",
 		    ":acc" => $account_num,
 		    ":typ" => "WithDraw",
 		    ":balance" => $balance,
