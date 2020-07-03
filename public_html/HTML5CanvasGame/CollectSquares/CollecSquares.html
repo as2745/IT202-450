@@ -1,203 +1,259 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<script>
-// Collect The Square game
- 
-// Get a reference to the canvas DOM element
-var canvas = document.getElementById('canvas');
-// Get the canvas drawing context
-var context = canvas.getContext('2d');
- 
-// Your score
-var score = 0;
- 
-// Properties for your square
-var x = 50; // X position
-var y = 100; // Y position
-var speed = 6; // Distance to move each frame
-var sideLength = 50; // Length of each side of the square
- 
-// FLags to track which keys are pressed
-var down = false;
-var up = false;
-var right = false;
-var left = false;
- 
-// Properties for the target square
-var targetX = 0;
-var targetY = 0;
-var targetLength = 25;
- 
-// Determine if number a is within the range b to c (exclusive)
-function isWithin(a, b, c) {
-  return (a > b && a < c);
-}
- 
-// Countdown timer (in seconds)
-var countdown = 30;
-// ID to track the setTimeout
-var id = null;
- 
-// Listen for keydown events
-canvas.addEventListener('keydown', function(event) {
-  event.preventDefault();
-  console.log(event.key, event.keyCode);
-  if (event.keyCode === 40) { // DOWN
-    down = true;
-  }
-  if (event.keyCode === 38) { // UP
-    up = true;
-  }
-  if (event.keyCode === 37) { // LEFT
-    left = true;
-  }
-  if (event.keyCode === 39) { // RIGHT
-    right = true;
-  }
-});
- 
-// Listen for keyup events
-canvas.addEventListener('keyup', function(event) {
-  event.preventDefault();
-  console.log(event.key, event.keyCode);
-  if (event.keyCode === 40) { // DOWN
-    down = false;
-  }
-  if (event.keyCode === 38) { // UP
-    up = false;
-  }
-  if (event.keyCode === 37) { // LEFT
-    left = false;
-  }
-  if (event.keyCode === 39) { // RIGHT
-    right = false;
-  }
-});
- 
-// Show the start menu
-function menu() {
-  erase();
-  context.fillStyle = '#000000';
-  context.font = '36px Arial';
-  context.textAlign = 'center';
-  context.fillText('Collect the Square!', canvas.width / 2, canvas.height / 4);
-  context.font = '24px Arial';
-  context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
-  context.font = '18px Arial'
-  context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 4) * 3);
-  // Start the game on a click
-  canvas.addEventListener('click', startGame);
-}
- 
-// Start the game
-function startGame() {
-	// Reduce the countdown timer ever second
-  id = setInterval(function() {
-    countdown--;
-  }, 1000)
-  // Stop listening for click events
-  canvas.removeEventListener('click', startGame);
-  // Put the target at a random starting point
-	moveTarget();
-  // Kick off the draw loop
-  draw();
-}
- 
-// Show the game over screen
-function endGame() {
-	// Stop the countdown
-  clearInterval(id);
-  // Display the final score
-  erase();
-  context.fillStyle = '#000000';
-  context.font = '24px Arial';
-  context.textAlign = 'center';
-  context.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 2);
-}
- 
-// Move the target square to a random position
-function moveTarget() {
-  targetX = Math.round(Math.random() * canvas.width - targetLength);
-  targetY = Math.round(Math.random() * canvas.height - targetLength)
-}
- 
-// Clear the canvas
-function erase() {
-  context.fillStyle = '#FFFFFF';
-  context.fillRect(0, 0, 600, 400);
-}
- 
-// The main draw loop
-function draw() {
-  erase();
-  // Move the square
-  if (down) {
-    y += speed;
-  }
-  if (up) {
-    y -= speed;
-  }
-  if (right) {
-    x += speed;
-  }
-  if (left) {
-    x -= speed;
-  }
-  // Keep the square within the bounds
-  if (y + sideLength > canvas.height) {
-    y = canvas.height - sideLength;
-  }
-  if (y < 0) {
-    y = 0;
-  }
-  if (x < 0) {
-    x = 0;
-  }
-  if (x + sideLength > canvas.width) {
-    x = canvas.width - sideLength;
-  }
-  // Collide with the target
-  if (isWithin(targetX, x, x + sideLength) || isWithin(targetX + targetLength, x, x + sideLength)) { // X
-    if (isWithin(targetY, y, y + sideLength) || isWithin(targetY + targetLength, y, y + sideLength)) { // Y
-      // Respawn the target
-      moveTarget();
-      // Increase the score
-      score++;
-    }
-  }
-  // Draw the square
-  context.fillStyle = '#FF0000';
-  context.fillRect(x, y, sideLength, sideLength);
-  // Draw the target 
-  context.fillStyle = '#00FF00';
-  context.fillRect(targetX, targetY, targetLength, targetLength);
-  // Draw the score and time remaining
-  context.fillStyle = '#000000';
-  context.font = '24px Arial';
-  context.textAlign = 'left';
-  context.fillText('Score: ' + score, 10, 24);
-  context.fillText('Time Remaining: ' + countdown, 10, 50);
-  // End the game or keep playing
-  if (countdown <= 0) {
-    endGame();
-  } else {
-    window.requestAnimationFrame(draw);
-  }
-}
- 
-// Start the game
-startGame();
-menu();
-canvas.focus();
-</script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; min-height: 14.0px}
+    span.Apple-tab-span {white-space:pre}
+  </style>
 </head>
-<body onload="init();">
-<a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben Centra</a>
-<main>
-    <canvas id="board" width="600px" height="600px" style="border: 1px solid black;">
-
-    </canvas>
-</main>
+<body>
+<p class="p1">&lt;canvas id="canvas" width="600" height="400" tabindex="1"&gt;&lt;/canvas&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>#center{</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 80%;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-right: auto;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-content:center;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align:center;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>height:99%;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding:0px;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>canvas, body{</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0px;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin:0px;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="center"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;canvas id="canvas" width="550px" height="550px"&gt;&lt;/canvas&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;span id="endGame"&gt;&lt;/span&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">// Collect The Square game</p>
+<p class="p2"><br></p>
+<p class="p1">// Get a reference to the canvas DOM element</p>
+<p class="p1">var canvas = document.getElementById('canvas');</p>
+<p class="p1">// Get the canvas drawing context</p>
+<p class="p1">var context = canvas.getContext('2d');</p>
+<p class="p2"><br></p>
+<p class="p1">// Your score</p>
+<p class="p1">var score = 0;</p>
+<p class="p2"><br></p>
+<p class="p1">// Properties for your square</p>
+<p class="p1">var x = 50; // X position</p>
+<p class="p1">var y = 100; // Y position</p>
+<p class="p1">var speed = 6; // Distance to move each frame</p>
+<p class="p1">var sideLength = 50; // Length of each side of the square</p>
+<p class="p2"><br></p>
+<p class="p1">// FLags to track which keys are pressed</p>
+<p class="p1">var down = false;</p>
+<p class="p1">var up = false;</p>
+<p class="p1">var right = false;</p>
+<p class="p1">var left = false;</p>
+<p class="p2"><br></p>
+<p class="p1">// Properties for the target square</p>
+<p class="p1">var targetX = 0;</p>
+<p class="p1">var targetY = 0;</p>
+<p class="p1">var targetLength = 25;</p>
+<p class="p2"><br></p>
+<p class="p1">// Determine if number a is within the range b to c (exclusive)</p>
+<p class="p1">function isWithin(a, b, c) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return (a &gt; b &amp;&amp; a &lt; c);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Countdown timer (in seconds)</p>
+<p class="p1">var countdown = 30;</p>
+<p class="p1">// ID to track the setTimeout</p>
+<p class="p1">var id = null;</p>
+<p class="p2"><br></p>
+<p class="p1">// Listen for keydown events</p>
+<p class="p1">canvas.addEventListener('keydown', function(event) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>event.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>console.log(event.key, event.keyCode);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 40) { // DOWN</p>
+<p class="p1"><span class="Apple-converted-space">    </span>down = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 38) { // UP</p>
+<p class="p1"><span class="Apple-converted-space">    </span>up = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 37) { // LEFT</p>
+<p class="p1"><span class="Apple-converted-space">    </span>left = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 39) { // RIGHT</p>
+<p class="p1"><span class="Apple-converted-space">    </span>right = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">// Listen for keyup events</p>
+<p class="p1">canvas.addEventListener('keyup', function(event) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>event.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>console.log(event.key, event.keyCode);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 40) { // DOWN</p>
+<p class="p1"><span class="Apple-converted-space">    </span>down = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 38) { // UP</p>
+<p class="p1"><span class="Apple-converted-space">    </span>up = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 37) { // LEFT</p>
+<p class="p1"><span class="Apple-converted-space">    </span>left = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (event.keyCode === 39) { // RIGHT</p>
+<p class="p1"><span class="Apple-converted-space">    </span>right = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">// Show the start menu</p>
+<p class="p1">function menu() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>erase();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillStyle = '#000000';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.font = '36px Arial';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.textAlign = 'center';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillText('Collect the Square!', canvas.width / 2, canvas.height / 4);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.font = '24px Arial';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.font = '18px Arial'</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 4) * 3);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Start the game on a click</p>
+<p class="p1"><span class="Apple-converted-space">  </span>canvas.addEventListener('click', startGame);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Start the game</p>
+<p class="p1">function startGame() {</p>
+<p class="p1"><span class="Apple-tab-span">	</span>// Reduce the countdown timer ever second</p>
+<p class="p1"><span class="Apple-converted-space">  </span>id = setInterval(function() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>countdown--;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}, 1000)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Stop listening for click events</p>
+<p class="p1"><span class="Apple-converted-space">  </span>canvas.removeEventListener('click', startGame);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Put the target at a random starting point</p>
+<p class="p1"><span class="Apple-tab-span">	</span>moveTarget();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Kick off the draw loop</p>
+<p class="p1"><span class="Apple-converted-space">  </span>draw();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Show the game over screen</p>
+<p class="p1">function endGame() {</p>
+<p class="p1"><span class="Apple-tab-span">	</span>// Stop the countdown</p>
+<p class="p1"><span class="Apple-converted-space">  </span>clearInterval(id);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Display the final score</p>
+<p class="p1"><span class="Apple-converted-space">  </span>erase();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillStyle = '#000000';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.font = '24px Arial';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.textAlign = 'center';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 2);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Move the target square to a random position</p>
+<p class="p1">function moveTarget() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>targetX = Math.round(Math.random() * canvas.width - targetLength);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>targetY = Math.round(Math.random() * canvas.height - targetLength)</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Clear the canvas</p>
+<p class="p1">function erase() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillStyle = '#FFFFFF';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillRect(0, 0, 600, 400);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// The main draw loop</p>
+<p class="p1">function draw() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>erase();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Move the square</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (down) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>y += speed;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (up) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>y -= speed;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (right) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>x += speed;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (left) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>x -= speed;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Keep the square within the bounds</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (y + sideLength &gt; canvas.height) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>y = canvas.height - sideLength;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (y &lt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>y = 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (x &lt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>x = 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (x + sideLength &gt; canvas.width) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>x = canvas.width - sideLength;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Collide with the target</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (isWithin(targetX, x, x + sideLength) || isWithin(targetX + targetLength, x, x + sideLength)) { // X</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (isWithin(targetY, y, y + sideLength) || isWithin(targetY + targetLength, y, y + sideLength)) { // Y</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Respawn the target</p>
+<p class="p1"><span class="Apple-converted-space">      </span>moveTarget();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Increase the score</p>
+<p class="p1"><span class="Apple-converted-space">      </span>score++;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Draw the square</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillStyle = '#FF0000';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillRect(x, y, sideLength, sideLength);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Draw the target<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillStyle = '#00FF00';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillRect(targetX, targetY, targetLength, targetLength);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Draw the score and time remaining</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillStyle = '#000000';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.font = '24px Arial';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.textAlign = 'left';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillText('Score: ' + score, 10, 24);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>context.fillText('Time Remaining: ' + countdown, 10, 50);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// End the game or keep playing</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (countdown &lt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>endGame();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.requestAnimationFrame(draw);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Start the game</p>
+<p class="p1">menu();</p>
+<p class="p1">canvas.focus();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/html&gt;</p>
 </body>
 </html>
