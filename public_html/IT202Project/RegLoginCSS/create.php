@@ -98,10 +98,10 @@ if(isset($_POST["Bank"])){
 		$balance =$balance * -1;
 		echo $balance;
 		
-		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum1,:accnum, :typ,:balance,:exp_balance)");
+		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt->execute(array(
-		    ":accnum1" => "000000000000",
-		    ":accnum" => $account_num,
+		    ":acc" => "000000000000",
+		    ":acc" => $account_num,
 		    ":typ" => "WithDraw",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
