@@ -26,14 +26,14 @@ echo "Hello". $email;?>
 	<label for="balance">Amount
 	<input type="number" id="balance" name="Balance" />
 	</label>
-	<input type="submit" name="Deposit" value="Deposit"/>
+	<input type="submit" name="Withdraw" value="Withdraw"/>
 </form>
 <?php
 //echo "before major if 1";
 require("common.inc.php");
 
 //echo "before major if 2";
-if(isset($_POST["Deposit"])){
+if(isset($_POST["Withdraw"])){
 //echo "before major if 2a";
     $name = $_POST["Name"];
     
