@@ -48,7 +48,7 @@ if(isset($_POST["login"])){
 							
 							
 							$query=$db1->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
-							$email=$_SESSION["user"]["email"];
+						
 							$query->execute(array(
 								":email" => $email
 							           ));
