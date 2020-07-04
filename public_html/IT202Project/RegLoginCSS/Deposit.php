@@ -71,7 +71,7 @@ if(isset($_POST["Deposit"])){
             }
 		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
-                ":accnum" => $account_num
+                ":accnum" => $name
             ));
             //$e = $stmt->errorInfo();
             //if($e[0] != "00000"){
