@@ -3,7 +3,7 @@ include("header.php");
 //SELECT b.Account_Number FROM `Bank_Account` b, `Users` a where a.id=b.User_id and a.email='a@a.com'
 //require("common.inc.php");
 //require("config.php");
-$connection_str = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+/*$connection_str = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db1 = new PDO($connection_string, $dbuser, $dbpass);
 $query=$db1->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
 $email=$_SESSION["user"]["email"];
@@ -11,7 +11,7 @@ $result = $query->execute(array(
 		    ":email" => $email
             ));
 $res = $query->fetchAll();
-print_r($res);
+print_r($res);*/
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">Account
