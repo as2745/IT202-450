@@ -69,8 +69,8 @@ if(isset($_POST["Withdraw"])){
 		
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
-		    ":accnum" => $name,
-		    ":accnum1" => $name1,
+		    ":accnum" => $name1,
+		    ":accnum1" => $name,
 		    ":typ" => "Deposit",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
@@ -86,8 +86,8 @@ if(isset($_POST["Withdraw"])){
 		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
-		    ":acc1" => $name1,
-		    ":acc" => $name,
+		    ":acc1" => $name,
+		    ":acc" => $name1,
 		    ":typ" => "WithDraw",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
