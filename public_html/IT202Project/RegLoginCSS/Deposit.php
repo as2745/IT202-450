@@ -4,13 +4,24 @@ include("header.php");
 $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
-var_dump($new_arr);
+//var_dump($new_arr);
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">Account
-	<input type="text" id="Name" name="Name" />
 	</label>
-	
+	<select name="Name" id="Name">
+		<?php
+        // A sample product array
+        //$products = array("Mobile", "Laptop", "Tablet", "Camera");
+        
+        // Iterating through the product array
+        foreach($new_arr as $item){
+        ?>
+        <option value="<?php echo strtolower($item); ?>"><?php echo $item; ?></option>
+        <?php
+        }
+        ?>
+	</select>
 	<label for="balance">Amount
 	<input type="number" id="balance" name="Balance" />
 	</label>
@@ -27,7 +38,7 @@ if(isset($_POST["Deposit"])){
     
 	
 	$balance = $_POST["Balance"];
-	//echo "before major if 3";
+	echo "before major if 3".$name;
     if(!empty($name) && !empty($balance)){
 	   // echo "before major if 3a<br>";
         require("config.php");
