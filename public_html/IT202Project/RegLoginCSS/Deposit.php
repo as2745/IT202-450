@@ -12,6 +12,9 @@ $result = $query->execute(array(
             ));
 $res = $query->fetchAll();
 print_r($res);*/
+$email=$_SESSION["user"]["email"];
+$accounts=$_SESSION["user"]["accounts"];
+var_dump($accounts);
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">Account
