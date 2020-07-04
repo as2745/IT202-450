@@ -54,7 +54,8 @@ if(isset($_POST["Withdraw"])){
 	
 	$balance = $_POST["Balance"];
   //$balance=$balance * -1;
-	//echo "before major if 3".$balance;
+	echo "before major if 3".$name;
+	echo "before major if 3".$name1;
     if(!empty($name) && !empty($balance)){
 	   // echo "before major if 3a<br>";
         require("config.php");
