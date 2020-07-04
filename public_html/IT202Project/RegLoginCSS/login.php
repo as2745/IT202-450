@@ -25,7 +25,7 @@ if(isset($_POST["login"])){
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
-				$stmt = $db->prepare("SELECT  FROM Users where email = :email LIMIT 1");
+				$stmt = $db->prepare("SELECT * FROM Users where email = :email LIMIT 1");
 				$stmt->execute(array(
 					":email" => $email
 				));
@@ -47,13 +47,13 @@ if(isset($_POST["login"])){
 							);
 							
 							
-							/*$query=$db->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
+							$query=$db->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
 						
 							$query->execute(array(
 								":email" => $email
 							           ));
 							$res = $query->fetchAll();
-							$_SESSION["user"]["accounts"]=$res;*/
+							$_SESSION["user"]["accounts"]=$res;
 							echo var_export($_SESSION, true);
 							header("Location: home.php");
 						}
