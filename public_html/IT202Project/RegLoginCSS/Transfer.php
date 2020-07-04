@@ -47,15 +47,15 @@ echo "Hello". $email;?>
 require("common.inc.php");
 
 //echo "before major if 2";
-if(isset($_POST["Withdraw"])){
+if(isset($_POST["Transfer"])){
 //echo "before major if 2a";
     $name = $_POST["Name"];
     $name1 = $_POST["Name1"];
 	
 	$balance = $_POST["Balance"];
   //$balance=$balance * -1;
-	echo "before major if 3".$name;
-	echo "before major if 3".$name1;
+	//echo "before major if 3".$name;
+	//echo "before major if 3".$name1;
     if(!empty($name) && !empty($balance)){
 	   // echo "before major if 3a<br>";
         require("config.php");
