@@ -57,7 +57,7 @@ if(isset($_POST["Withdraw"])){
             $result = $stmt->execute(array(
 		    ":accnum" => $name,
 		    ":accnum1" => "000000000000",
-		    ":typ" => "Deposit",
+		    ":typ" => "WithDraw",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
@@ -74,7 +74,7 @@ if(isset($_POST["Withdraw"])){
             $result1 = $stmt2->execute(array(
 		    ":acc1" => "000000000000",
 		    ":acc" => $name,
-		    ":typ" => "WithDraw",
+		    ":typ" => "Deposit",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
