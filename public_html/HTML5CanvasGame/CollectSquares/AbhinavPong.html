@@ -13,7 +13,6 @@
         var ball;
         var paddleWidth = 25;
         var paddleHeight = 100;
-@@ -20,27 +22,41 @@
         var S = 83;
         var UP = 38;
         var DOWN = 40;
@@ -56,7 +55,6 @@
                 drawables.push(ball);
                 console.log(drawables);
                 resetBall();
-@@ -163,6 +179,18 @@
             if (keys.DOWN) {
                 leftPaddle.y += leftPaddle.s;
             }
@@ -75,7 +73,6 @@
             clampToCanvas(leftPaddle);
         }
         function clampToCanvas(paddle) {
-@@ -173,6 +201,16 @@
                 paddle.y = canvas.height - paddle.h;
             }
         }
