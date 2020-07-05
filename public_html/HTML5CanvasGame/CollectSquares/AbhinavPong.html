@@ -257,17 +257,39 @@
         function checkScore() {
             // Score if the ball goes past a paddle
             if (ball.x < leftPaddle.x) {
-                rightScore--;
+				leftScore--;
                 resetBall();
                 ball.sX *= -1;
-            } else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
-                leftScore--;
+            } else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {			
+                rightScore--;                
+                resetBall();
+                ball.sX *= -1;
+            }else if (ball.y <=0 ) {
+                topScore--;
+                resetBall();
+                ball.sX *= -1;
+            }else if (ball.y + ball.w >= canvas.height) {
+                bottomScore--;
                 resetBall();
                 ball.sX *= -1;
             }
-		if(leftScore==0 ||rightScore==0||topScore==0||bottomScore==0)	{
-		   alert("Game is done");
-	}
+			if(leftScore==0 || rightScore==0 || topScore==0  || bottomScore==0){
+				if(leftScore==0)
+					txt="Left Player Lost";
+				else if(rightScore==0)
+					txt="Right Player Lost";
+				else if(topScore==0)
+					txt="Top Player Lost";
+				else if(bottomScore==0)
+					txt="Bottom Player Lost";
+				if (confirm(txt)) {
+					leftScore=10;
+					rightScore=10;
+					topScore=10;
+					bottomScore=10;
+					resetBall();
+				} 
+			}
         }
         function drawScores() {
             // Draw the scores
