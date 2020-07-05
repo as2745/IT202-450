@@ -250,12 +250,12 @@
                 }
             }
 		if (ball.x + ball.w / 2 >= topPaddle.x && ball.x + ball.w / 2 <= topPaddle.x + topPaddle.h) {
-                if (ball.y + ball.h >= topPaddle.y) {
+                if (ball.y + ball.h <= topPaddle.y) {
                     alert("ball hit top");
                 }
             }
 		if (ball.x + ball.w / 2 >= bottomPaddle.x && ball.x + ball.w / 2 <= bottomPaddle.x + bottomPaddle.h) {
-                if (ball.y + ball.h >= bottomPaddle.y) {
+                if (ball.y + ball.h <= bottomPaddle.y) {
                     alert("ball hit bottom");
                 }
             }
