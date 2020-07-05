@@ -255,7 +255,7 @@
                 }
             }
 		if (ball.x + ball.w / 2 >= bottomPaddle.x && ball.x + ball.w / 2 <= bottomPaddle.x + bottomPaddle.h) {
-                if (ball.y + ball.h <= bottomPaddle.y) {
+                if (ball.y + ball.h >= bottomPaddle.y) {
                     alert("ball hit bottom");
                 }
             }
