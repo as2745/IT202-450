@@ -25,7 +25,6 @@
         var H = 72;
         var Z = 90;
         var M = 77;
-
         // Keep track of pressed keys
         var keys = {
             W: false,
@@ -37,7 +36,6 @@
             Z: false,
             M: false
         };
-
         // Keep track of the score
         var leftScore = 10;
         var rightScore = 10;
@@ -70,7 +68,6 @@
             // Modify the ball object to have two speed properties, one for X and one for Y
             ball.sX = ballSpeed;
             ball.sY = ballSpeed / 2;
-
             // Randomize initial direction
             if (Math.random() > 0.5) {
                 ball.sX *= -1;
@@ -231,7 +228,6 @@
                 paddle.x = canvas.width - paddle.w;
             }
         }
-
         function moveBall() {
             // Move the ball
             ball.x += ball.sX;
@@ -253,13 +249,13 @@
                     bounceBall();
                 }
             }
-		if (ball.y + ball.h / 2 >= topPaddle.y && ball.y + ball.h / 2 <= topPaddle.y + topPaddle.h) {
-                if (ball.x + ball.w >= topPaddle.y) {
+		if (ball.x + ball.w / 2 >= topPaddle.x && ball.x + ball.w / 2 <= topPaddle.x + topPaddle.w) {
+                if (ball.y + ball.h >= topPaddle.y) {
                     bounceBall();
                 }
             }
-		if (ball.y + ball.h / 2 >= bottomPaddle.y && ball.y + ball.h / 2 <= bottomPaddle.y + bottomPaddle.h) {
-                if (ball.x + ball.w >= bottomPaddle.y) {
+		if (ball.x + ball.w / 2 >= bottomPaddle.x && ball.x + ball.w / 2 <= bottomPaddle.x + bottomPaddle.w) {
+                if (ball.y + ball.h >= bottomPaddle.y) {
                     bounceBall();
                 }
             }
@@ -322,7 +318,6 @@
             erase();
             movePaddle();
             moveBall();
-
             checkPaddleCollision();
             checkScore();
             drawScores();
@@ -337,7 +332,6 @@
 <a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben Centra</a>
 <main>
     <canvas id="board" width="600px" height="600px" style="border: 1px solid black;">
-
     </canvas>
 </main>
 </body>
