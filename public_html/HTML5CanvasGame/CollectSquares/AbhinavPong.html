@@ -241,7 +241,7 @@
             // Bounce the ball off the paddles
             if (ball.y + ball.h / 2 >= leftPaddle.y && ball.y + ball.h / 2 <= leftPaddle.y + leftPaddle.h) {
                 if (ball.x <= leftPaddle.x + leftPaddle.w) {
-                    alert("ball x="+ball.x+";ball y="+ball.y+";leftPaddle x="+leftPaddle.x+";leftPaddle y="+leftPaddle.y);
+                    bounceBall();
                 }
             }
             if (ball.y + ball.h / 2 >= rightPaddle.y && ball.y + ball.h / 2 <= rightPaddle.y + rightPaddle.h) {
