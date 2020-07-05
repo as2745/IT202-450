@@ -249,8 +249,8 @@
                     bounceBall();
                 }
             }
-		if (ball.x + ball.w / 2 >= topPaddle.x && ball.x + ball.w / 2 <= topPaddle.x + topPaddle.h) {
-                if (ball.y + ball.h <= topPaddle.y + paddleWidth / 2) {
+		if (ball.y + ball.h / 2 >= topPaddle.y && ball.y + ball.h / 2 <= topPaddle.y + topPaddle.h) {
+                if (ball.x <= topPaddle.x + topPaddle.w) {
                     bounceBall();
                 }
             }
