@@ -16,6 +16,7 @@
         var ballSize = 10;
         var ballSpeed = 2;
         var paddleSpeed = 2;
+        var swapped = false;
         var drawables = [];
         // Key Codes
         var W = 87;
@@ -289,7 +290,48 @@
             context.fillStyle = '#FFFFFF';
             context.fillRect(0, 0, canvas.width, canvas.height);
         }
+        swapIt();
+        // Draw the paddles and ball
+        leftPaddle.draw();
+        rightPaddle.draw();
+        // Draw the scores
+        context.fillStyle = '#000000';
+        context.font = '24px Arial';
+        context.textAlign = 'left';
+        context.fillText('Score: ' + leftScore, 5, 24);
+        context.textAlign = 'right';
+        context.fillText('Score: ' + rightScore, canvas.width - 5, 24);
+        // End the game or keep going
+        if (leftScore === 10 || rightScore === 10) {
+            endGame();
 
+        } else {
+            window.requestAnimationFrame(draw);
+        }
+    }
+// Show the end game screen
+    function endGame() {
+        erase();
+        context.fillStyle = '#000000';
+        context.font = '24px Arial';
+        context.textAlign = 'center';
+        var winner = 1;
+        if (rightScore === 10) winner = 2;
+        context.fillText('Player ' + winner + ' wins!', canvas.width/2, canvas.height/2);
+        let eg = document.getElementById("endGame");
+        eg.innerHTML = "<button onclick='reload();'>Press me</button>";
+    function swapIt(){
+        if(swapped){
+            return;
+        }
+        if(leftScore == 3 || rightScore == 3){
+            let t = leftScore;
+            leftScore = rightScore;
+            rightScore = t;
+            console.log("Swapped");
+            swapped = true;
+        }
+    }
         function gameLoop() {
             erase();
             movePaddle();
