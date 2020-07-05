@@ -211,20 +211,20 @@
                 leftPaddle.y += leftPaddle.s;
             }
             if (keys.G) {
-                topPaddle.y -= topPaddle.s;
+                topPaddle.x -= topPaddle.s;
             }
             if (keys.H) {
-                topPaddle.y += topPaddle.s;
+                topPaddle.x += topPaddle.s;
             }
             if (keys.Z) {
-                bottomPaddle.y -= bottomPaddle.s;
+                bottomPaddle.x -= bottomPaddle.s;
             }
             if (keys.M) {
-                bottomPaddle.y += bottomPaddle.s;
+                bottomPaddle.x += bottomPaddle.s;
             }
             clampToCanvas(leftPaddle);
-            clampToCanvas(topPaddle);
-            clampToCanvas(bottomPaddle);
+            clampToCanvas1(topPaddle);
+            clampToCanvas1(bottomPaddle);
         }
         function clampToCanvas(paddle) {
             if (paddle.y < 0) {
@@ -234,14 +234,14 @@
                 paddle.y = canvas.height - paddle.h;
             }
         }
-        /*function clampToCanvas1(paddle) {
+        function clampToCanvas1(paddle) {
             if (paddle.x < 0) {
                 paddle.x = 0;
             }
             if (paddle.x + paddle.w > canvas.width) {
                 paddle.x = canvas.width - paddle.w;
             }
-        }*/
+        }
 
         function moveBall() {
             // Move the ball
