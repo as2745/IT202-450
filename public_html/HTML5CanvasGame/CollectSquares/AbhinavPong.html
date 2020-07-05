@@ -49,9 +49,9 @@
             if (canvas.getContext) {
                 context = canvas.getContext("2d");
                 leftPaddle = makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#BC0000');
-                topPaddle = makeRect(25, canvas.width / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#001100');
+                topPaddle = makeRect(0, canvas.width / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#001100');
                 rightPaddle = makeRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#0000BC');
-                bottomPaddle = makeRect(canvas.height - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#00CB00');
+                bottomPaddle = makeRect(0, 0 - canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#00CB00');
                 ball = makeRect(0, 0, ballSize, ballSize, ballSpeed, '#000000');
                 drawables.push(leftPaddle);
                 drawables.push(rightPaddle);
