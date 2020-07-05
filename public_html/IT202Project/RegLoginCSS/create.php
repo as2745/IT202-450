@@ -56,8 +56,8 @@ if(isset($_POST["Bank"])){
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$acc_id=$res["id"];
 		$account_num=str_pad($acc_id, 12, "0", STR_PAD_LEFT);
-		echo $acc_id;
-		echo " ".$account_num."<br>";
+		//echo $acc_id;
+		//echo " ".$account_num."<br>";
 		$stmt = $db->prepare("update Bank_Account set Account_number=:accnum where id=:idnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num,
@@ -89,29 +89,29 @@ if(isset($_POST["Bank"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    var_dump($e);
-		    $stmt2->debugDumpParams();
-		    echo "setting AAAAAeee ".$e."<br>";
+		    //var_dump($e);
+		    //$stmt2->debugDumpParams();
+		    //echo "setting AAAAAeee ".$e."<br>";
             }
 		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num
             ));
                 if ($result){
-                    echo "Successfully inserted new thing: " . $name;
+                    echo "Successfully Created new Account for : " . $name;
                 }
                 else{
                     echo "Error inserting record";
                 }
             }
         catch (Exception $e){
-		echo "Error inserting record 1";
+		
             echo $e->getMessage();
         }
     }
 	
     else{
-	    echo "did not go through if";
+	    
         echo "<div>Name, Account Type and Balance must not be empty.<div>";
     }
 }
