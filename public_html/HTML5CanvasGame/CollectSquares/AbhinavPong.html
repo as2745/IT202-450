@@ -8,6 +8,8 @@
         var loop;
         var leftPaddle;
         var rightPaddle;
+        var topPaddle;
+        var bottomPaddle;
         var ball;
         var paddleWidth = 25;
         var paddleHeight = 100;
@@ -20,27 +22,41 @@
         var S = 83;
         var UP = 38;
         var DOWN = 40;
+        var G = 45;
+        var H = 55;
+        var Z = 67;
+        var M = 87;
 
         // Keep track of pressed keys
         var keys = {
             W: false,
             S: false,
             UP: false,
-            DOWN: false
+            DOWN: false,
+            G: false,
+            H: false,
+            Z: false,
+            M: false
         };
 
         // Keep track of the score
         var leftScore = 0;
         var rightScore = 0;
+        var topScore = 0;
+        var bottomScore = 0;
         function init() {
             canvas = document.getElementById("board");
             if (canvas.getContext) {
                 context = canvas.getContext("2d");
                 leftPaddle = makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#BC0000');
+                topPaddle = makeRect(25, canvas.width / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#BB0000');
                 rightPaddle = makeRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#0000BC');
+                bottomPaddle = makeRect(canvas.height - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#0000CB');
                 ball = makeRect(0, 0, ballSize, ballSize, ballSpeed, '#000000');
                 drawables.push(leftPaddle);
                 drawables.push(rightPaddle);
+                drawables.push(topPaddle);
+                drawables.push(bottomPaddle);
                 drawables.push(ball);
                 console.log(drawables);
                 resetBall();
@@ -163,6 +179,18 @@
             if (keys.DOWN) {
                 leftPaddle.y += leftPaddle.s;
             }
+            if (keys.G) {
+                leftPaddle.x -= leftPaddle.s;
+            }
+            if (keys.H) {
+                leftPaddle.x += leftPaddle.s;
+            }
+            if (keys.Z) {
+                leftPaddle.x -= leftPaddle.s;
+            }
+            if (keys.M) {
+                leftPaddle.x += leftPaddle.s;
+            }
             clampToCanvas(leftPaddle);
         }
         function clampToCanvas(paddle) {
@@ -173,6 +201,16 @@
                 paddle.y = canvas.height - paddle.h;
             }
         }
+        function clampToCanvas1(paddle) {
+            if (paddle.x < 0) {
+                paddle.x = 0;
+            }
+            if (paddle.x + paddle.w > canvas.width) {
+                paddle.x = canvas.width - paddle.w;
+            }
+        }
+        clampToCanvas1(topPaddle);
+        clampToCanvas1(bottomPaddle);
         function moveBall() {
             // Move the ball
             ball.x += ball.sX;
