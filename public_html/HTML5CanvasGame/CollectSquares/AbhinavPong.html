@@ -223,6 +223,8 @@
                 bottomPaddle.x += bottomPaddle.s;
             }
             clampToCanvas(leftPaddle);
+            clampToCanvas1(topPaddle);
+            clampToCanvas1(bottomPaddle);
         }
         function clampToCanvas(paddle) {
             if (paddle.y < 0) {
@@ -240,8 +242,7 @@
                 paddle.x = canvas.width - paddle.w;
             }
         }
-        clampToCanvas1(topPaddle);
-        clampToCanvas1(bottomPaddle);
+
         function moveBall() {
             // Move the ball
             ball.x += ball.sX;
