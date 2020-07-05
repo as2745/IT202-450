@@ -185,17 +185,6 @@
                 }
             };
         }
-        function doAI() {
-            if (ball.x >= canvas.width * .6) {
-                let paddleHalf = paddleHeight / 2;
-                if (ball.y > rightPaddle.y + paddleHalf) {
-                    rightPaddle.y += rightPaddle.s;
-                } else if (ball.y < rightPaddle.y) {
-                    rightPaddle.y -= rightPaddle.s;
-                }
-            }
-            clampToCanvas(rightPaddle);
-        }
         function movePaddle() {
             if (keys.W) {
                 leftPaddle.y -= leftPaddle.s;
@@ -204,10 +193,10 @@
                 leftPaddle.y += leftPaddle.s;
             }
             if (keys.UP) {
-                leftPaddle.y -= leftPaddle.s;
+                rightPaddle.y -= rightPaddle.s;
             }
             if (keys.DOWN) {
-                leftPaddle.y += leftPaddle.s;
+                rightPaddle.y += rightPaddle.s;
             }
             if (keys.G) {
                 topPaddle.x -= topPaddle.s;
@@ -221,9 +210,10 @@
             if (keys.M) {
                 bottomPaddle.x += bottomPaddle.s;
             }
-            clampToCanvas(leftPaddle);
-            clampToCanvas1(topPaddle);
-            clampToCanvas1(bottomPaddle);
+		clampToCanvas(leftPaddle);
+		clampToCanvas(rightPaddle);
+		clampToCanvas1(topPaddle);
+		clampToCanvas1(bottomPaddle);
         }
         function clampToCanvas(paddle) {
             if (paddle.y < 0) {
@@ -299,7 +289,6 @@
         function gameLoop() {
             erase();
             movePaddle();
-            doAI();
             moveBall();
 
             checkPaddleCollision();
