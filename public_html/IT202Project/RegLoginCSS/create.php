@@ -45,7 +45,6 @@ if(isset($_POST["Bank"])){
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
-		    echo "setting eee <br>";
                 echo var_export($e, true);
             }
 		$stmt1 = $db->prepare("SELECT max(id) as id FROM Bank_Account where Name = :name and Account_Type=:Acctyp and User_id=:user");
