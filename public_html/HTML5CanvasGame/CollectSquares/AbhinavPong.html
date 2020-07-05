@@ -211,16 +211,16 @@
                 leftPaddle.y += leftPaddle.s;
             }
             if (keys.G) {
-                topPaddle.x -= topPaddle.s;
+                topPaddle.y -= topPaddle.s;
             }
             if (keys.H) {
-                topPaddle.x += topPaddle.s;
+                topPaddle.y += topPaddle.s;
             }
             if (keys.Z) {
-                bottomPaddle.x -= bottomPaddle.s;
+                bottomPaddle.y -= bottomPaddle.s;
             }
             if (keys.M) {
-                bottomPaddle.x += bottomPaddle.s;
+                bottomPaddle.y += bottomPaddle.s;
             }
             clampToCanvas(leftPaddle);
             clampToCanvas(topPaddle);
