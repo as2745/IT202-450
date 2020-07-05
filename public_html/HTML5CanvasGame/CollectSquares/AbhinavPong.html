@@ -223,8 +223,8 @@
                 bottomPaddle.x += bottomPaddle.s;
             }
             clampToCanvas(leftPaddle);
-            clampToCanvas1(topPaddle);
-            clampToCanvas1(bottomPaddle);
+            clampToCanvas(topPaddle);
+            clampToCanvas(bottomPaddle);
         }
         function clampToCanvas(paddle) {
             if (paddle.y < 0) {
@@ -234,14 +234,14 @@
                 paddle.y = canvas.height - paddle.h;
             }
         }
-        function clampToCanvas1(paddle) {
+        /*function clampToCanvas1(paddle) {
             if (paddle.x < 0) {
                 paddle.x = 0;
             }
             if (paddle.x + paddle.w > canvas.width) {
                 paddle.x = canvas.width - paddle.w;
             }
-        }
+        }*/
 
         function moveBall() {
             // Move the ball
