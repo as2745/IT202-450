@@ -249,13 +249,13 @@
                     bounceBall();
                 }
             }
-		if (ball.x + ball.w / 2 >= topPaddle.x && ball.x + ball.w / 2 <= topPaddle.x + topPaddle.w) {
-                if (ball.y + ball.h >= topPaddle.y) {
+		if (ball.y + ball.h / 2 >= topPaddle.y && ball.y + ball.h / 2 <= topPaddle.y + topPaddle.h) {
+                if (ball.x + ball.w >= topPaddle.x) {
                     bounceBall();
                 }
             }
-		if (ball.x + ball.w / 2 >= bottomPaddle.x && ball.x + ball.w / 2 <= bottomPaddle.x + bottomPaddle.w) {
-                if (ball.y + ball.h >= bottomPaddle.y) {
+		if (ball.y + ball.h / 2 >= bottomPaddle.y && ball.y + ball.h / 2 <= bottomPaddle.y + bottomPaddle.h) {
+                if (ball.x + ball.w >= bottomPaddle.x) {
                     bounceBall();
                 }
             }
