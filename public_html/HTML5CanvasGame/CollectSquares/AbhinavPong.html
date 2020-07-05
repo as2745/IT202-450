@@ -15,7 +15,6 @@
         var paddleHeight = 100;
         var ballSize = 10;
         var ballSpeed = 2;
-        var paddleSpeed = 2;
         var drawables = [];
         // Key Codes
         var W = 87;
@@ -282,9 +281,13 @@
             context.fillStyle = '#000000';
             context.font = '24px Arial';
             context.textAlign = 'left';
-            context.fillText('Score: ' + leftScore, 5, 24);
+            context.fillText('Top Score: ' + topScore, 5, 24);
             context.textAlign = 'right';
-            context.fillText('Score: ' + rightScore, canvas.width - 5, 24);
+            context.fillText('Right Score: ' + rightScore, canvas.width - 5, 24);
+			context.textAlign = 'left';
+            context.fillText('Left Score: ' + leftScore, 5, canvas.height-5);
+            context.textAlign = 'right';
+            context.fillText('Bottom Score: ' + bottomScore, canvas.width - 5, canvas.height-5);
         }
         function erase() {
             context.fillStyle = '#FFFFFF';
