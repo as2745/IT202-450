@@ -251,12 +251,12 @@
             }
 		if (ball.x + ball.w / 2 >= topPaddle.x && ball.x + ball.w / 2 <= topPaddle.x + topPaddle.h) {
                 if (ball.y + ball.h >= topPaddle.y) {
-                    bounceBall();
+                    alert("ball hit top");
                 }
             }
 		if (ball.x + ball.w / 2 >= bottomPaddle.x && ball.x + ball.w / 2 <= bottomPaddle.x + bottomPaddle.h) {
                 if (ball.y + ball.h >= bottomPaddle.y) {
-                    bounceBall();
+                    alert("ball hit bottom");
                 }
             }
         }
