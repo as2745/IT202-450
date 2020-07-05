@@ -39,10 +39,10 @@
         };
 
         // Keep track of the score
-        var leftScore = 0;
-        var rightScore = 0;
-        var topScore = 0;
-        var bottomScore = 0;
+        var leftScore = 10;
+        var rightScore = 10;
+        var topScore = 10;
+        var bottomScore = 10;
         function init() {
             canvas = document.getElementById("board");
             if (canvas.getContext) {
@@ -267,14 +267,17 @@
         function checkScore() {
             // Score if the ball goes past a paddle
             if (ball.x < leftPaddle.x) {
-                rightScore++;
+                rightScore--;
                 resetBall();
                 ball.sX *= -1;
             } else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
-                leftScore++;
+                leftScore--;
                 resetBall();
                 ball.sX *= -1;
             }
+		if(leftScore==0 ||rightScore==0||topScore==0||bottomScore==0)	{
+		   alert("Game is done");
+	}
         }
         function drawScores() {
             // Draw the scores
