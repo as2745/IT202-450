@@ -29,7 +29,6 @@ if(isset($_POST["Deposit"])){
     
 	
 	$balance = $_POST["Balance"];
-	echo "before major if 3".$name;
     if(!empty($name) && !empty($balance)){
         require("config.php");
 	    
@@ -64,7 +63,6 @@ if(isset($_POST["Deposit"])){
             if($e[0] != "00000"){
 		    var_dump($e);
 		    $stmt2->debugDumpParams();
-		    echo "setting AAAAAeee ".$e."<br>";
             }
 		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
