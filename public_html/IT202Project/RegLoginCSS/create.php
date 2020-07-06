@@ -77,7 +77,7 @@ if(isset($_POST["Bank"])){
 		    echo "setting eee ".$e."<br>";
             }
 		$balance =$balance * -1;
-		echo $balance;
+		//echo $balance;
 		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
