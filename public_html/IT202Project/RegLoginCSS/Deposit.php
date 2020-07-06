@@ -26,12 +26,9 @@ echo "Hello". $email;?>
 require("common.inc.php");
 if(isset($_POST["Deposit"])){
     $name = $_POST["Name"];
-    
-	
 	$balance = $_POST["Balance"];
     if(!empty($name) && !empty($balance)){
         require("config.php");
-	    
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
@@ -50,7 +47,6 @@ if(isset($_POST["Deposit"])){
             }
 		$balance =$balance * -1;
 		echo $balance;
-		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
 		    ":acc1" => "000000000000",
@@ -80,7 +76,6 @@ if(isset($_POST["Deposit"])){
             echo $e->getMessage();
         }
     }
-	
     else{
        echo "<div>Account and Amount must not be empty.<div>";
     }
