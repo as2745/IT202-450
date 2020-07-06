@@ -29,7 +29,6 @@ if(isset($_POST["Withdraw"])){
     $name = $_POST["Name"];
 	$balance = $_POST["Balance"];
   $balance=$balance * -1;
-	echo "before major if 3".$balance;
     if(!empty($name) && !empty($balance)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -63,7 +62,6 @@ if(isset($_POST["Withdraw"])){
             if($e[0] != "00000"){
 		    var_dump($e);
 		    $stmt2->debugDumpParams();
-		    echo "setting AAAAAeee ".$e."<br>";
             }
 		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
