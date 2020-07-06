@@ -83,7 +83,7 @@ if(isset($_POST["Transfer"])){
                 //echo var_export($e, true);
             }
 		$balance =$balance * -1;
-		echo $balance;
+		//echo $balance;
 		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
@@ -118,7 +118,7 @@ if(isset($_POST["Transfer"])){
                 //echo var_export($result, true);
                 if ($result){
 		//if($res){
-                    echo "Successfully inserted new thing: " . $name;
+                    echo "Successfully transferred ".$balance." from account " . $name." to account ".$name1;
                 }
                 else{
                     echo "Error inserting record";
