@@ -11,6 +11,7 @@
         var topPaddle;
         var bottomPaddle;
         var ball;
+	var balls[];
         var paddleWidth = 25;
         var paddleHeight = 100;
         var ballSize = 10;
@@ -281,13 +282,13 @@
             }
 			if(leftScore==0 || rightScore==0 || topScore==0  || bottomScore==0){
 				if(leftScore==0)
-					txt="Left Player Lost";
+					txt="Left Player Lost. Press OK to play again";
 				else if(rightScore==0)
-					txt="Right Player Lost";
+					txt="Right Player Lost. Press OK to play again";
 				else if(topScore==0)
-					txt="Top Player Lost";
+					txt="Top Player Lost. Press OK to play again";
 				else if(bottomScore==0)
-					txt="Bottom Player Lost";
+					txt="Bottom Player Lost. Press OK to play again";
 				if (confirm(txt)) {
 					leftScore=10;
 					rightScore=10;
