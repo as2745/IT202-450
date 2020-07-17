@@ -6,6 +6,10 @@ require("config.php");
 $email=$_SESSION["user"]["email"];
 $account=$_GET["account"];
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-$new_arr = array_column($accounts,'Account_Number');
-echo "Details of ".$account;
+$db = new PDO($connection_string, $dbuser, $dbpass);
+$stmt = $db->prepare("select * from Transactions where Acc_Dst=:accnum");
+$result = $stmt->execute(array(
+		    ":accnum" => $name));
+var_dump($result);
+echo "Details of ".$account.'<br>';
 echo "Hello". $email;?>
