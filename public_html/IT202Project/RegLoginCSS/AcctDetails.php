@@ -7,7 +7,7 @@ $email=$_SESSION["user"]["email"];
 $account=$_GET["account"];
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$stmt = $db->prepare("select * from Transactions where Acc_Dst=:accnum");
+$stmt = $db->prepare("SELECT * FROM Transactions WHERE Acc_Dst=:accnum");
 $stmt->execute(array(
 		    ":accnum" => $name));
 $res = $stmt->fetchAll();
@@ -17,5 +17,5 @@ if($e[0] != "00000"){
 	echo "setting eee ".$e."<br>";
 }
 var_dump($res);
-echo "Details of ".$account.'<br>';
+echo "Details of ".$account."<br>";
 echo "Hello". $email;?>
