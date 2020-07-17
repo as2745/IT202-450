@@ -10,6 +10,7 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
 $stmt = $db->prepare("select * from Transactions where Acc_Dst=:accnum");
 $result = $stmt->execute(array(
 		    ":accnum" => $name));
+$res = $query->fetchAll();
 var_dump($result);
 echo "Details of ".$account.'<br>';
 echo "Hello". $email;?>
