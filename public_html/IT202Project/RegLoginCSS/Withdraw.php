@@ -36,8 +36,8 @@ if(isset($_POST["Withdraw"])){
             $db = new PDO($connection_string, $dbuser, $dbpass);
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
-		    ":accnum" => $name,
-		    ":accnum1" => "000000000000",
+		    ":accnum" => "000000000000",
+		    ":accnum1" => $name,
 		    ":typ" => "WithDraw",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
@@ -51,8 +51,8 @@ if(isset($_POST["Withdraw"])){
 		echo $balance;
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
-		    ":acc1" => "000000000000",
-		    ":acc" => $name,
+		    ":acc1" => $name,
+		    ":acc" => "000000000000",
 		    ":typ" => "Deposit",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
@@ -62,7 +62,7 @@ if(isset($_POST["Withdraw"])){
 		    var_dump($e);
 		    $stmt2->debugDumpParams();
             }
-		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
+		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Dst=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
                 ":accnum" => $name
             ));
