@@ -11,6 +11,11 @@ $stmt = $db->prepare("select * from Transactions where Acc_Dst=:accnum");
 $stmt->execute(array(
 		    ":accnum" => $name));
 $res = $stmt->fetchAll();
+$e = $stmt->errorInfo();
+if($e[0] != "00000"){
+	var_dump($e);
+	echo "setting eee ".$e."<br>";
+}
 var_dump($res);
 echo "Details of ".$account.'<br>';
 echo "Hello". $email;?>
