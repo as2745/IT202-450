@@ -65,8 +65,8 @@ if(isset($_POST["Bank"])){
             ));
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
-		    ":accnum" => $account_num,
-		    ":accnum1" => "000000000000",
+		    ":accnum" => "000000000000",
+		    ":accnum1" => $account_num ,
 		    ":typ" => "Deposit",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
@@ -81,8 +81,8 @@ if(isset($_POST["Bank"])){
 		
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
-		    ":acc1" => "000000000000",
-		    ":acc" => $account_num,
+		    ":acc1" => $account_num,
+		    ":acc" => "000000000000",
 		    ":typ" => "WithDraw",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
@@ -93,7 +93,7 @@ if(isset($_POST["Bank"])){
 		    //$stmt2->debugDumpParams();
 		    //echo "setting AAAAAeee ".$e."<br>";
             }
-		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
+		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Dst=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num
             ));
