@@ -13,7 +13,7 @@ echo "Details of ".$account."<br>";
 var_dump($dbpass);
 echo "Details of ".$account."<br>";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$stmt = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+$stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc");
 $stmt->execute(array(
 	":acc" => $account
 ));
