@@ -17,7 +17,8 @@ if($e[0] != "00000"){
 	var_dump($e);
 	echo "setting eee ".$e."<br>";
 }
-var_dump($res);
+$num=$res[0];
+var_dump($num);
 $stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
 $stmt1->execute(array(
 	":acc" => $account
