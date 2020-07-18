@@ -31,7 +31,8 @@ if($e[0] != "00000"){
 }
 $type=$result[0]["Account_Type"];
 $amount=$result[0]["Balance"];
-var_dump($amount);
-var_dump($type);
-echo "Details of ".$account."<br>";
-echo "Hello". $email;?>
+
+echo "<h3>Details of ".$account."</h3><br>";
+echo "<h4>Account Type: ".$type."</h4><br>";
+echo "<h4>Balance : ".$amount."</h4><br>";
+?>
