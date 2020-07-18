@@ -13,10 +13,9 @@ echo "Details of ".$account."<br>";
 var_dump($dbpass);
 echo "Details of ".$account."<br>";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$stmt = $db->prepare("SELECT * FROM Bank_Account WHERE Account_Number=:accnum");
+$stmt = $db->prepare("SELECT * FROM Bank_Account");
 var_dump($stmt);
-$stmt->execute(array(
-		    ":accnum" => $name));
+$stmt->execute();
 var_dump($stmt);
 echo "Details of ".$account."<br>";
 $res = $stmt->fetchAll();
