@@ -13,11 +13,10 @@ echo "Details of ".$account."<br>";
 var_dump($dbpass);
 echo "Details of ".$account."<br>";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$stmt = $db->prepare("SELECT * FROM Bank_Account");
-var_dump($stmt);
-$stmt->execute();
-var_dump($stmt);
-echo "Details of ".$account."<br>";
+$stmt = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+$stmt->execute(array(
+	":acc" => $account
+));
 $res = $stmt->fetchAll();
 $e = $stmt->errorInfo();
 if($e[0] != "00000"){
