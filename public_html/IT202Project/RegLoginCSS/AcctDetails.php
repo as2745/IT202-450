@@ -34,5 +34,5 @@ $amount=$result[0]["Balance"];
 
 echo "<h3>Details of ".$account."</h3>";
 echo "<h4>Account Type: ".$type."</h4>";
-echo "<h4>Balance : ".$amount."</h4>";
+echo "<h4>Balance : $".$amount."</h4>";
 ?>
