@@ -3,6 +3,7 @@ include("header.php");
 
 $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
+var_dump($accounts);
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">Account Name
@@ -17,7 +18,7 @@ echo "Hello". $email;?>
 	<label for="transfer">Transfer from
 	</label>
 	<select name="Transfer" id="Transfer">
-		<option value="">""</option>
+		<option value=""></option>
 		<?php
         foreach($new_arr as $item){
         ?>
