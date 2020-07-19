@@ -45,7 +45,15 @@ if(isset($_POST["Transfer"])){
   //$balance=$balance * -1;
 	//echo "before major if 3".$name;
 	//echo "before major if 3".$name1;
-    if(!empty($name) && !empty($balance) && $balance>0 ){
+	$db = getDB();
+	$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+	$stmt1->execute(array(
+		":acc" => $name
+	));
+	$result = $stmt1->fetchAll();
+	$amount=$result[0]["Balance"];
+	$amount=$amount-$balance;
+    if(!empty($name) && !empty($balance) && $balance>0 &&  $amount>5){
 	   // echo "before major if 3a<br>";
         require("config.php");
 	  //  echo "before major if 3b<br>";
@@ -124,7 +132,7 @@ if(isset($_POST["Transfer"])){
 	
     else{
 	   // echo "did not go through if";
-        echo "<div>Account and Amount must not be empty. Amount has to be greater than zero.<div>";
+        echo "<div>Account and Amount must not be empty. Amount has to be greater than zero. As a result of transfer accounts should maintain 5 Dollar balance.<div>";
     }
 }
 $stmt = $db->prepare("SELECT * FROM Bank_Account");
