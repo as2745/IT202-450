@@ -23,20 +23,20 @@ $rowCount=$res[0]["num"];
 $pagesCount = ceil($rowCount / $perPageCount);
 
 $lowerLimit = ($pageNumber - 1) * $perPageCount;
-
+var_dump($account);
+var_dump($rowCount);
 $stmt = $db->prepare("SELECT * FROM Transactions  where Acc_Dst=:acc limit " . ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 $stmt->execute(array(
 	":acc" => $account
 ));
 $results = $stmt->fetchAll();
-
+var_dump($results);
 ?>
 
 <table class="table table-hover table-responsive">
     <tr>
         <th align="center">From</th>
-        <th align="center">To<br>(in years)
-        </th>
+        <th align="center">To</th>
         <th align="center">Type</th>
 		<th align="center">Amount</th>
 		<th align="center">Date</th>
