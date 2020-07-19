@@ -2,6 +2,7 @@
 include("header.php");
 
 $email=$_SESSION["user"]["email"];
+$accounts=$_SESSION["user"]["accounts"];
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">Account Name
@@ -13,6 +14,18 @@ echo "Hello". $email;?>
 	<label for="balance">Balance
 	<input type="number" id="balance" name="Balance" />
 	</label>
+	<label for="transfer">Transfer from
+	</label>
+	<select name="Transfer" id="Transfer">
+		<option value="">""</option>
+		<?php
+        foreach($new_arr as $item){
+        ?>
+        <option value="<?php echo strtolower($item); ?>"><?php echo $item; ?></option>
+        <?php
+        }
+        ?>
+	</select>
 	<input type="submit" name="Bank" value="Create Account"/>
 </form>
 <?php
@@ -22,6 +35,11 @@ if(isset($_POST["Bank"])){
     
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
+	$transfer = $_POST["Transfer"];
+	$type = "Deposit";
+	if(empty($transfer))
+		$transfer= '000000000000';
+	else $type = "Transfer";
     if(!empty($name) && !empty($Acctyp)&& !empty($balance) && $balance>=5){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -66,9 +84,9 @@ if(isset($_POST["Bank"])){
 		$balance =$balance * -1;
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
-		    ":accnum" => "000000000000",
+		    ":accnum" => $transfer,
 		    ":accnum1" => $account_num ,
-		    ":typ" => "Deposit",
+		    ":typ" => $type,
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
@@ -83,8 +101,8 @@ if(isset($_POST["Bank"])){
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
 		    ":acc1" => $account_num,
-		    ":acc" => "000000000000",
-		    ":typ" => "Deposit",
+		    ":acc" => $transfer,
+		    ":typ" => $type,
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
