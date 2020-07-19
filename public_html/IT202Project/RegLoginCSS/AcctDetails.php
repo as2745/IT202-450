@@ -39,12 +39,13 @@ echo "<h4>Balance : $".$amount."</h4>";
 <input type="date" placeholder="From Date" id="post_at" name="post_at"   />
 	    <input type="date" placeholder="To Date" id="post_at_to_date" name="post_at_to_date" style="margin-left:10px"    />			 
 		<button onclick="showRecords(2,1)">Search</button>
+<br>
 <select name="types" id="types">
 	<option value=""></option>
 		<?php
         foreach($res as $item){
         ?>
-        <option value="<?php echo strtolower($item); ?>"><?php echo $item; ?></option>
+        <option value="<?php echo strtolower($item["num"]); ?>"><?php echo $item["num"]; ?></option>
         <?php
         }
         ?>
