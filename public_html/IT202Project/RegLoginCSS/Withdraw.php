@@ -26,16 +26,19 @@ if(isset($_POST["Withdraw"])){
 	require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 	$db = new PDO($connection_string, $dbuser, $dbpass);
-	$stmt = $db->prepare("SELECT Balance FROM Bank_Account where Account_Number==:accnum");
-	$stmt->execute(array(
-                ":accnum" => $name
-            ));
-	$result=$stmt->fetchall();
+	$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+	$stmt1->execute(array(
+		":acc" => $account
+	));
+	$result = $stmt1->fetchAll();
+	$amount=$result[0]["Balance"];
 	var_dump($result);
 	echo '<br>';
 	var_dump($stmt);
 	echo '<br>';
 	var_dump($name);
+	echo '<br>';
+	var_dump($amount);
 	echo '<br>';
     if(!empty($name) && !empty($balance)){
         
