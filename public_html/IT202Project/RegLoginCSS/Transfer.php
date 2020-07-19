@@ -46,7 +46,7 @@ if(isset($_POST["Transfer"])){
 	//echo "before major if 3".$name;
 	//echo "before major if 3".$name1;
 	$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-	$db = getDB();
+	$db = new PDO($connection_string, $dbuser, $dbpass);
 	$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
 	$stmt1->execute(array(
 		":acc" => $name
