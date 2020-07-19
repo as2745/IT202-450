@@ -109,6 +109,7 @@ if(isset($_POST["Transfer"])){
                 if ($result){
 		//if($res){
                     echo "Successfully transferred ".$balance." from account " . $name." to account ".$name1;
+			header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
