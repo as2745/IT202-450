@@ -59,11 +59,15 @@ if(isset($_POST["Bank"])){
 		}catch (Exception $e1){
             echo $e1->getMessage();
         }
-            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, User_id) VALUES (:name, :Acctyp,:user)");
+		if($Acctyp == 'Savings')
+			$APY=3.25;
+		else $APY=0.00;
+            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, User_id, APY) VALUES (:name, :Acctyp,:user,:APY)");
             $result = $stmt->execute(array(
                 ":name" => $name,
 				":Acctyp"=> $Acctyp,
-		    ":user"=>$user_id
+		    ":user"=>$user_id,
+		    ":APY"=> $APY
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
