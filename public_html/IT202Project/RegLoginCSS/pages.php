@@ -23,20 +23,13 @@ $rowCount=$res[0]["num"];
 $pagesCount = ceil($rowCount / $perPageCount);
 
 $lowerLimit = ($pageNumber - 1) * $perPageCount;
-var_dump($account);
-echo '<br>';
-var_dump($rowCount);
-echo '<br>';
-var_dump($perPageCount);
-echo '<br>';
-var_dump($pageNumber);
-echo '<br>';
+
 $stmt = $db->prepare("SELECT * FROM Transactions  where Acc_Dst=:acc limit " . ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 $stmt->execute(array(
 	":acc" => $account
 ));
 $results = $stmt->fetchAll();
-var_dump($results);
+
 ?>
 
 <table class="table table-hover table-responsive">
