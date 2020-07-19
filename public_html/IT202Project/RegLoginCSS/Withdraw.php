@@ -41,9 +41,10 @@ if(isset($_POST["Withdraw"])){
 	var_dump($balance);
 	echo '<br>';
 	$amount=floatval($amount);
+	$amount=$amount+$balance;
 	var_dump($amount);
 	echo '<br>';
-    if(!empty($name) && !empty($balance) && $balance>=$amount-5){
+    if(!empty($name) && !empty($balance) && $amount>=5){
         
         try{
             
