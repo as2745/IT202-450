@@ -26,12 +26,16 @@ $stmt->execute(array(
 $res = $stmt->fetchAll();
 
 $rowCount=$res[0]["num"];
-
+var_dump($rowCount);
 $pagesCount = ceil($rowCount / $perPageCount);
 
 $lowerLimit = ($pageNumber - 1) * $perPageCount;
 
 $stmt = $db->prepare("SELECT * FROM Transactions  where Acc_Dst=:acc limit " . ($lowerLimit) . " ,  " . ($perPageCount) . " ");
+if (!empty($post_at) && !empty($post_at_to_date)) {
+    $stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
+	var_dump($stmt);
+}
 $stmt->execute(array(
 	":acc" => $account
 ));
