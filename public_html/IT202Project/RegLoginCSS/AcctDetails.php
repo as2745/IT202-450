@@ -36,8 +36,10 @@ echo "<h3>Details of ".$account."</h3>";
 echo "<h4>Account Type: ".$type."</h4>";
 echo "<h4>Balance : $".$amount."</h4>";
 ?>
-<input type="text" placeholder="From Date" id="post_at" name="search[post_at]"  value="<?php echo $post_at; ?>" class="input-control" />
-	    <input type="text" placeholder="To Date" id="post_at_to_date" name="search[post_at_to_date]" style="margin-left:10px"  value="<?php echo $post_at_to_date; ?>" class="input-control"  />			 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<input type="text" placeholder="From Date" id="post_at" name="post_at"   />
+	    <input type="text" placeholder="To Date" id="post_at_to_date" name="post_at_to_date" style="margin-left:10px"    />			 
 		<button onclick="showRecords(2,1)">Search</button>
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -69,6 +71,8 @@ echo "<h4>Balance : $".$amount."</h4>";
     }
     
     $(document).ready(function() {
+	    $( "#post_at" ).datepicker();
+	    $( "#post_at_to_date" ).datepicker();
         showRecords(2, 1);
     });
 </script>
