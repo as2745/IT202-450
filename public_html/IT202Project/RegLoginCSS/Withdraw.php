@@ -22,12 +22,19 @@ require("common.inc.php");
 if(isset($_POST["Withdraw"])){
     $name = $_POST["Name"];
 	$balance = $_POST["Balance"];
-  $balance=$balance * -1;
-    if(!empty($name) && !empty($balance)){
-        require("config.php");
+	$balance=$balance * -1;
+	require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+	$db = new PDO($connection_string, $dbuser, $dbpass);
+	$stmt = $db->prepare("SELECT Balance FROM Bank_Account set Balance where Account_Number=:accnum");
+	$result = $stmt->execute(array(
+                ":accnum" => $name
+            ));
+	var_dump($result);
+    if(!empty($name) && !empty($balance)){
+        
         try{
-            $db = new PDO($connection_string, $dbuser, $dbpass);
+            
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => $name,
