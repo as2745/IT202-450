@@ -2,7 +2,7 @@
 include("header.php");
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
-<h4>Home</h4>
+//<h4>Home</h4>
 //echo "Welcome, " . $_SESSION["user"]["email"];
 //echo var_export($_SESSION, true);
 require("common.inc.php");
