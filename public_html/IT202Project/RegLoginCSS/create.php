@@ -22,7 +22,7 @@ if(isset($_POST["Bank"])){
     
 	$Acctyp = $_POST["Account_Type"];
 	$balance = $_POST["Balance"];
-    if(!empty($name) && !empty($Acctyp)&& !empty($balance)){
+    if(!empty($name) && !empty($Acctyp)&& !empty($balance) && $balance>=5){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
@@ -113,7 +113,7 @@ if(isset($_POST["Bank"])){
 	
     else{
 	    
-        echo "<div>Name, Account Type and Balance must not be empty.<div>";
+        echo "<div>Name, Account Type and Balance must not be empty. Also Balance must be atleast 5 Dollars.<div>";
     }
 }
 $stmt = $db->prepare("SELECT * FROM Bank_Account");
