@@ -132,7 +132,7 @@ if(isset($_POST["Transfer"])){
 	
     else{
 	   // echo "did not go through if";
-        echo "<div>Account and Amount must not be empty. Amount has to be greater than zero. As a result of transfer accounts should maintain 5 Dollar balance.<div>";
+        echo "Account and Amount must not be empty. Amount has to be greater than zero. As a result of transfer accounts should maintain 5 Dollar balance.";
     }
 }
 $stmt = $db->prepare("SELECT * FROM Bank_Account");
