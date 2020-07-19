@@ -38,6 +38,9 @@ if(isset($_POST["Withdraw"])){
 	echo '<br>';
 	var_dump($name);
 	echo '<br>';
+	var_dump($balance);
+	echo '<br>';
+	$amount=floatval($amount);
 	var_dump($amount);
 	echo '<br>';
     if(!empty($name) && !empty($balance) && $balance>=$amount-5){
