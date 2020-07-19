@@ -32,6 +32,7 @@ if(isset($_POST["Deposit"])){
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
+		$balance =$balance * -1;
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => "000000000000",
@@ -51,7 +52,7 @@ if(isset($_POST["Deposit"])){
             $result1 = $stmt2->execute(array(
 		    ":acc1" => $name,
 		    ":acc" => "000000000000",
-		    ":typ" => "WithDraw",
+		    ":typ" => "Deposit",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
@@ -60,7 +61,7 @@ if(isset($_POST["Deposit"])){
 		    var_dump($e);
 		    $stmt2->debugDumpParams();
             }
-		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Dst=:accnum) where Account_Number=:accnum");
+		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
                 ":accnum" => $name
             ));
