@@ -45,6 +45,7 @@ if(isset($_POST["Transfer"])){
   //$balance=$balance * -1;
 	//echo "before major if 3".$name;
 	//echo "before major if 3".$name1;
+	$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 	$db = getDB();
 	$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
 	$stmt1->execute(array(
