@@ -126,12 +126,7 @@ if(isset($_POST["Bank"])){
             ));
                 if ($result){
                     echo "Successfully Created new Account for : " . $name;
-                }
-                else{
-                    echo "Error inserting record";
-                }
-            }
-	    $query=$db->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
+			$query=$db->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
 						
 							$query->execute(array(
 								":email" => $email
@@ -139,6 +134,12 @@ if(isset($_POST["Bank"])){
 							$res = $query->fetchAll();
 							$_SESSION["user"]["accounts"]=$res;
 							echo var_export($_SESSION, true);
+                }
+                else{
+                    echo "Error inserting record";
+                }
+            }
+	    
         catch (Exception $e){
 		
             echo $e->getMessage();
