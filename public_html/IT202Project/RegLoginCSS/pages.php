@@ -12,6 +12,8 @@ $email=$_SESSION["user"]["email"];
 $account=$_GET["account"];
 $post_at=$_GET["datefrom"];
 $post_at_to_date=$_GET["dateto"];
+$type=$_GET["type"];
+var_dump($type);
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc");
