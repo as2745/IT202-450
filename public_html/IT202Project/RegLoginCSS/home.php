@@ -1,3 +1,14 @@
+<head>
+//css
+<style>
+table
+{
+border-style:solid;
+border-width:2px;
+border-color:pink;
+}
+</style>
+</head>
 <?php
 include("header.php");
 ?>
