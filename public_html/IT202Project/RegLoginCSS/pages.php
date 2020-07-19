@@ -13,17 +13,14 @@ $account=$_GET["account"];
 $post_at=$_GET["datefrom"];
 $post_at_to_date=$_GET["dateto"];
 $type=$_GET["type"];
-var_dump($type);
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc");
 if (!empty($post_at) && !empty($post_at_to_date)) {
     $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."'");
-	var_dump($stmt);
 }
 else if (!empty($type)) {
     $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc and Type = '".$type."'");
-	var_dump($stmt);
 }
 
 $stmt->execute(array(
@@ -32,7 +29,6 @@ $stmt->execute(array(
 $res = $stmt->fetchAll();
 
 $rowCount=$res[0]["num"];
-var_dump($rowCount);
 $pagesCount = ceil($rowCount / $perPageCount);
 
 $lowerLimit = ($pageNumber - 1) * $perPageCount;
@@ -40,11 +36,11 @@ $lowerLimit = ($pageNumber - 1) * $perPageCount;
 $stmt = $db->prepare("SELECT * FROM Transactions  where Acc_Dst=:acc limit " . ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 if (!empty($post_at) && !empty($post_at_to_date)) {
     $stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
-	var_dump($stmt);
+	
 }
 else if(!empty($type)){
 	$stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc and Type= '".$type."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
-	var_dump($stmt);
+	
 }
 $stmt->execute(array(
 	":acc" => $account
