@@ -64,7 +64,7 @@ $results = $stmt->fetchAll();
 </table>
 
 <div style="height: 30px;"></div>
-<table width="50%" align="left" border="1px solid black">
+<table width="50%" align="left" >
     <tr>
 
         <td valign="top" align="left"></td>
