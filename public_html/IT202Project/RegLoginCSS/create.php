@@ -41,14 +41,28 @@ if(isset($_POST["Bank"])){
 	$balance = $_POST["Balance"];
 	$transfer = $_POST["Transfer"];
 	$type = "Deposit";
+	require("config.php");
+        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+	$db = new PDO($connection_string, $dbuser, $dbpass);
+	$amount=0.0;
 	if(empty($transfer))
 		$transfer= '000000000000';
-	else $type = "Transfer";
+	else {
+		$type = "Transfer";
+		$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+		$stmt1->execute(array(
+			":acc" => $transfer
+		));
+		$result = $stmt1->fetchAll();
+		$amount=$result[0]["Balance"];
+	
+		
+	     }
+	$amount=$amount-$balance;
     if(!empty($name) && !empty($Acctyp)&& !empty($balance) && $balance>=5){
-        require("config.php");
-        $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+        
         try{
-            $db = new PDO($connection_string, $dbuser, $dbpass);
+            
 		try{
 		$stmt1 = $db->prepare("SELECT id FROM Users where email = :email LIMIT 1");
 		$stmt1->execute(array(
@@ -96,7 +110,7 @@ if(isset($_POST["Bank"])){
 		    ":accnum1" => $account_num ,
 		    ":typ" => $type,
 		    ":balance" => $balance,
-		    ":exp_balance" => $balance
+		    ":exp_balance" => $amount
             ));
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
