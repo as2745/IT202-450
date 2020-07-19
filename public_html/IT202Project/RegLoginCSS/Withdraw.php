@@ -5,19 +5,13 @@ include("header.php");
 $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
+$account=$_GET["Account_Number"];
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">Account
+		<input type="text" id="Name" name="Name" value="<?php echo $account; ?>" readonly>
 	</label>
-	<select name="Name" id="Name">
-		<?php
-        foreach($new_arr as $item){
-        ?>
-        <option value="<?php echo strtolower($item); ?>"><?php echo $item; ?></option>
-        <?php
-        }
-        ?>
-	</select>
+	
 	<label for="balance">Amount
 	<input type="number" id="balance" name="Balance" />
 	</label>
