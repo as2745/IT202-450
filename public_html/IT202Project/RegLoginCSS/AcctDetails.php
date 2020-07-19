@@ -36,3 +36,33 @@ echo "<h3>Details of ".$account."</h3>";
 echo "<h4>Account Type: ".$type."</h4>";
 echo "<h4>Balance : $".$amount."</h4>";
 ?>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<div id="container">
+	<div id="inner-container">
+		<div id="results"></div>
+		<div id="loader"></div>
+	</div>
+  </div>
+<script type="text/javascript">
+    function showRecords(perPageCount, pageNumber) {
+        $.ajax({
+            type: "GET",
+            url: "pages.php",
+            data: "pageNumber=" + pageNumber,
+            cache: false,
+    		beforeSend: function() {
+                $('#loader').html('<img src="loader.png" alt="reload" width="20" height="20" style="margin-top:10px;">');
+    			
+            },
+            success: function(html) {
+                $("#results").html(html);
+                $('#loader').html(''); 
+            }
+        });
+    }
+    
+    $(document).ready(function() {
+        showRecords(2, 1);
+    });
+</script>
