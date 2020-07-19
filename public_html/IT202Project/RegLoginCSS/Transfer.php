@@ -54,8 +54,13 @@ if(isset($_POST["Transfer"])){
 	$result = $stmt1->fetchAll();
 	$amount=$result[0]["Balance"];
 	$amount=$amount-$balance;
-	var_dump($amount);
-	var_dump($name);
+	$stmt1->execute(array(
+		":acc" => $name1
+	));
+	$result = $stmt1->fetchAll();
+	$amount1=$result[0]["Balance"];
+	$amount1=$amount1+$balance;
+	
     if(!empty($name) && !empty($balance) && $balance>0 &&  $amount>5){
 	   // echo "before major if 3a<br>";
         
@@ -75,7 +80,7 @@ if(isset($_POST["Transfer"])){
 		    ":accnum1" => $name1,
 		    ":typ" => "Transfer",
 		    ":balance" => $balance,
-		    ":exp_balance" => $balance
+		    ":exp_balance" => $amount
             ));
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
@@ -92,7 +97,7 @@ if(isset($_POST["Transfer"])){
 		    ":acc" => $name,
 		    ":typ" => "Transfer",
 		    ":balance" => $balance,
-		    ":exp_balance" => $balance
+		    ":exp_balance" => $amount1
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
