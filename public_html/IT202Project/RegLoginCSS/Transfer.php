@@ -53,6 +53,8 @@ if(isset($_POST["Transfer"])){
 	$result = $stmt1->fetchAll();
 	$amount=$result[0]["Balance"];
 	$amount=$amount-$balance;
+	var_dump($amount);
+	var_dump($name);
     if(!empty($name) && !empty($balance) && $balance>0 &&  $amount>5){
 	   // echo "before major if 3a<br>";
         require("config.php");
