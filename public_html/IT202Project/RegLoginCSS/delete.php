@@ -1,16 +1,9 @@
 <form method="POST">
-	<label for="name">Account Name
-	<input type="text" id="Name" name="Name" />
-	</label>
+	
 	<label for="accnumber">Account Number
 	<input type="number" id="AccNum" name="Account_Number" />
 	</label>
-	<label for="acctype">Account Type
-	<input type="text" id="AccTyp" name="Account_Type" />
-	</label>
-	<label for="balance">Balance
-	<input type="number" id="balance" name="Balance" />
-	</label>
+	
 	<input type="submit" name="Bank" value="Delete Account"/>
 </form>
 <?php
