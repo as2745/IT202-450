@@ -28,13 +28,13 @@ if(isset($_POST["Withdraw"])){
 	$db = new PDO($connection_string, $dbuser, $dbpass);
 	$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
 	$stmt1->execute(array(
-		":acc" => $account
+		":acc" => $name
 	));
 	$result = $stmt1->fetchAll();
 	$amount=$result[0]["Balance"];
 	var_dump($result);
 	echo '<br>';
-	var_dump($stmt);
+	var_dump($stmt1);
 	echo '<br>';
 	var_dump($name);
 	echo '<br>';
