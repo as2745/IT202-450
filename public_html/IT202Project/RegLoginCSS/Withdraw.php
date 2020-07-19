@@ -69,7 +69,7 @@ if(isset($_POST["Withdraw"])){
             ));
                 if ($result){
                     echo "Successfully inserted new thing: " . $name;
-			header("Location: home.php");
+			
                 }
                 else{
                     echo "Error inserting record";
