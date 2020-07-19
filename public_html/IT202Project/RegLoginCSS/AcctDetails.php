@@ -46,10 +46,11 @@ echo "<h4>Balance : $".$amount."</h4>";
   </div>
 <script type="text/javascript">
     function showRecords(perPageCount, pageNumber) {
+	    var acc = "<?php echo $account; ?>";
         $.ajax({
             type: "GET",
             url: "pages.php",
-            data: "pageNumber=" + pageNumber,
+            data: {"pageNumber": pageNumber,"account": acc},
             cache: false,
     		beforeSend: function() {
                 $('#loader').html('<img src="loader.png" alt="reload" width="20" height="20" style="margin-top:10px;">');
