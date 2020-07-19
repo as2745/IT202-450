@@ -34,7 +34,7 @@ echo "Hello". $email;?>
 <?php
 //echo "before major if 1";
 require("common.inc.php");
-
+require("config.php");
 //echo "before major if 2";
 if(isset($_POST["Transfer"])){
 //echo "before major if 2a";
@@ -57,7 +57,7 @@ if(isset($_POST["Transfer"])){
 	var_dump($name);
     if(!empty($name) && !empty($balance) && $balance>0 &&  $amount>5){
 	   // echo "before major if 3a<br>";
-        require("config.php");
+        
 	  //  echo "before major if 3b<br>";
 	    
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
