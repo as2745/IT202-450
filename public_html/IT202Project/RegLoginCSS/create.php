@@ -127,13 +127,13 @@ if(isset($_POST["Bank"])){
                 if ($result){
                     echo "Successfully Created new Account for : " . $name;
 			$query=$db->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
-						
-							$query->execute(array(
-								":email" => $email
-							           ));
-							$res = $query->fetchAll();
-							$_SESSION["user"]["accounts"]=$res;
-							echo var_export($_SESSION, true);
+			$query->execute(array(
+				":email" => $email
+			));
+			$res = $query->fetchAll();
+			$_SESSION["user"]["accounts"]=$res;
+			echo var_export($_SESSION, true);
+			header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
