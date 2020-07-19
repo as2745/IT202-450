@@ -43,7 +43,7 @@ if(isset($_POST["Withdraw"])){
 		    ":accnum1" => "000000000000",
 		    ":typ" => "WithDraw",
 		    ":balance" => $balance,
-		    ":exp_balance" => $balance
+		    ":exp_balance" => $amount
             ));
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
