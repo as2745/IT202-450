@@ -39,6 +39,17 @@ echo "<h4>Balance : $".$amount."</h4>";
 <input type="date" placeholder="From Date" id="post_at" name="post_at"   />
 	    <input type="date" placeholder="To Date" id="post_at_to_date" name="post_at_to_date" style="margin-left:10px"    />			 
 		<button onclick="showRecords(2,1)">Search</button>
+<select name="types" id="types">
+	<option value=""></option>
+		<?php
+        foreach($res as $item){
+        ?>
+        <option value="<?php echo strtolower($item); ?>"><?php echo $item; ?></option>
+        <?php
+        }
+        ?>
+	</select>
+<button onclick="showRecords(2,1)">Search</button>
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <div id="container">
@@ -52,7 +63,9 @@ echo "<h4>Balance : $".$amount."</h4>";
 	    var acc = "<?php echo $account; ?>";
 	    var post_at = document.getElementById("post_at").value;
 	    var post_at_to_date = document.getElementById("post_at_to_date").value;
-	    alert(post_at);
+	    var e = document.getElementById("types");
+	    var strUser = e.options[e.selectedIndex].value;
+	    alert(strUser);
 	    alert(post_at_to_date);
         $.ajax({
             type: "GET",
