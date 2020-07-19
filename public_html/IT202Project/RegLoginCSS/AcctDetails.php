@@ -17,7 +17,6 @@ if($e[0] != "00000"){
 	var_dump($e);
 	echo "setting eee ".$e."<br>";
 }
-var_dump($res);
 $stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
 $stmt1->execute(array(
 	":acc" => $account
@@ -66,8 +65,6 @@ echo "<h4>Balance : $".$amount."</h4>";
 	    var post_at_to_date = document.getElementById("post_at_to_date").value;
 	    var e = document.getElementById("types");
 	    var strUser = e.options[e.selectedIndex].value;
-	    alert(strUser);
-	    alert(post_at_to_date);
         $.ajax({
             type: "GET",
             url: "pages.php",
