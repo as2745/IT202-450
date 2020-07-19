@@ -11,6 +11,6 @@ require("config.php");
 $stmt = $db->prepare("SELECT Account_Number FROM Bank_Account");
 $stmt->execute();
         foreach($new_arr as $item){
-        echo $item;
+        var_dump($item);
         }
 ?>
