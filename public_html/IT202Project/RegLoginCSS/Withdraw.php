@@ -40,7 +40,7 @@ if(isset($_POST["Withdraw"])){
 	echo '<br>';
 	var_dump($amount);
 	echo '<br>';
-    if(!empty($name) && !empty($balance)){
+    if(!empty($name) && !empty($balance) && $balance>=$amount-5){
         
         try{
             
@@ -90,7 +90,7 @@ if(isset($_POST["Withdraw"])){
         }
     }	
     else{
-        echo "<div>Account and Amount must not be empty.<div>";
+        echo "<div>Account and Amount must not be empty. Also can't withdraw more than what you have. Must maintain atleast 5 Dollars balance<div>";
     }
 }
 $stmt = $db->prepare("SELECT * FROM Bank_Account");
