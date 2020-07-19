@@ -32,18 +32,7 @@ if(isset($_POST["Withdraw"])){
 	));
 	$result = $stmt1->fetchAll();
 	$amount=$result[0]["Balance"];
-	var_dump($result);
-	echo '<br>';
-	var_dump($stmt1);
-	echo '<br>';
-	var_dump($name);
-	echo '<br>';
-	var_dump($balance);
-	echo '<br>';
-	$amount=floatval($amount);
-	$amount=$amount+$balance;
-	var_dump($amount);
-	echo '<br>';
+	
     if(!empty($name) && !empty($balance) && $amount>=5){
         
         try{
@@ -82,6 +71,7 @@ if(isset($_POST["Withdraw"])){
             ));
                 if ($result){
                     echo "Successfully inserted new thing: " . $name;
+			header("Location: home.php");
 			
                 }
                 else{
