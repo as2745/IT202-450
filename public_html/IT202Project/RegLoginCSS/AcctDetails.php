@@ -56,6 +56,8 @@ echo "<h4>Balance : $".$amount."</h4>";
 	    var acc = "<?php echo $account; ?>";
 	    var post_at = document.getElementById("post_at").value;
 	    var post_at_to_date = document.getElementById("post_at_to_date").value;
+	    alert(post_at);
+	    alert(post_at_to_date);
         $.ajax({
             type: "GET",
             url: "pages.php",
