@@ -56,7 +56,7 @@ if(isset($_POST["Transfer"])){
   //$balance=$balance * -1;
 	//echo "before major if 3".$name;
 	//echo "before major if 3".$name1;
-    if(!empty($name) && !empty($balance)){
+    if(!empty($name) && !empty($balance) && $balance>0 ){
 	   // echo "before major if 3a<br>";
         require("config.php");
 	  //  echo "before major if 3b<br>";
@@ -67,12 +67,13 @@ if(isset($_POST["Transfer"])){
 		//echo "before major if 3c<br>";
             $db = new PDO($connection_string, $dbuser, $dbpass);
 		//echo "before major if 3d<br>";
+		$balance=$balance * -1;
 		
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => $name,
 		    ":accnum1" => $name1,
-		    ":typ" => "Deposit",
+		    ":typ" => "Transfer",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
@@ -89,7 +90,7 @@ if(isset($_POST["Transfer"])){
             $result1 = $stmt2->execute(array(
 		    ":acc1" => $name1,
 		    ":acc" => $name,
-		    ":typ" => "WithDraw",
+		    ":typ" => "Transfer",
 		    ":balance" => $balance,
 		    ":exp_balance" => $balance
             ));
@@ -100,7 +101,7 @@ if(isset($_POST["Transfer"])){
 		    echo "setting AAAAAeee ".$e."<br>";
                 //echo var_export($e, true);
             }
-		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Dst=:accnum) where Account_Number=:accnum");
+		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
                 ":accnum" => $name
             ));
@@ -133,7 +134,7 @@ if(isset($_POST["Transfer"])){
 	
     else{
 	   // echo "did not go through if";
-        echo "<div>Account and Amount must not be empty.<div>";
+        echo "<div>Account and Amount must not be empty. Amount has to be greater than zero.<div>";
     }
 }
 $stmt = $db->prepare("SELECT * FROM Bank_Account");
