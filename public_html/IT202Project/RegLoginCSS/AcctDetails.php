@@ -71,7 +71,7 @@ echo "<h4>Balance : $".$amount."</h4>";
         $.ajax({
             type: "GET",
             url: "pages.php",
-            data: {"pageNumber": pageNumber,"account": acc, "datefrom": post_at, "dateto": post_at_to_date},
+            data: {"pageNumber": pageNumber,"account": acc, "datefrom": post_at, "dateto": post_at_to_date, "type": strUser},
             cache: false,
     		beforeSend: function() {
                 $('#loader').html('<img src="loader.png" alt="reload" width="20" height="20" style="margin-top:10px;">');
