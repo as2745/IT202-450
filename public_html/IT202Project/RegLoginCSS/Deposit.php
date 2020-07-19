@@ -21,11 +21,20 @@ require("common.inc.php");
 if(isset($_POST["Deposit"])){
     $name = $_POST["Name"];
 	$balance = $_POST["Balance"];
-    if(!empty($name) && !empty($balance)){
-        require("config.php");
+	require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+	$db = new PDO($connection_string, $dbuser, $dbpass);
+	$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+	$stmt1->execute(array(
+		":acc" => $name
+	));
+	$result = $stmt1->fetchAll();
+	$amount=$result[0]["Balance"];
+	$amount=$amount+$balance;
+    if(!empty($name) && !empty($balance)){
+        
         try{
-            $db = new PDO($connection_string, $dbuser, $dbpass);
+            
 		$balance =$balance * -1;
 		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
@@ -48,7 +57,7 @@ if(isset($_POST["Deposit"])){
 		    ":acc" => "000000000000",
 		    ":typ" => "Deposit",
 		    ":balance" => $balance,
-		    ":exp_balance" => $balance
+		    ":exp_balance" => $amount
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
