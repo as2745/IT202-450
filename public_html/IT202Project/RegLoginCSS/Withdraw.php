@@ -31,6 +31,11 @@ if(isset($_POST["Withdraw"])){
                 ":accnum" => $name
             ));
 	var_dump($result);
+	echo '<br>';
+	var_dump($stmt);
+	echo '<br>';
+	var_dump($name);
+	echo '<br>';
     if(!empty($name) && !empty($balance)){
         
         try{
