@@ -15,12 +15,12 @@ $post_at_to_date=$_GET["dateto"];
 $type=$_GET["type"];
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc");
+$stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Src=:acc");
 if (!empty($post_at) && !empty($post_at_to_date)) {
-    $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."'");
+    $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Src=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."'");
 }
 else if (!empty($type)) {
-    $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc and Type = '".$type."'");
+    $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Src=:acc and Type = '".$type."'");
 }
 
 $stmt->execute(array(
@@ -33,13 +33,13 @@ $pagesCount = ceil($rowCount / $perPageCount);
 
 $lowerLimit = ($pageNumber - 1) * $perPageCount;
 
-$stmt = $db->prepare("SELECT * FROM Transactions  where Acc_Dst=:acc limit " . ($lowerLimit) . " ,  " . ($perPageCount) . " ");
+$stmt = $db->prepare("SELECT * FROM Transactions  where Acc_Src=:acc limit " . ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 if (!empty($post_at) && !empty($post_at_to_date)) {
-    $stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
+    $stmt = $db->prepare("SELECT * FROM Transactions where Acc_Src=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 	
 }
 else if(!empty($type)){
-	$stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc and Type= '".$type."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
+	$stmt = $db->prepare("SELECT * FROM Transactions where Acc_Src=:acc and Type= '".$type."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 	
 }
 $stmt->execute(array(
