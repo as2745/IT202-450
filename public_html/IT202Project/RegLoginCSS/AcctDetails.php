@@ -36,6 +36,9 @@ echo "<h3>Details of ".$account."</h3>";
 echo "<h4>Account Type: ".$type."</h4>";
 echo "<h4>Balance : $".$amount."</h4>";
 ?>
+<input type="text" placeholder="From Date" id="post_at" name="search[post_at]"  value="<?php echo $post_at; ?>" class="input-control" />
+	    <input type="text" placeholder="To Date" id="post_at_to_date" name="search[post_at_to_date]" style="margin-left:10px"  value="<?php echo $post_at_to_date; ?>" class="input-control"  />			 
+		<button onclick="showRecords(2,1)">Search</button>
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <div id="container">
@@ -47,10 +50,12 @@ echo "<h4>Balance : $".$amount."</h4>";
 <script type="text/javascript">
     function showRecords(perPageCount, pageNumber) {
 	    var acc = "<?php echo $account; ?>";
+	    var post_at = document.getElementById("post_at").value;
+	    var post_at_to_date = document.getElementById("post_at_to_date").value;
         $.ajax({
             type: "GET",
             url: "pages.php",
-            data: {"pageNumber": pageNumber,"account": acc},
+            data: {"pageNumber": pageNumber,"account": acc, "datefrom": post_at, "dateto": post_at_to_date},
             cache: false,
     		beforeSend: function() {
                 $('#loader').html('<img src="loader.png" alt="reload" width="20" height="20" style="margin-top:10px;">');
