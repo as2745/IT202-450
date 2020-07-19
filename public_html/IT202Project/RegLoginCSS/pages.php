@@ -21,6 +21,10 @@ if (!empty($post_at) && !empty($post_at_to_date)) {
     $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."'");
 	var_dump($stmt);
 }
+else if (!empty($type)) {
+    $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc and Type = '".$type."'");
+	var_dump($stmt);
+}
 
 $stmt->execute(array(
 	":acc" => $account
@@ -36,6 +40,10 @@ $lowerLimit = ($pageNumber - 1) * $perPageCount;
 $stmt = $db->prepare("SELECT * FROM Transactions  where Acc_Dst=:acc limit " . ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 if (!empty($post_at) && !empty($post_at_to_date)) {
     $stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
+	var_dump($stmt);
+}
+else if(!empty($type)){
+	$stmt = $db->prepare("SELECT * FROM Transactions where Acc_Dst=:acc and Type= '".$type."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 	var_dump($stmt);
 }
 $stmt->execute(array(
