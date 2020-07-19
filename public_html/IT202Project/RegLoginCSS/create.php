@@ -10,13 +10,16 @@ echo "Hello". $email;?>
 	<input type="text" id="Name" name="Name" />
 	</label>
 	<label for="acctype">Account Type
-	<input type="text" id="AccTyp" name="Account_Type" />
+		<select id="AccTyp" name="Account_Type" >
+			<option value="Checking">Checking</option>
+			<option value="Savings">Savings</option>
+		</select>
 	</label>
 	<label for="balance">Balance
 	<input type="number" id="balance" name="Balance" />
 	</label>
 	<label for="transfer">Transfer from
-	</label>
+	
 	<select name="Transfer" id="Transfer">
 		<option value=""></option>
 		<?php
@@ -26,7 +29,7 @@ echo "Hello". $email;?>
         <?php
         }
         ?>
-	</select>
+	</select></label>
 	<input type="submit" name="Bank" value="Create Account"/>
 </form>
 <?php
