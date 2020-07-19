@@ -4,24 +4,13 @@ include("header.php");
 $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
+$account=$_GET["Account_Number"];
 //var_dump($new_arr);
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">From
 	</label>
-	<select name="Name" id="Name">
-		<?php
-        // A sample product array
-        //$products = array("Mobile", "Laptop", "Tablet", "Camera");
-        
-        // Iterating through the product array
-        foreach($new_arr as $item){
-        ?>
-        <option value="<?php echo strtolower($item); ?>"><?php echo $item; ?></option>
-        <?php
-        }
-        ?>
-	</select>
+	<input type="text" id="Name" name="Name" value="<?php echo $account; ?>" readonly>
   <label for="to">To
 	</label>
 	<select name="Name1" id="Name1">
