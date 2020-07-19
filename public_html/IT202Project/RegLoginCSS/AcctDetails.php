@@ -36,12 +36,9 @@ echo "<h3>Details of ".$account."</h3>";
 echo "<h4>Account Type: ".$type."</h4>";
 echo "<h4>Balance : $".$amount."</h4>";
 ?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<input type="text" placeholder="From Date" id="post_at" name="post_at"   />
-	    <input type="text" placeholder="To Date" id="post_at_to_date" name="post_at_to_date" style="margin-left:10px"    />			 
+
+<input type="date" placeholder="From Date" id="post_at" name="post_at"   />
+	    <input type="date" placeholder="To Date" id="post_at_to_date" name="post_at_to_date" style="margin-left:10px"    />			 
 		<button onclick="showRecords(2,1)">Search</button>
 <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
