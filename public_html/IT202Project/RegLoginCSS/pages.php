@@ -12,13 +12,14 @@ $email=$_SESSION["user"]["email"];
 $account=$_GET["account"];
 $post_at=$_GET["datefrom"];
 $post_at_to_date=$_GET["dateto"];
-var_dump($post_at);
-echo '<br>';
-var_dump($post_at_to_date);
-echo '<br>';
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc");
+if (!empty($post_at) && !empty($post_at_to_date)) {
+    $stmt1 = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Dst=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date);
+	var_dump($stmt1);
+}
+
 $stmt->execute(array(
 	":acc" => $account
 ));
