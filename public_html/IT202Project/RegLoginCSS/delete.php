@@ -10,6 +10,7 @@
 require("common.inc.php");
 $db = getDB();
 //example usage, change/move as needed
-$stmt = $db->prepare("UPDATE Bank_Accounts Set Status=Inactive where Status=Active");
-                    $result = $stmt->execute
+$stmt = $db->prepare("UPDATE Bank_Accounts SET Status=Inactive WHERE Id=1");
+			$result = $stmt->execute
+			Var_dump($result);
 ?>
