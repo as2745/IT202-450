@@ -12,5 +12,5 @@ $db = getDB();
 //example usage, change/move as needed
 $stmt = $db->prepare("UPDATE Bank_Accounts SET Status=Inactive WHERE Id=1");
 			$result = $stmt->execute
-			Var_dump($result);
+			var_dump($result);
 ?>
