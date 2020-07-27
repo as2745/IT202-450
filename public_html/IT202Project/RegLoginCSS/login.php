@@ -43,12 +43,14 @@ if(isset($_POST["login"])){
 							);
 							
 							
-							$query=$db->prepare("SELECT b.Account_Number FROM Bank_Accounts b, Users a where a.id=b.User_id and a.email=:email");
+							$query=$db->prepare("SELECT b.Account_Number FROM Bank_Accounts b, User a where a.id=b.User_id and a.email=:email");
 						
 							$query->execute(array(
 								":email" => $email
 							           ));
 							$res = $query->fetchAll();
+							//var_dump($email);
+							//var_dump($res);
 							$_SESSION["user"]["accounts"]=$res;
 							echo var_export($_SESSION, true);
 							header("Location: home.php");
