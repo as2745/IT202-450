@@ -28,7 +28,9 @@ function get($arr, $key){
 	    <input type="submit" name="updated" value="Update Thing"/>
 </form>
 <?php
+echo "before update/create check";
 if(isset($_POST["updated"]) || isset($_POST["created"])){
+	echo "after create/update check";
 	$email = $_POST["email"];
 	$Fname = $_POST["First_name"];
 	$Lname = $_POST["Last_name"];
