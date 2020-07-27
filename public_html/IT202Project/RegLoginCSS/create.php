@@ -11,7 +11,7 @@ echo "Hello". $email;?>
 	</label>
 	<label for="acctype">Account Type
 		<select id="AccTyp" name="Account_Type" >
-			<option value="Checkings">Checkings</option>
+			<option value="Checking">Checking</option>
 			<option value="Savings">Savings</option>
 		</select>
 	</label>
