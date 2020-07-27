@@ -26,11 +26,13 @@ if(isset($_POST["register"])){
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
 				$hash = password_hash($password, PASSWORD_BCRYPT);
+				var_dump($hash);
 				$stmt = $db->prepare("INSERT INTO User (email, password) VALUES(:email, :password)");
 				$stmt->execute(array(
 					":email" => $email,
 					":password" => $hash//Don't save the raw password $password
 				));
+				var_dump($stmt);
 				$e = $stmt->errorInfo();
 				if($e[0] != "00000"){
 					echo var_export($e, true);
