@@ -88,7 +88,7 @@ if(isset($_POST["Bank"])){
             if($e[0] != "00000"){
                 echo var_export($e, true);
             }
-		$stmt1 = $db->prepare("SELECT max(id) as id FROM Bank_Accounts where Name = :name and Account_Type=:Acctyp and User_id=:user");
+		$stmt1 = $db->prepare("SELECT LPAD(max(id),12,'0') as id FROM Bank_Accounts where Name = :name and Account_Type=:Acctyp and User_id=:user");
 		$stmt1->execute(array(
 					":name" => $name,
 				":Acctyp"=> $Acctyp,
@@ -97,7 +97,8 @@ if(isset($_POST["Bank"])){
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$acc_id=$res["id"];
 		$account_num=str_pad($acc_id, 12, "0", STR_PAD_LEFT);
-		
+		var_dump($acc_id);
+		var_dump($account_num);
 		$stmt = $db->prepare("update Bank_Accounts set Account_number=:accnum where id=:idnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num,
@@ -147,7 +148,7 @@ if(isset($_POST["Bank"])){
 			$res = $query->fetchAll();
 			$_SESSION["user"]["accounts"]=$res;
 			echo var_export($_SESSION, true);
-			header("Location: home.php");
+			//header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
