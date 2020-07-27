@@ -29,10 +29,11 @@ function get($arr, $key){
 </form>
 <?php
 if(isset($_POST["updated"]) || isset($_POST["created"])){
-    $email = $_POST["email"];
-    $Fname = $_POST["First_name"];
+	$email = $_POST["email"];
+	$Fname = $_POST["First_name"];
 	$Lname = $_POST["Last_name"];
 	$password = $_POST["password"];
+	$hash=password_hash($password, PASSWORD_BCRYPT);
     if(!empty($name) && !empty($Accnum1)&& !empty($Acctyp)&& !empty($balance)){
         try{
                 $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$password' where Id=1");
