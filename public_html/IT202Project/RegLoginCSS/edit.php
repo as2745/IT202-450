@@ -39,7 +39,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
     if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($passowrd)){
         try{
 		echo "in try block";
-                $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$hash' where Id=1");
+                $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname', password='$hash' where Id=1");
                 $result = $stmt->execute();
 				var_dump($stmt);
             $e = $stmt->errorInfo();
