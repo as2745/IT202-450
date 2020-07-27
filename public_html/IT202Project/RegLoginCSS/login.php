@@ -13,10 +13,6 @@ include("header.php");
 </form>
 
 <?php
-
-//echo var_export($_GET, true);
-//echo var_export($_POST, true);
-//echo var_export($_REQUEST, true);
 if(isset($_POST["login"])){
 	if(isset($_POST["password"]) && isset($_POST["email"])){
 		$password = $_POST["password"];
@@ -25,7 +21,7 @@ if(isset($_POST["login"])){
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
-				$stmt = $db->prepare("SELECT * FROM Users where email = :email LIMIT 1");
+				$stmt = $db->prepare("SELECT * FROM User where email = :email LIMIT 1");
 				$stmt->execute(array(
 					":email" => $email
 				));
@@ -47,7 +43,7 @@ if(isset($_POST["login"])){
 							);
 							
 							
-							$query=$db->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
+							$query=$db->prepare("SELECT b.Account_Number FROM Bank_Accounts b, Users a where a.id=b.User_id and a.email=:email");
 						
 							$query->execute(array(
 								":email" => $email
@@ -64,7 +60,6 @@ if(isset($_POST["login"])){
 					else{
 						echo "<div>Invalid user</div>";
 					}
-					//echo "<div>Successfully registered!</div>";
 				}
 			}
 			catch (Exception $e){
