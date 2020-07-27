@@ -83,6 +83,16 @@ if(isset($_POST["Bank"])){
 		    ":user"=>$user_id,
 		    ":APY"=> $APY
             ));
+		var_dump($stmt);
+		echo '<br>';
+		var_dump($name);
+		echo '<br>';
+		var_dump($Acctyp);
+		echo '<br>';
+		var_dump($user_id);
+		echo '<br>';
+		var_dump($APY);
+		echo '<br>';
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
                 echo var_export($e, true);
