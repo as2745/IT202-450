@@ -17,5 +17,4 @@ $stmt->execute(array(
 	":acc" => $Accnum1
 ));
 	var_dump($stmt);
-//$result = $stmt->execute();
 ?>
