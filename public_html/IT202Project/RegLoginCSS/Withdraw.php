@@ -26,7 +26,7 @@ if(isset($_POST["Withdraw"])){
 	require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 	$db = new PDO($connection_string, $dbuser, $dbpass);
-	$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+	$stmt1 = $db->prepare("SELECT * FROM Bank_Accounts where Account_Number=:acc");
 	$stmt1->execute(array(
 		":acc" => $name
 	));
@@ -65,7 +65,7 @@ if(isset($_POST["Withdraw"])){
 		    var_dump($e);
 		    $stmt2->debugDumpParams();
             }
-		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
+		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
                 ":accnum" => $name
             ));
@@ -87,6 +87,6 @@ if(isset($_POST["Withdraw"])){
         echo "<div>Account and Amount must not be empty. Also can't withdraw more than what you have. Must maintain atleast 5 Dollars balance<div>";
     }
 }
-$stmt = $db->prepare("SELECT * FROM Bank_Account");
+$stmt = $db->prepare("SELECT * FROM Bank_Accounts");
 $stmt->execute();
 ?>
