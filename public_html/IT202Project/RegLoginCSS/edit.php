@@ -4,6 +4,12 @@ $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $AccNum = -1;
 $result = array();
+$email=$_SESSION["user"]["email"];
+$fname=$_SESSION["user"]["first_name"];
+$lname=$_SESSION["user"]["last_name"];
+var_dump($email);
+var_dump($fname);
+var_dump($lname);
 function get($arr, $key){
     if(isset($arr[$key])){
         return $arr[$key];
