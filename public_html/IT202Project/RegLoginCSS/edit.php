@@ -28,17 +28,17 @@ function get($arr, $key){
 	    <input type="submit" name="updated" value="Update Thing"/>
 </form>
 <?php
-echo "before update/create check";
+//echo "before update/create check";
 if(isset($_POST["updated"]) || isset($_POST["created"])){
-	echo "after create/update check";
+	//echo "after create/update check";
 	$email = $_POST["email"];
 	$Fname = $_POST["First_name"];
 	$Lname = $_POST["Last_name"];
 	$password = $_POST["password"];
 	$hash=password_hash($password, PASSWORD_BCRYPT);
-    if(!empty($name) && !empty($Accnum1)&& !empty($Acctyp)&& !empty($balance)){
+    if(!empty($email) && !empty($Fname)&& !empty($Lname)&& !empty($hash)){
         try{
-                $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$password' where Id=1");
+                $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$hash' where Id=1");
                 $result = $stmt->execute();
 				var_dump($stmt);
             $e = $stmt->errorInfo();
