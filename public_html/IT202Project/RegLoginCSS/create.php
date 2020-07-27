@@ -149,7 +149,7 @@ if(isset($_POST["Bank"])){
 			$res = $query->fetchAll();
 			$_SESSION["user"]["accounts"]=$res;
 			echo var_export($_SESSION, true);
-			header("Location: home.php");
+			//header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
