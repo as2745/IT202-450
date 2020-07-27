@@ -83,16 +83,7 @@ if(isset($_POST["Bank"])){
 		    ":user"=>$user_id,
 		    ":APY"=> $APY
             ));
-		var_dump($stmt);
-		echo '<br>';
-		var_dump($name);
-		echo '<br>';
-		var_dump($Acctyp);
-		echo '<br>';
-		var_dump($user_id);
-		echo '<br>';
-		var_dump($APY);
-		echo '<br>';
+		
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
                 echo var_export($e, true);
@@ -106,8 +97,8 @@ if(isset($_POST["Bank"])){
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$acc_id=$res["id"];
 		$account_num=str_pad($acc_id, 12, "0", STR_PAD_LEFT);
-		//echo $acc_id;
-		//echo " ".$account_num."<br>";
+		echo $acc_id;
+		echo " ".$account_num."<br>";
 		$stmt = $db->prepare("update Bank_Accounts set Account_number=:accnum where id=:idnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num,
