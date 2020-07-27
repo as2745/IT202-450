@@ -97,6 +97,7 @@ if(isset($_POST["Bank"])){
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$acc_id=$res["id"];
 		$account_num=str_pad($acc_id, 12, "0", STR_PAD_LEFT);
+		echo $stmt1."<br>";
 		echo $name."<br>";
 		echo " ".$Acctyp."<br>";
 		echo $user_id."<br>";
