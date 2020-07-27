@@ -38,8 +38,8 @@ if(isset($_POST["login"])){
 							$_SESSION["user"] = array(
 								"id"=>$result["Id"],
 								"email"=>$result["email"],
-								"first_name"=>$result["first_name"],
-								"last_name"=>$result["last_name"]
+								"first_name"=>$result["First_name"],
+								"last_name"=>$result["Last_name"]
 							);
 							
 							
