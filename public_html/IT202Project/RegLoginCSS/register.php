@@ -18,6 +18,9 @@ if(isset($_POST["register"])){
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
+		var_dump($email);
+		var_dump($password);
+		var_dump($cpassword);
 		if($password == $cpassword){
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
