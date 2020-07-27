@@ -13,26 +13,26 @@ function get($arr, $key){
 ?>
 
 <form method="POST">
-	<label for="name">Account_Name
-	<input type="text" id="Name" name="Name" value="<?php echo get($result, "Name");?>" />
+	<label for="email">email
+	<input type="text" id="email" name="email" value="<?php echo get($result, "email");?>" />
 	</label>
-	<label for="accnumber">Account_Number
-	<input type="number" id="AccNum" name="Account_Number" value="<?php echo get($result, "Account_Number");?>" />
+	<label for="accnumber">First_name
+	<input type="text" id="Fname" name="First_name" value="<?php echo get($result, "First_name");?>" />
 	</label>
-	<label for="acctype">Account_Type
-	<input type="text" id="AccType" name="Account_Type" value="<?php echo get($result, "Account_Type");?>" />
+	<label for="acctype">Last_name
+	<input type="text" id="Lname" name="Last_name" value="<?php echo get($result, "Last_name");?>" />
 	</label>
-		<label for="balance">Balance
-	<input type="number" id="balance" name="Balance" value="<?php echo get($result, "Balance");?>" />
+	<label for="balance">Password
+	<input type="text" id="password" name="password" value="<?php echo get($result, "password");?>" />
 	</label>
 	    <input type="submit" name="updated" value="Update Thing"/>
 </form>
 <?php
 if(isset($_POST["updated"]) || isset($_POST["created"])){
-    $name = $_POST["Name"];
-    $Accnum1 = $_POST["Account_Number"];
-	$Acctyp = $_POST["Account_Type"];
-	$balance = $_POST["Balance"];
+    $email = $_POST["email"];
+    $Fname = $_POST["First_name"];
+	$Lname = $_POST["Last_name"];
+	$password = $_POST["password"];
     if(!empty($name) && !empty($Accnum1)&& !empty($Acctyp)&& !empty($balance)){
         try{
                 $stmt = $db->prepare("UPDATE Bank_Accounts set Name='$name', Account_Type='$Acctyp', Balance=$balance where Account_Number=$Accnum1");
