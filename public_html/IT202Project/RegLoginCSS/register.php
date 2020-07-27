@@ -18,21 +18,19 @@ if(isset($_POST["register"])){
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
-		var_dump($email);
-		var_dump($password);
-		var_dump($cpassword);
+		
 		if($password == $cpassword){
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
 				$hash = password_hash($password, PASSWORD_BCRYPT);
-				var_dump($hash);
+				
 				$stmt = $db->prepare("INSERT INTO User (email, password) VALUES(:email, :password)");
 				$stmt->execute(array(
 					":email" => $email,
 					":password" => $hash//Don't save the raw password $password
 				));
-				var_dump($stmt);
+				
 				$e = $stmt->errorInfo();
 				if($e[0] != "00000"){
 					echo var_export($e, true);
