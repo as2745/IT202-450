@@ -16,13 +16,13 @@ function get($arr, $key){
 	<label for="email">email
 	<input type="text" id="email" name="email" value="<?php echo get($result, "email");?>" />
 	</label>
-	<label for="accnumber">First_name
-	<input type="text" id="Fname" name="First_name" value="<?php echo get($result, "First_name");?>" />
+	<label for="First_name">First_name
+	<input type="text" id="Fname" name="Fname" value="<?php echo get($result, "First_name");?>" />
 	</label>
-	<label for="acctype">Last_name
-	<input type="text" id="Lname" name="Last_name" value="<?php echo get($result, "Last_name");?>" />
+	<label for="Last_name">Last_name
+	<input type="text" id="Lname" name="Lname" value="<?php echo get($result, "Last_name");?>" />
 	</label>
-	<label for="balance">Password
+	<label for="password">Password
 	<input type="text" id="password" name="password" value="<?php echo get($result, "password");?>" />
 	</label>
 	    <input type="submit" name="updated" value="Update Thing"/>
