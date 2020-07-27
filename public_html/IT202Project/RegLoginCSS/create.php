@@ -83,8 +83,6 @@ if(isset($_POST["Bank"])){
 		    ":user"=>$user_id,
 		    ":APY"=> $APY
             ));
-		var_dump($stmt);
-		var_dump($result);
 		
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
@@ -149,7 +147,7 @@ if(isset($_POST["Bank"])){
 			$res = $query->fetchAll();
 			$_SESSION["user"]["accounts"]=$res;
 			echo var_export($_SESSION, true);
-			//header("Location: home.php");
+			header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
