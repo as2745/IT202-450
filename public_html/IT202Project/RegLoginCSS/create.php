@@ -83,6 +83,8 @@ if(isset($_POST["Bank"])){
 		    ":user"=>$user_id,
 		    ":APY"=> $APY
             ));
+		var_dump($stmt);
+		var_dump($result);
 		
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
