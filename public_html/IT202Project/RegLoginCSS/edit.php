@@ -36,7 +36,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$Lname = $_POST["Lname"];
 	$password = $_POST["password"];
 	$hash=password_hash($password, PASSWORD_BCRYPT);
-    if(!empty($email) && !empty($Fname)&& !empty($Lname)&& !empty($passowrd)){
+    if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($passowrd)){
         try{
 		echo "in try block";
                 $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$hash' where Id=1");
