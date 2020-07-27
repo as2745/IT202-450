@@ -38,16 +38,19 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$hash=password_hash($password, PASSWORD_BCRYPT);
     if(!empty($email) && !empty($Fname)&& !empty($Lname)&& !empty($passowrd)){
         try{
+		echo "in try block";
                 $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$hash' where Id=1");
                 $result = $stmt->execute();
 				var_dump($stmt);
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
+		    echo "try 1 if";
                 echo var_export($e, true);
             }
             else{
                 echo var_export($result, true);
                 if ($result){
+			echo "try 2 if";
                     echo "Successfully inserted or updated thing: " . $email;
                 }
                 else{
@@ -56,7 +59,8 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
             }
         }
         catch (Exception $e){
-            echo $e->getMessage();
+		echo "in catch block";
+		echo $e->getMessage();
         }
     }
     else{
