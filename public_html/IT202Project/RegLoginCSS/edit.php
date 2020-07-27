@@ -35,7 +35,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$password = $_POST["password"];
     if(!empty($name) && !empty($Accnum1)&& !empty($Acctyp)&& !empty($balance)){
         try{
-                $stmt = $db->prepare("UPDATE Bank_Accounts set Name='$name', Account_Type='$Acctyp', Balance=$balance where Account_Number=$Accnum1");
+                $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$password' where Id=1");
                 $result = $stmt->execute();
 				var_dump($stmt);
             $e = $stmt->errorInfo();
@@ -45,7 +45,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
             else{
                 echo var_export($result, true);
                 if ($result){
-                    echo "Successfully inserted or updated thing: " . $name;
+                    echo "Successfully inserted or updated thing: " . $email;
                 }
                 else{
                     echo "Error inserting or updating record";
