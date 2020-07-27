@@ -36,7 +36,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$Lname = $_POST["Last_name"];
 	$password = $_POST["password"];
 	$hash=password_hash($password, PASSWORD_BCRYPT);
-    if(!empty($email) && !empty($Fname)&& !empty($Lname)&& !empty($hash)){
+    if(!empty($email) && !empty($Fname)&& !empty($Lname)&& !empty($passowrd)){
         try{
                 $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', password='$hash' where Id=1");
                 $result = $stmt->execute();
@@ -60,6 +60,10 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
         }
     }
     else{
+	    var_dump($email);
+	    var_dump($Fname);
+	    var_dump($Lname);
+	    var_dump($password);
         echo "Name and quantity must not be empty.";
     }
 }
