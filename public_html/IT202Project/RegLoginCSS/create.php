@@ -49,7 +49,7 @@ if(isset($_POST["Bank"])){
 		$transfer= '000000000000';
 	else {
 		$type = "Transfer";
-		$stmt1 = $db->prepare("SELECT * FROM Bank_Account where Account_Number=:acc");
+		$stmt1 = $db->prepare("SELECT * FROM Bank_Accounts where Account_Number=:acc");
 		$stmt1->execute(array(
 			":acc" => $transfer
 		));
@@ -64,7 +64,7 @@ if(isset($_POST["Bank"])){
         try{
             
 		try{
-		$stmt1 = $db->prepare("SELECT id FROM Users where email = :email LIMIT 1");
+		$stmt1 = $db->prepare("SELECT id FROM User where email = :email LIMIT 1");
 		$stmt1->execute(array(
 					":email" => $email
 				));
@@ -76,7 +76,7 @@ if(isset($_POST["Bank"])){
 		if($Acctyp == 'Savings')
 			$APY=3.25;
 		else $APY=0.00;
-            $stmt = $db->prepare("INSERT INTO Bank_Account (Name, Account_Type, User_id, APY) VALUES (:name, :Acctyp,:user,:APY)");
+            $stmt = $db->prepare("INSERT INTO Bank_Accounts (Name, Account_Type, User_id, APY) VALUES (:name, :Acctyp,:user,:APY)");
             $result = $stmt->execute(array(
                 ":name" => $name,
 				":Acctyp"=> $Acctyp,
@@ -87,7 +87,7 @@ if(isset($_POST["Bank"])){
             if($e[0] != "00000"){
                 echo var_export($e, true);
             }
-		$stmt1 = $db->prepare("SELECT max(id) as id FROM Bank_Account where Name = :name and Account_Type=:Acctyp and User_id=:user");
+		$stmt1 = $db->prepare("SELECT max(id) as id FROM Bank_Accounts where Name = :name and Account_Type=:Acctyp and User_id=:user");
 		$stmt1->execute(array(
 					":name" => $name,
 				":Acctyp"=> $Acctyp,
@@ -98,7 +98,7 @@ if(isset($_POST["Bank"])){
 		$account_num=str_pad($acc_id, 12, "0", STR_PAD_LEFT);
 		//echo $acc_id;
 		//echo " ".$account_num."<br>";
-		$stmt = $db->prepare("update Bank_Account set Account_number=:accnum where id=:idnum");
+		$stmt = $db->prepare("update Bank_Accounts set Account_number=:accnum where id=:idnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num,
 		    ":idnum"=>$acc_id
@@ -134,13 +134,13 @@ if(isset($_POST["Bank"])){
 		    //$stmt2->debugDumpParams();
 		    //echo "setting AAAAAeee ".$e."<br>";
             }
-		$stmt = $db->prepare("update Bank_Account set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
+		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num
             ));
                 if ($result){
                     echo "Successfully Created new Account for : " . $name;
-			$query=$db->prepare("SELECT b.Account_Number FROM Bank_Account b, Users a where a.id=b.User_id and a.email=:email");
+			$query=$db->prepare("SELECT b.Account_Number FROM Bank_Accounts b, Users a where a.id=b.User_id and a.email=:email");
 			$query->execute(array(
 				":email" => $email
 			));
@@ -165,6 +165,6 @@ if(isset($_POST["Bank"])){
         echo "<div>Name, Account Type and Balance must not be empty. Also Balance must be atleast 5 Dollars.<div>";
     }
 }
-$stmt = $db->prepare("SELECT * FROM Bank_Account");
+$stmt = $db->prepare("SELECT * FROM Bank_Accounts");
 $stmt->execute();
 ?>
