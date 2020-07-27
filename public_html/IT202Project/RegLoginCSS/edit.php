@@ -32,8 +32,8 @@ function get($arr, $key){
 if(isset($_POST["updated"]) || isset($_POST["created"])){
 	//echo "after create/update check";
 	$email = $_POST["email"];
-	$Fname = $_POST["First_name"];
-	$Lname = $_POST["Last_name"];
+	$Fname = $_POST["Fname"];
+	$Lname = $_POST["Lname"];
 	$password = $_POST["password"];
 	$hash=password_hash($password, PASSWORD_BCRYPT);
     if(!empty($email) && !empty($Fname)&& !empty($Lname)&& !empty($passowrd)){
