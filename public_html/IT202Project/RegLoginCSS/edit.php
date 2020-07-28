@@ -40,10 +40,10 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$email = $_POST["email"];
 	$Fname = $_POST["Fname"];
 	$Lname = $_POST["Lname"];
-	$password = $_POST["password"];
+	$pssword = $_POST["password"];
 	$hash=password_hash($password, PASSWORD_BCRYPT);
 	
-    if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($passowrd)){
+    if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($pssowrd)){
         try{
 		echo "in try block";
 		$stmt = $db->prepare("SELECT count(*) as num from User where email='$email'");
@@ -55,11 +55,12 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
                // $result = $stmt->execute();
 		if($num==0){
 			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
-			var_dump(empty($passowrd));
+			var_dump($pssowrd);
+			var_dump(empty($pssowrd));
 			echo '<br>';
 			var_dump($hash);
 			echo '<br>';
-			if(!empty($passowrd)){
+			if(!empty($pssowrd)){
 				$str=$str.", password='$hash'";
 				var_dump($email);
 				echo '<br>';
