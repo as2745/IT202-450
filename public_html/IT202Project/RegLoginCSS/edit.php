@@ -29,7 +29,7 @@ function get($arr, $key){
 	<input type="text" id="Lname" name="Lname" value="<?php echo $lname;?>" />
 	</label>
 	<label for="password">Password
-	<input type="text" id="password" name="password" value="<?php echo get($result, "password");?>" />
+	<input type="text" id="password" name="password" />
 	</label>
 	    <input type="submit" name="updated" value="Update Thing"/>
 </form>
