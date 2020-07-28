@@ -76,8 +76,9 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
             else{
                 echo var_export($result, true);
                 if ($result){
-			echo "try 2 if";
-                    echo "Successfully inserted or updated thing: " . $email;
+			
+			echo "Successfully inserted or updated thing: " . $email;
+			header("Location: home.php");
                 }
                 else{
                     echo "Error inserting or updating record";
