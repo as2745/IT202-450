@@ -21,13 +21,13 @@ function get($arr, $key){
 
 <form method="POST">
 	<label for="email">email
-	<input type="text" id="email" name="email" value="<?php echo get($result, "email");?>" />
+	<input type="text" id="email" name="email" value="<?php echo $email;?>" />
 	</label>
 	<label for="First_name">First_name
-	<input type="text" id="Fname" name="Fname" value="<?php echo get($result, "Fname");?>" />
+	<input type="text" id="Fname" name="Fname" value="<?php echo $fname;?>" />
 	</label>
 	<label for="Last_name">Last_name
-	<input type="text" id="Lname" name="Lname" value="<?php echo get($result, "Lname");?>" />
+	<input type="text" id="Lname" name="Lname" value="<?php echo $lname;?>" />
 	</label>
 	<label for="password">Password
 	<input type="text" id="password" name="password" value="<?php echo get($result, "password");?>" />
