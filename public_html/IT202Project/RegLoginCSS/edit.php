@@ -55,7 +55,10 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
                // $result = $stmt->execute();
 		if($num==0){
 			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
-			
+			var_dump($password);
+			echo '<br>';
+			var_dump($hash);
+			echo '<br>';
 			if(!empty($passowrd)){
 				$str=$str.", password='$hash'";
 				var_dump($email);
