@@ -52,8 +52,16 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		$num=$result[0]["num"];
 		var_dump($num);
                // $result = $stmt->execute();
-		if($num>0)
+		if($num>0){
+			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
+			
+			if(!empty($passowrd))
+				$str=$str.", password='$hash'";
+			$str=$str." where Id=$id";
+			//$stmt->execute();
+			$stmt = $db->prepare($str);
 			var_dump($stmt);
+		}
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
 		    echo "try 1 if";
