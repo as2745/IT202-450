@@ -62,6 +62,9 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 			$stmt = $db->prepare($str);
 			var_dump($str);
 		}
+		else{
+                    echo "Email already in use";
+                }
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
 		    echo "try 1 if";
