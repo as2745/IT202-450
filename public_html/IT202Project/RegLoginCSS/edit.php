@@ -42,12 +42,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$Lname = $_POST["Lname"];
 	$password = $_POST["password"];
 	$hash=password_hash($password, PASSWORD_BCRYPT);
-	var_dump($email);
-	echo '<br>';
-	var_dump($password);
-	echo '<br>';
-	var_dump($hash);
-	echo '<br>';
+	
     if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($passowrd)){
         try{
 		echo "in try block";
@@ -61,8 +56,15 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		if($num==0){
 			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
 			
-			if(!empty($passowrd))
+			if(!empty($passowrd)){
 				$str=$str.", password='$hash'";
+				var_dump($email);
+				echo '<br>';
+				var_dump($password);
+				echo '<br>';
+				var_dump($hash);
+				echo '<br>';
+			}
 			$str=$str." where Id=$id";
 			//$stmt->execute();
 			$stmt = $db->prepare($str);
