@@ -9,7 +9,6 @@ $email=$_SESSION["user"]["email"];
 $fname=$_SESSION["user"]["first_name"];
 $lname=$_SESSION["user"]["last_name"];
 $id=$_SESSION["user"]["id"];
-var_dump($id);
 function get($arr, $key){
     if(isset($arr[$key])){
         return $arr[$key];
@@ -31,7 +30,7 @@ function get($arr, $key){
 	<label for="password">Password
 	<input type="text" id="password" name="password" value="<?php echo get($result, "password");?>" />
 	</label>
-	    <input type="submit" name="updated" value="Update Thing"/>
+	    <input type="submit" name="updated" value="Update"/>
 </form>
 <?php
 //echo "before update/create check";
@@ -56,24 +55,15 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
                // $result = $stmt->execute();
 		if($num==0){
 			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
-			var_dump($pssword);
-			var_dump(empty($pssword));
-			echo '<br>';
-			var_dump($hash);
-			echo '<br>';
+			
 			if(!empty($pssword)){
 				$str=$str.", password='$hash'";
-				var_dump($email);
-				echo '<br>';
-				var_dump($str);
-				echo '<br>';
-				var_dump($hash);
-				echo '<br>';
+				
 			}
 			$str=$str." where Id=$id";
-			//$stmt->execute();
+			//
 			$stmt = $db->prepare($str);
-			var_dump($str);
+			$stmt->execute();
 		}
 		else{
                     echo "Email already in use";
