@@ -52,7 +52,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		$num=$result[0]["num"];
 		var_dump($num);
                // $result = $stmt->execute();
-		if($num>0){
+		if($num==0){
 			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
 			
 			if(!empty($passowrd))
