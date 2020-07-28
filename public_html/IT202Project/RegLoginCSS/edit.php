@@ -60,7 +60,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 			$str=$str." where Id=$id";
 			//$stmt->execute();
 			$stmt = $db->prepare($str);
-			var_dump($stmt);
+			var_dump($str);
 		}
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
