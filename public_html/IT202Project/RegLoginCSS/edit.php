@@ -8,9 +8,8 @@ $result = array();
 $email=$_SESSION["user"]["email"];
 $fname=$_SESSION["user"]["first_name"];
 $lname=$_SESSION["user"]["last_name"];
-var_dump($email);
-var_dump($fname);
-var_dump($lname);
+$id=$_SESSION["user"]["id"];
+var_dump($id);
 function get($arr, $key){
     if(isset($arr[$key])){
         return $arr[$key];
@@ -46,8 +45,11 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
     if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($passowrd)){
         try{
 		echo "in try block";
-                $stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname', password='$hash' where Id=1");
-                $result = $stmt->execute();
+		$stmt = $db->prepare("SELECT count(*) from User where email='$email'");
+                //$stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname', password='$hash' where Id=1");
+		$result = $stmt->execute();
+		var_dump($result);
+               // $result = $stmt->execute();
 				var_dump($stmt);
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
