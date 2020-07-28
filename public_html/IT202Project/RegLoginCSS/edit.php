@@ -42,6 +42,12 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$Lname = $_POST["Lname"];
 	$password = $_POST["password"];
 	$hash=password_hash($password, PASSWORD_BCRYPT);
+	var_dump($email);
+	echo '<br>';
+	var_dump($password);
+	echo '<br>';
+	var_dump($hash);
+	echo '<br>';
     if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($passowrd)){
         try{
 		echo "in try block";
