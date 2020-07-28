@@ -41,6 +41,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$Fname = $_POST["Fname"];
 	$Lname = $_POST["Lname"];
 	$pssword = $_POST["password"];
+	var_dump($pssowrd);
 	$hash=password_hash($password, PASSWORD_BCRYPT);
 	
     if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($pssowrd)){
