@@ -62,7 +62,7 @@ if(isset($_POST["Bank"])){
 	echo '<br>';
 	var_dump($transfer);
 	echo '<br>';
-    if(!empty($name) && !empty($Acctyp)&& !empty($balance) && !empty($transfer)){
+    if(empty($name) && empty($Acctyp)&& empty($balance) && empty($transfer)){
         
         try{
             
