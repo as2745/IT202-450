@@ -54,6 +54,14 @@ if(isset($_POST["Bank"])){
 		$result = $stmt1->fetchAll();
 		$amount=$result[0]["Balance"];
 	 $amount=$amount+$balance;
+	var_dump($name);
+	echo '<br>';
+	var_dump($Acctyp);
+	echo '<br>';
+	var_dump($balance);
+	echo '<br>';
+	var_dump($transfer);
+	echo '<br>';
     if(!empty($name) && !empty($Acctyp)&& !empty($balance) && !empty($transfer)){
         
         try{
