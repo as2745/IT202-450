@@ -13,7 +13,7 @@ echo "Hello". $email;?>
 	<input type="number" id="balance" name="Balance" />
 	</label>
   <label for="transfer">Deposit To	
-	<select name="AccTyp" id="Account_Type">
+	<select name="Deposit" id="Deposit">
 		<?php
         foreach($new_arr as $item){
         ?>
@@ -39,7 +39,7 @@ require("common.inc.php");
 if(isset($_POST["Bank"])){
     $name = $_POST["Name"];
     
-	$Acctyp = $_POST["Account_Type"];
+	$Acctyp = $_POST["Deposit"];
 	$balance = $_POST["Balance"];
 	$transfer = $_POST["Transfer"];
 	$type = "Deposit";
