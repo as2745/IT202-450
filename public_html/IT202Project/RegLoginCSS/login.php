@@ -33,13 +33,7 @@ if(isset($_POST["login"])){
 					$result = $stmt->fetch(PDO::FETCH_ASSOC);
 					if ($result){
 						$rpassword = $result["password"];
-						var_dump($password);
-						echo '<br>';
-						$hash = password_hash($password, PASSWORD_BCRYPT);
-						var_dump($hash);
-						echo '<br>';
-						var_dump($rpassword);
-						echo '<br>';
+						
 						if(password_verify($password, $rpassword)){
 							echo "<div>Passwords matched! You are technically logged in!</div>";
 							$_SESSION["user"] = array(
@@ -60,7 +54,7 @@ if(isset($_POST["login"])){
 							//var_dump($res);
 							$_SESSION["user"]["accounts"]=$res;
 							echo var_export($_SESSION, true);
-							//header("Location: home.php");
+							header("Location: home.php");
 						}
 						else{
 							echo "<div>Invalid password!</div>";
