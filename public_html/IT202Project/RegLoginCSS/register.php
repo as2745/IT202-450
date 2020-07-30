@@ -7,6 +7,12 @@
 	<label for="p">Password
 	<input type="password" id="p" name="password" autocomplete="off"/>
 	</label>
+	<label for="fn">First Name
+	<input type="text" id="fn" name="First_Name" autocomplete="off"/>
+	</label>
+	<label for="ln">Last Name
+	<input type="text" id="ln" name="Last_Name" autocomplete="off"/>
+	</label>
 	<label for="cp">Confirm Password
 	<input type="password" id="cp" name="cpassword"/>
 	</label>
@@ -14,20 +20,23 @@
 </form>
 <?php
 if(isset($_POST["register"])){
-	if(isset($_POST["password"]) && isset($_POST["cpassword"]) && isset($_POST["email"])){
+	if(isset($_POST["password"]) && isset($_POST["First_Name"]) && isset($_POST["Last_Name"]) && isset($_POST["cpassword"]) && isset($_POST["email"])){
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
-		
+		$Lname= $_POST["Last_Name"]
+		$Fname= $_POST["First_Name"]	
 		if($password == $cpassword){
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
 				$db = new PDO($connection_string, $dbuser, $dbpass);
 				$hash = password_hash($password, PASSWORD_BCRYPT);
 				
-				$stmt = $db->prepare("INSERT INTO User (email, password) VALUES(:email, :password)");
+				$stmt = $db->prepare("INSERT INTO User (email, First_name, Last_name, password) VALUES(:email, :Fname, :Lname, :password)");
 				$stmt->execute(array(
 					":email" => $email,
+					":Fname" => $Lname,
+					":Lname" => $Fname,
 					":password" => $hash//Don't save the raw password $password
 				));
 				
