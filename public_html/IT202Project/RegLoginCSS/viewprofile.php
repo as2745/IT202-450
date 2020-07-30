@@ -42,8 +42,8 @@ function get($arr, $key){
 	<label for="Last_name">Last_name
 	<input type="text" id="Lname" name="Lname" value="<?php echo $lname;?>" />
 	</label>
-	<label for="password" <?php if(!empty($pwdreset)) echo 'style="visibility:hidden;"'?>>Password
-	<input type="text" id="password" name="password" <?php if(!empty($pwdreset)) echo 'style="visibility:hidden;"'?> value="<?php echo get($result, "password");?>" />
+	<label for="password" <?php if(empty($pwdreset)) echo 'style="visibility:hidden;"'?>>Password
+	<input type="text" id="password" name="password" <?php if(empty($pwdreset)) echo 'style="visibility:hidden;"'?> value="<?php echo get($result, "password");?>" />
 	</label><br>
 	    <input type="submit" name="updated" value="Update"/>
 </form>
