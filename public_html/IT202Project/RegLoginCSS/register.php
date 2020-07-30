@@ -12,7 +12,7 @@
 	</label>
 	<label for="ln">Last Name
 	<input type="text" id="ln" name="Last_Name" autocomplete="off"/>
-	</label>
+	</label><br>
 	<label for="cp">Confirm Password
 	<input type="password" id="cp" name="cpassword"/>
 	</label>
