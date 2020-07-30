@@ -3,16 +3,16 @@
 <form method="POST">
 	<label for="email">Email
 	<input type="email" id="email" name="email" autocomplete="off" />
-	</label>
-	<label for="p">Password
-	<input type="password" id="p" name="password" autocomplete="off"/>
-	</label>
+	</label>	
 	<label for="fn">First Name
 	<input type="text" id="fn" name="First_Name" autocomplete="off"/>
 	</label>
 	<label for="ln">Last Name
 	<input type="text" id="ln" name="Last_Name" autocomplete="off"/>
 	</label><br>
+	<label for="p">Password
+	<input type="password" id="p" name="password" autocomplete="off"/>
+	</label>
 	<label for="cp">Confirm Password
 	<input type="password" id="cp" name="cpassword"/>
 	</label>
@@ -35,8 +35,8 @@ if(isset($_POST["register"])){
 				$stmt = $db->prepare("INSERT INTO User (email, First_name, Last_name, password) VALUES(:email, :Fname, :Lname, :password)");
 				$stmt->execute(array(
 					":email" => $email,
-					":Fname" => $Lname,
-					":Lname" => $Fname,
+					":Fname" => $Fname,
+					":Lname" => $Lname,
 					":password" => $hash//Don't save the raw password $password
 				));
 				
