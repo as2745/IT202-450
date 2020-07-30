@@ -40,8 +40,8 @@ function get($arr, $key){
 	<label for="Last_name">Last_name
 	<input type="text" id="Lname" name="Lname" value="<?php echo $lname;?>" />
 	</label>
-	<label for="password">Password
-	<input type="text" id="password" name="password" value="<?php echo get($result, "password");?>" />
+	<label for="password" style="visibility:hidden;">Password
+	<input type="text" id="password" name="password" style="visibility:hidden;" value="<?php echo get($result, "password");?>" />
 	</label>
 	    <input type="submit" name="updated" value="Update"/>
 </form>
