@@ -42,7 +42,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$pssword = $_POST["password"];
 	var_dump($pssword);
 	echo '<br>';
-	$hash=password_hash($password, PASSWORD_BCRYPT);
+	$hash=password_hash($pssword, PASSWORD_BCRYPT);
 	var_dump($hash);
 	echo '<br>';
 	
