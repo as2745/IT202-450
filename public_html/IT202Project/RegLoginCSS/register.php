@@ -24,8 +24,8 @@ if(isset($_POST["register"])){
 		$password = $_POST["password"];
 		$cpassword = $_POST["cpassword"];
 		$email = $_POST["email"];
-		$Lname= $_POST["Last_Name"]
-		$Fname= $_POST["First_Name"]	
+		$Lname= $_POST["Last_Name"];
+		$Fname= $_POST["First_Name"];	
 		if($password == $cpassword){
 			$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 			try{
