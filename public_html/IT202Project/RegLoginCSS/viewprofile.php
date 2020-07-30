@@ -6,6 +6,7 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
 $AccNum = -1;
 $result = array();
 $email=$_GET["email"];
+$pwdreset=$_GET["resetpassword"];
 if(empty($email)){
   $email=$_SESSION["user"]["email"];
   $fname=$_SESSION["user"]["first_name"];
@@ -48,7 +49,7 @@ function get($arr, $key){
 //echo "before update/create check";
 if(isset($_POST["updated"]) || isset($_POST["created"])){
 	//echo "after create/update check";
-	$email = $_POST["email"];
+	$mail = $_POST["email"];
 	$Fname = $_POST["Fname"];
 	$Lname = $_POST["Lname"];
 	$pssword = $_POST["password"];
@@ -63,21 +64,23 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		$num=$result[0]["num"];
+		if($num>0 && $mail!=$email){
+			$error = 'Email Already in use';
+			throw new Exception($error);
+		}
 		
-		if($num==0){
-			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
-			
-			if(!empty($pssword)){
-				$str=$str.", password='$hash'";
-				
-			}
+		if($num==0 && $mail!=$email){
+			$str="UPDATE User set email='$mail', First_name='$Fname', Last_name='$Lname'";
+		}
+		else $str="UPDATE User set First_name='$Fname', Last_name='$Lname'";
+		if(!empty($pssword) && !empty($pwdreset) ){
+			$str=$str.", password='$hash'";
+		}
 			$str=$str." where Id=$id";			
 			$stmt = $db->prepare($str);
 			$stmt->execute();
-		}
-		else{
-                    echo "Email already in use";
-                }
+		
+		
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
 		    echo "try 1 if";
