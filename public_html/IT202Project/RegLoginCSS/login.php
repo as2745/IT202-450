@@ -35,6 +35,9 @@ if(isset($_POST["login"])){
 						$rpassword = $result["password"];
 						var_dump($password);
 						echo '<br>';
+						$hash = password_hash($password, PASSWORD_BCRYPT);
+						var_dump($hash);
+						echo '<br>';
 						var_dump($rpassword);
 						echo '<br>';
 						if(password_verify($password, $rpassword)){
