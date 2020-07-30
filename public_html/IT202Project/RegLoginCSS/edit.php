@@ -41,8 +41,10 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$Lname = $_POST["Lname"];
 	$pssword = $_POST["password"];
 	var_dump($pssword);
+	echo '<br>';
 	$hash=password_hash($password, PASSWORD_BCRYPT);
 	var_dump($hash);
+	echo '<br>';
 	
     if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($pssowrd)){
         try{
@@ -53,6 +55,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		$result = $stmt->fetchAll();
 		$num=$result[0]["num"];
 		var_dump($num);
+		echo '<br>';
                // $result = $stmt->execute();
 		if($num==0){
 			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
@@ -62,8 +65,10 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 				
 			}
 			$str=$str." where Id=$id";
-			//
+			var_dump($str);
+			echo '<br>';
 			$stmt = $db->prepare($str);
+			var_dump($stmt);
 			$stmt->execute();
 		}
 		else{
