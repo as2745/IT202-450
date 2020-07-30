@@ -40,11 +40,8 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	$Fname = $_POST["Fname"];
 	$Lname = $_POST["Lname"];
 	$pssword = $_POST["password"];
-	var_dump($pssword);
-	echo '<br>';
+	
 	$hash=password_hash($pssword, PASSWORD_BCRYPT);
-	var_dump($hash);
-	echo '<br>';
 	
     if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($pssowrd)){
         try{
@@ -54,9 +51,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		$num=$result[0]["num"];
-		var_dump($num);
-		echo '<br>';
-               // $result = $stmt->execute();
+		
 		if($num==0){
 			$str="UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname'";
 			
@@ -64,11 +59,8 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 				$str=$str.", password='$hash'";
 				
 			}
-			$str=$str." where Id=$id";
-			var_dump($str);
-			echo '<br>';
+			$str=$str." where Id=$id";			
 			$stmt = $db->prepare($str);
-			var_dump($stmt);
 			$stmt->execute();
 		}
 		else{
@@ -87,7 +79,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 			$_SESSION["user"]["last_name"]=$Lname;
 			echo var_export($_SESSION, true);
 			echo "Successfully inserted or updated thing: " . $email;
-			//header("Location: home.php");
+			header("Location: home.php");
                 }
                 else{
                     echo "Error inserting or updating record";
