@@ -19,10 +19,6 @@ else{
   $fname=$result[0]["First_name"];
   $lname=$result[0]["Last_name"];
   $id=$result[0]["Id"];
-  var_dump($email);
-  var_dump($fname);
-  var_dump($lname);
-  var_dump($id);
 }
 
 function get($arr, $key){
