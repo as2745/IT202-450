@@ -87,7 +87,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 			$_SESSION["user"]["last_name"]=$Lname;
 			echo var_export($_SESSION, true);
 			echo "Successfully inserted or updated thing: " . $email;
-			header("Location: home.php");
+			//header("Location: home.php");
                 }
                 else{
                     echo "Error inserting or updating record";
