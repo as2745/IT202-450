@@ -22,12 +22,8 @@ else{
 }
 ?>
 <h3>Profile Details</h3>
-<h4>EMAIL: <?php echo $email;?><h4><br>
-<h4>EMAIL: <?php echo $fname;?><h4><br>
-<h4>EMAIL: <?php echo $lname;?><h4><br>
+<h4>Email: <?php echo $email;?><h4><br>
+<h4>First Name: <?php echo $fname;?><h4><br>
+<h4>Last Name: <?php echo $lname;?><h4><br>
 <a href="viewprofile.php?email=<?php echo $email;?>">Edit Profile</a><br>
-
 <a href="viewprofile.php?resetpassword=yes&email=<?php echo $email;?>">Reset Password</a><br>
-
-
-
