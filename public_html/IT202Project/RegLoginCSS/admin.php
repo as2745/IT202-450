@@ -22,8 +22,9 @@ else{
   echo "User ".$email." Not authorized on this page.";
 }
 
-?>
 foreach($new_arr as $item){
                 echo "<a href=edit.php?email=". $item.">".$item."</a>"; 
                 echo '<br>';
         }
+
+?>
