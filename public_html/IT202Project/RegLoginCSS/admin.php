@@ -23,7 +23,7 @@ else{
 }
 
 foreach($new_arr as $item){
-                echo $item."<a href=edit.php?email=". $item.">Edit</a>"; 
+                echo $item."<a href=edit.php?email=". $item.">Edit</a>"."<a href=home.php?email=". $item.">Accounts</a>"; 
                 echo '<br>';
         }
 
