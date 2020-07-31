@@ -16,16 +16,14 @@ if($role=='Admin'){
   $stmt = $db->prepare("SELECT email from User where role='User'");
   $stmt->execute();
   $result = $stmt->fetchAll();
-  $new_arr = array_column($accounts,'email');
+  $new_arr = array_column($result,'email');
 }
 else{
   echo "User ".$email." Not authorized on this page.";
 }
 
 ?>
-<h3>Profile Details</h3>
-<h4>Email: <?php echo $email;?><h4><br>
-<h4>First Name: <?php echo $fname;?><h4><br>
-<h4>Last Name: <?php echo $lname;?><h4><br>
-<a href="viewprofile.php?email=<?php echo $email;?>">Edit Profile</a><br>
-<a href="viewprofile.php?resetpassword=yes&email=<?php echo $email;?>">Reset Password</a><br>
+foreach($new_arr as $item){
+                echo "<a href=edit.php?email=". $item.">".$item."</a>"; 
+                echo '<br>';
+        }
