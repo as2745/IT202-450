@@ -13,7 +13,7 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 $role=$result[0]["role"];
 if($role=='Admin'){
-  $stmt = $db->prepare("SELECT email from User where role='User'");
+  $stmt = $db->prepare("SELECT email from User where role='User' and Active='Yes'");
   $stmt->execute();
   $result = $stmt->fetchAll();
   $new_arr = array_column($result,'email');
