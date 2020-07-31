@@ -16,6 +16,7 @@ if($role=='Admin'){
   $stmt = $db->prepare("SELECT email from User where role='User'");
   $stmt->execute();
   $result = $stmt->fetchAll();
+  $new_arr = array_column($accounts,'email');
 }
 else{
   echo "User ".$email." Not authorized on this page.";
