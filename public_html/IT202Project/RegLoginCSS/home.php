@@ -8,19 +8,16 @@ $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 
 $email=$_GET["email"];
-$pwdreset=$_GET["resetpassword"];
-if(!empty($pwdreset)){
-}
+
 if(empty($email)){
   $accounts=$_SESSION["user"]["accounts"];
 }
 else{
-  $stmt = $db->prepare("SELECT First_name, Last_name, Id from User where email='$email'");
-  $stmt->execute();
-  $result = $stmt->fetchAll();
-  $fname=$result[0]["First_name"];
-  $lname=$result[0]["Last_name"];
-  $id=$result[0]["Id"];
+  $query=$db->prepare("SELECT b.Account_Number FROM Bank_Accounts b, User a where a.id=b.User_id and a.email=:email");
+  $query->execute(array(
+    ":email" => $email
+  ));
+  $res = $query->fetchAll();$accounts=$res;
 }
 
 $new_arr = array_column($accounts,'Account_Number');
