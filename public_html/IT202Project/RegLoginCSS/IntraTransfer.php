@@ -55,13 +55,8 @@ if(isset($_POST["Transfer"])){
 	$result = $stmt1->fetchAll();
 	$amount1=$result[0]["Balance"];
 	$amount1=$amount1+$balance;
-	var_dump($name1a);
-	echo '<br>';
-	var_dump($name2);
-	echo '<br>';
-	var_dump($name1);
-	echo '<br>';
-    if(empty($name) && !empty($balance) && !empty($name1) && $balance>0 &&  $amount>5){
+	
+    if(!empty($name) && !empty($balance) && !empty($name1) && $balance>0 &&  $amount>5){
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
