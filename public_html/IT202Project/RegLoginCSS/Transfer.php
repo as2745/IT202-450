@@ -6,7 +6,10 @@ $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
 $account=$_GET["Account_Number"];
 //var_dump($new_arr);
-echo "Hello". $email;?>
+echo "Hello". $email;
+echo "<br>";
+echo "<a href=IntraTransfer.php?Account_Number=".$account.">Transfer to different User</a>"; 
+echo "<br>";?>
 <form method="POST">
 	<label for="name">From
 	</label>
