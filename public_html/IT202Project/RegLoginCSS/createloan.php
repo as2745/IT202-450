@@ -49,19 +49,13 @@ if(isset($_POST["Bank"])){
 	$amount=0.0;
 	$stmt1 = $db->prepare("SELECT * FROM Bank_Accounts where Account_Number=:acc");
 		$stmt1->execute(array(
-			":acc" => $Acctyp
+			":acc" => 
+			
 		));
 		$result = $stmt1->fetchAll();
 		$amount=$result[0]["Balance"];
 	 $amount=$amount+$balance;
-	var_dump($name);
-	echo '<br>';
-	var_dump($Acctyp);
-	echo '<br>';
-	var_dump($balance);
-	echo '<br>';
-	var_dump($transfer);
-	echo '<br>';
+	
     if(!empty($name) && !empty($Acctyp)&& !empty($balance) && !empty($transfer)){
         
         try{
@@ -107,10 +101,11 @@ if(isset($_POST["Bank"])){
                 ":accnum" => $account_num,
 		    ":idnum"=>$acc_id
             ));
-          $stmt = $db->prepare("INSERT INTO Link_Account (Account_Number, DepositNum, TransferNum) VALUES (:name, :Acctyp,:user)");
+          $stmt = $db->prepare("INSERT INTO Link_Account (Account_Number, DepositNum, Balance, TransferNum) VALUES (:name, :Acctyp, :balance, :user)");
             $result = $stmt->execute(array(
                 ":name" => $account_num,
 				":Acctyp"=> $Acctyp,
+		    ":balance"=>$balance,
 		    ":user"=>$transfer
             ));
           $transNum=$transfer;
