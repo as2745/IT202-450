@@ -40,7 +40,8 @@ if(isset($_POST["login"])){
 								"id"=>$result["Id"],
 								"email"=>$result["email"],
 								"first_name"=>$result["First_name"],
-								"last_name"=>$result["Last_name"]
+								"last_name"=>$result["Last_name"],
+								"role"=>$result["role"]
 							);
 							
 							
