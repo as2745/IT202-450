@@ -21,6 +21,11 @@ else{
 }
 
 $new_arr = array_column($accounts,'Account_Number');
+$role=$_SESSION["user"]["role"];
+if($role=='Admin'){
+  echo "<a href=admin.php>Admin Page</a>"; 
+  echo "<br>";
+}
 echo "<a href=create.php>Create a new account</a>"; 
 echo "<br>";
         foreach($new_arr as $item){
