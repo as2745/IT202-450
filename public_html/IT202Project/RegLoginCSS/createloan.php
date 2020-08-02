@@ -84,7 +84,7 @@ if(isset($_POST["Bank"])){
                 ":name" => $name,
 				":Acctyp"=> "Loan",
 		    ":user"=>$user_id,
-		    ":APY"=> $APY
+		    ":APY"=> "5.0"
             ));
 		
             $e = $stmt->errorInfo();
