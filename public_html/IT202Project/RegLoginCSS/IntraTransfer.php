@@ -34,7 +34,7 @@ if(isset($_POST["Transfer"])){
 	$balance = $_POST["Balance"];
 	$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 	$db = new PDO($connection_string, $dbuser, $dbpass);
-  $stmt1 = $db->prepare("SELECT Account_Number FROM Bank_Accounts where Name=:acc and Account_Number like :acc1");
+  $stmt1 = $db->prepare("SELECT Account_Number FROM Bank_Accounts where Status='Active' and Name=:acc and Account_Number like :acc1");
 	$stmt1->execute(array(
 		":acc" => $name1a,
     ":acc1" => "%".$name2
