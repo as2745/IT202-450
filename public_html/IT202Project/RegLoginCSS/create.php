@@ -4,8 +4,9 @@ include("header.php");
 $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
-echo "Hello". $email;?>
-echo "<a href=createloan.php>Create a Loan</a>"; 
+echo "Hello". $email;
+echo "<br>";
+echo "<a href=createloan.php>Create a Loan</a>"; ?>
 <form method="POST">
 	<label for="name">Account Name
 	<input type="text" id="Name" name="Name" />
