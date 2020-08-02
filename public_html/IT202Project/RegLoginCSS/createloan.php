@@ -49,7 +49,7 @@ if(isset($_POST["Bank"])){
 	$amount=0.0;
 	$stmt1 = $db->prepare("SELECT * FROM Bank_Accounts where Account_Number=:acc");
 		$stmt1->execute(array(
-			":acc" => 
+			":acc" => $Acctyp 
 			
 		));
 		$result = $stmt1->fetchAll();
