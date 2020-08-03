@@ -99,15 +99,13 @@ if(isset($_POST["Bank"])){
 			$res = $stmt1->fetch(PDO::FETCH_ASSOC);
 		$acc_id=$res["id"];
 		$account_num=str_pad($acc_id, 12, "0", STR_PAD_LEFT);
-		//var_dump($acc_id);
-		//var_dump($account_num);
 		$stmt = $db->prepare("update Bank_Accounts set Account_number=:accnum where id=:idnum");
             $result = $stmt->execute(array(
                 ":accnum" => $account_num,
 		    ":idnum"=>$acc_id
             ));
 		$balance =$balance * -1;
-		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
+		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => $transfer,
 		    ":accnum1" => $account_num ,
@@ -118,12 +116,10 @@ if(isset($_POST["Bank"])){
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
 		    var_dump($e);
-		    echo "setting eee ".$e."<br>";
             }
 		$balance =$balance * -1;
-		//echo $balance;
 		
-		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
+		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
 		    ":acc1" => $account_num,
 		    ":acc" => $transfer,
@@ -133,9 +129,6 @@ if(isset($_POST["Bank"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    //var_dump($e);
-		    //$stmt2->debugDumpParams();
-		    //echo "setting AAAAAeee ".$e."<br>";
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
