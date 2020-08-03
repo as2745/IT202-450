@@ -90,7 +90,20 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
                 if ($result){
 			if(empty($_GET["email"])){
 			$_SESSION["user"]["email"]=$email;
- function get($arr, $key){
+			$_SESSION["user"]["first_name"]=$Fname;
+			$_SESSION["user"]["last_name"]=$Lname;}
+			echo var_export($_SESSION, true);
+			echo "Successfully inserted or updated Profile: " . $email;
+			
+			header("Location: {$_SERVER['HTTP_REFERER']}");
+                }
+                else{
+                    echo "Error inserting or updating record";
+                }
+            }
+        }
+        catch (Exception $e){
+		echo $e->getMessage();
         }
     }
     else{
