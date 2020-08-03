@@ -25,6 +25,6 @@ $stmt = $db->prepare("UPDATE Bank_Accounts SET Status = 'Inactive' WHERE Account
 $stmt->execute(array(
 	":acc" => $Accnum1
 ));
-} else echo 'Account Balance should be 0 before deactivating';
+} else echo 'Account Balance should be 0 before deactivating. Please transfer or withdraw the reamining balance before deactivating.';
 	
 ?>
