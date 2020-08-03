@@ -62,7 +62,7 @@ if(isset($_POST["Transfer"])){
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
 		$balance=$balance * -1;		
-		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
+		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => $name,
 		    ":accnum1" => $name1,
@@ -76,7 +76,7 @@ if(isset($_POST["Transfer"])){
 		    echo "setting eee ".$e."<br>";
             }
 		$balance =$balance * -1;
-		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
+		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
 		    ":acc1" => $name1,
 		    ":acc" => $name,
