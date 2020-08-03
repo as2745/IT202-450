@@ -57,7 +57,12 @@ if(isset($_POST["Transfer"])){
 	$result = $stmt1->fetchAll();
 	$amount1=$result[0]["Balance"];
 	$amount1=$amount1+$balance;
-	
+	var_dump($name);
+	echo '<br>';
+	var_dump($balance);
+	echo '<br>';
+	var_dump($name1);
+	echo '<br>';
     if(!empty($name) && !empty($balance) && $balance>0 ){
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
@@ -100,7 +105,7 @@ if(isset($_POST["Transfer"])){
             ));
                 if ($result){
                     echo "Successfully transferred ".$balance." from account " . $name." to account ".$name1;
-			header("Location: home.php");
+			//header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
