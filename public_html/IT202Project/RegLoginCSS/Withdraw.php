@@ -33,7 +33,7 @@ if(isset($_POST["Withdraw"])){
 	$result = $stmt1->fetchAll();
 	$amount=$result[0]["Balance"];
 	$amount=$amount+$balance;
-    if(!empty($name) && !empty($balance) ){
+    if(!empty($name) && !empty($balance) && $amount>=0){
         
         try{
             
