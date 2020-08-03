@@ -115,7 +115,7 @@ if(isset($_POST["Bank"])){
             ));
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
-		    var_dump($e);
+		    echo var_export($e, true);
             }
 		$balance =$balance * -1;
 		
@@ -129,6 +129,7 @@ if(isset($_POST["Bank"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
+		    echo var_export($e, true);
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
