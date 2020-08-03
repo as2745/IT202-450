@@ -23,7 +23,6 @@ else{
   $lname=$result[0]["Last_name"];
   $id=$result[0]["Id"];
 }
-
 function get($arr, $key){
     if(isset($arr[$key])){
         return $arr[$key];
@@ -31,7 +30,6 @@ function get($arr, $key){
     return "";
 }
 ?>
-
 <form method="POST">
 	<label for="email">email
 	<input type="text" id="email" name="email" value="<?php echo $email;?>" />
@@ -65,8 +63,6 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		$num=$result[0]["num"];
-		echo $mail;
-		echo $email;
 		if($num>0 && $mail!=$email){
 			$error = 'Email Already in use';
 			throw new Exception($error);
@@ -83,32 +79,26 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 			$stmt = $db->prepare($str);
 			$stmt->execute();
 		
-		
+
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
+		    echo "try 1 if";
                 echo var_export($e, true);
             }
             else{
+                echo var_export($result, true);
                 if ($result){
 			if(empty($_GET["email"])){
 			$_SESSION["user"]["email"]=$email;
-			$_SESSION["user"]["first_name"]=$Fname;
-			$_SESSION["user"]["last_name"]=$Lname;}
-			echo var_export($_SESSION, true);
-			echo "Successfully inserted or updated Profile: " . $email;
-			
-			header("Location: {$_SERVER['HTTP_REFERER']}");
-                }
-                else{
-                    echo "Error inserting or updating record";
-                }
-            }
-        }
-        catch (Exception $e){
-		echo $e->getMessage();
+ function get($arr, $key){
         }
     }
     else{
+	    var_dump($email);
+	    var_dump($Fname);
+	    var_dump($Lname);
+	    var_dump($password);
+        echo "Name and quantity must not be empty.";
         echo "Email, First name or Last name must not be empty.";
     }
 }
