@@ -157,7 +157,7 @@ if(isset($_POST["Bank"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    //$stmt2->debugDumpParams();
+		    echo var_export($e, true);
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
