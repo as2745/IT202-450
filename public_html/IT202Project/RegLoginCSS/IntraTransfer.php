@@ -1,10 +1,10 @@
 <?php
 include("header.php");
-
 $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
 $account=$_GET["Account_Number"];
+//var_dump($new_arr);
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">From
@@ -55,7 +55,7 @@ if(isset($_POST["Transfer"])){
 	$amount1=$result[0]["Balance"];
 	$amount1=$amount1+$balance;
 	
-    if(!empty($name) && !empty($balance) && !empty($name1) && $balance>0 ){
+    if(!empty($name) && !empty($balance) && !empty($name1) && $balance>0 && $amount>0){
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
@@ -70,7 +70,7 @@ if(isset($_POST["Transfer"])){
             ));
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
-		    echo var_export($e, true);
+		    var_dump($e);
             }
 		$balance =$balance * -1;
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
@@ -83,7 +83,8 @@ if(isset($_POST["Transfer"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    echo var_export($e, true);
+		    var_dump($e);
+		    $stmt2->debugDumpParams();
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
