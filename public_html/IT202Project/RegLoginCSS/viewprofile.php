@@ -56,9 +56,9 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 	
 	$hash=password_hash($pssword, PASSWORD_BCRYPT);
 	
-    if(!empty($email) || !empty($Fname) || !empty($Lname) || !empty($pssowrd)){
+    if(!empty($mail) || !empty($Fname) || !empty($Lname) || !empty($pssowrd)){
         try{
-		$stmt = $db->prepare("SELECT count(*) as num from User where email='$email'");
+		$stmt = $db->prepare("SELECT count(*) as num from User where email='$mail'");
                 //$stmt = $db->prepare("UPDATE User set email='$email', First_name='$Fname', Last_name='$Lname', password='$hash' where Id=1");
 		$stmt->execute();
 		$result = $stmt->fetchAll();
