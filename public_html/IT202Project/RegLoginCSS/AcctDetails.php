@@ -14,8 +14,7 @@ $stmt->execute(array(
 $res = $stmt->fetchAll();
 $e = $stmt->errorInfo();
 if($e[0] != "00000"){
-	var_dump($e);
-	echo "setting eee ".$e."<br>";
+	echo var_export($e, true);
 }
 $stmt1 = $db->prepare("SELECT * FROM Bank_Accounts where Account_Number=:acc");
 $stmt1->execute(array(
@@ -24,8 +23,7 @@ $stmt1->execute(array(
 $result = $stmt1->fetchAll();
 $e = $stmt1->errorInfo();
 if($e[0] != "00000"){
-	var_dump($e);
-	echo "setting eee ".$e."<br>";
+	echo var_export($e, true);
 }
 $type=$result[0]["Account_Type"];
 $amount=$result[0]["Balance"];
