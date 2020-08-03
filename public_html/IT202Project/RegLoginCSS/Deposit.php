@@ -46,8 +46,7 @@ if(isset($_POST["Deposit"])){
             ));
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
-		    var_dump($e);
-		    echo "setting eee ".$e."<br>";
+		    echo var_export($e, true);
             }
 		$balance =$balance * -1;
 		echo $balance;
@@ -61,8 +60,7 @@ if(isset($_POST["Deposit"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    var_dump($e);
-		    $stmt2->debugDumpParams();
+		    echo var_export($e, true);
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
@@ -70,7 +68,7 @@ if(isset($_POST["Deposit"])){
             ));
                 if ($result){
                     echo "Successfully deposited into: " . $name;
-			//header("Location: home.php");
+			header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
