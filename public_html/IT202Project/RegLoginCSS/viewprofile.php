@@ -84,11 +84,9 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
-		    echo "try 1 if";
                 echo var_export($e, true);
             }
             else{
-                echo var_export($result, true);
                 if ($result){
 			if(empty($_GET["email"])){
 			$_SESSION["user"]["email"]=$email;
@@ -109,11 +107,7 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
         }
     }
     else{
-	    var_dump($email);
-	    var_dump($Fname);
-	    var_dump($Lname);
-	    var_dump($password);
-        echo "Name and quantity must not be empty.";
+        echo "Email, First name or Last name must not be empty.";
     }
 }
 ?>
