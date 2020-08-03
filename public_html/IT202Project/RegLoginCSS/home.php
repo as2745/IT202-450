@@ -33,6 +33,7 @@ echo "<br>";
                  echo "<a href=Deposit.php?Account_Number=". $item.">Deposit</a>"; 
                  echo "<a href=Withdraw.php?Account_Number=".$item.">Withdraw</a>";
                  echo "<a href=Transfer.php?Account_Number=".$item.">Transfer</a>";
+                 echo "<a href=delete.php?Account_Number=".$item.">Deactivate</a>";
                 echo '<br>';
         }
 ?>
