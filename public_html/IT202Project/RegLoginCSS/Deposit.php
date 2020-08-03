@@ -36,7 +36,7 @@ if(isset($_POST["Deposit"])){
         try{
             
 		$balance =$balance * -1;
-		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
+		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => "000000000000",
 		    ":accnum1" => $name,
@@ -51,7 +51,7 @@ if(isset($_POST["Deposit"])){
             }
 		$balance =$balance * -1;
 		echo $balance;
-		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
+		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
 		    ":acc1" => $name,
 		    ":acc" => "000000000000",
@@ -69,8 +69,8 @@ if(isset($_POST["Deposit"])){
                 ":accnum" => $name
             ));
                 if ($result){
-                    echo "Successfully inserted new thing: " . $name;
-			header("Location: home.php");
+                    echo "Successfully deposited into: " . $name;
+			//header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
