@@ -99,7 +99,6 @@ if(isset($_POST["Transfer"])){
                 }
             }
         catch (Exception $e){
-		echo "Error inserting record 1";
             echo $e->getMessage();
         }
     }
