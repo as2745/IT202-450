@@ -6,7 +6,7 @@ $email=$_SESSION["user"]["email"];
 $account=$_GET["account"];
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$stmt = $db->prepare("SELECT Distinct Type as num FROM Transactions where Acc_Dst=:acc");
+$stmt = $db->prepare("SELECT Distinct Transaction_Type as num FROM Transactions where Acc_Dst=:acc");
 $stmt->execute(array(
 	":acc" => $account
 ));
