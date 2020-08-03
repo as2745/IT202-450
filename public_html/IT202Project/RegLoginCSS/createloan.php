@@ -1,6 +1,5 @@
 <?php
 include("header.php");
-
 $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
@@ -157,7 +156,7 @@ if(isset($_POST["Bank"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    echo var_export($e, true);
+		    //$stmt2->debugDumpParams();
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
