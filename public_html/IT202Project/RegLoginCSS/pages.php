@@ -66,7 +66,7 @@ $results = $stmt->fetchAll();
             <?php echo $data['Acc_Dst'] ?>
         </td>
         <td align="left">
-            <?php echo $data['Type'] ?>
+            <?php echo $data['Transaction_Type'] ?>
         </td>
 		<td align="left">
             <?php echo $data['Amount'] ?>
