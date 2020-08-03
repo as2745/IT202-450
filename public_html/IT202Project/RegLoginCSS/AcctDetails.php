@@ -1,4 +1,3 @@
-
 <?php
 include("header.php");
 require("common.inc.php");
@@ -7,14 +6,15 @@ $email=$_SESSION["user"]["email"];
 $account=$_GET["account"];
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
-$stmt = $db->prepare("SELECT Distinct Transaction_Type as num FROM Transactions where Acc_Dst=:acc");
+$stmt = $db->prepare("SELECT Distinct Type as num FROM Transactions where Acc_Dst=:acc");
 $stmt->execute(array(
 	":acc" => $account
 ));
 $res = $stmt->fetchAll();
 $e = $stmt->errorInfo();
 if($e[0] != "00000"){
-	echo var_export($e, true);
+	var_dump($e);
+	echo "setting eee ".$e."<br>";
 }
 $stmt1 = $db->prepare("SELECT * FROM Bank_Accounts where Account_Number=:acc");
 $stmt1->execute(array(
@@ -23,16 +23,15 @@ $stmt1->execute(array(
 $result = $stmt1->fetchAll();
 $e = $stmt1->errorInfo();
 if($e[0] != "00000"){
-	echo var_export($e, true);
+	var_dump($e);
+	echo "setting eee ".$e."<br>";
 }
 $type=$result[0]["Account_Type"];
 $amount=$result[0]["Balance"];
-
 echo "<h3>Details of ".$account."</h3>";
 echo "<h4>Account Type: ".$type."</h4>";
 echo "<h4>Balance : $".$amount."</h4>";
 ?>
-
 <input type="date" placeholder="From Date" id="post_at" name="post_at"   />
 	    <input type="date" placeholder="To Date" id="post_at_to_date" name="post_at_to_date" style="margin-left:10px"    />			 
 		
