@@ -63,13 +63,14 @@ if(isset($_POST["updated"]) || isset($_POST["created"])){
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		$num=$result[0]["num"];
+		echo $num.'<br>';
+		echo $mail.'<br>';
+		echo $email.'<br>';
 		if($num>0 && $mail!=$email){
 			$error = 'Email Already in use';
 			throw new Exception($error);
 		}
-		echo $num.'<br>';
-		echo $mail.'<br>';
-		echo $email.'<br>';
+		
 		if($num==0 && $mail!=$email){
 			$str="UPDATE User set email='$mail', First_name='$Fname', Last_name='$Lname'";
 		}
