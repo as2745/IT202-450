@@ -20,7 +20,7 @@ if (!empty($post_at) && !empty($post_at_to_date)) {
     $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Src=:acc and Created >= '".$post_at."' and Created<= '".$post_at_to_date."'");
 }
 else if (!empty($type)) {
-    $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Src=:acc and Type = '".$type."'");
+    $stmt = $db->prepare("SELECT count(*) as num FROM Transactions where Acc_Src=:acc and Transaction_Type = '".$type."'");
 }
 
 $stmt->execute(array(
@@ -39,7 +39,7 @@ if (!empty($post_at) && !empty($post_at_to_date)) {
 	
 }
 else if(!empty($type)){
-	$stmt = $db->prepare("SELECT * FROM Transactions where Acc_Src=:acc and Type= '".$type."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
+	$stmt = $db->prepare("SELECT * FROM Transactions where Acc_Src=:acc and Transaction_Type= '".$type."' limit ". ($lowerLimit) . " ,  " . ($perPageCount) . " ");
 	
 }
 $stmt->execute(array(
