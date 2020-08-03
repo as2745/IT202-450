@@ -69,7 +69,7 @@ $results = $stmt->fetchAll();
             <?php echo $data['Type'] ?>
         </td>
 		<td align="left">
-            <?php echo $data['Expected_Total'] ?>
+            <?php echo $data['Amount'] ?>
         </td>
 		<td align="left">
             <?php echo $data['Created'] ?>
