@@ -5,7 +5,6 @@ $email=$_SESSION["user"]["email"];
 $accounts=$_SESSION["user"]["accounts"];
 $new_arr = array_column($accounts,'Account_Number');
 $account=$_GET["Account_Number"];
-//var_dump($new_arr);
 echo "Hello". $email;?>
 <form method="POST">
 	<label for="name">From
@@ -71,7 +70,7 @@ if(isset($_POST["Transfer"])){
             ));
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
-		    var_dump($e);
+		    echo var_export($e, true);
             }
 		$balance =$balance * -1;
 		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
@@ -84,8 +83,7 @@ if(isset($_POST["Transfer"])){
             ));
 		$e = $stmt2->errorInfo();
             if($e[0] != "00000"){
-		    var_dump($e);
-		    $stmt2->debugDumpParams();
+		    echo var_export($e, true);
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
@@ -96,7 +94,7 @@ if(isset($_POST["Transfer"])){
             ));
                 if ($result){
                     echo "Successfully transferred ".$balance." from account " . $name." to account ".$name1;
-			//header("Location: home.php");
+			header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
