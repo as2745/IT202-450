@@ -55,12 +55,12 @@ if(isset($_POST["Transfer"])){
 	$amount1=$result[0]["Balance"];
 	$amount1=$amount1+$balance;
 	
-    if(!empty($name) && !empty($balance) && !empty($name1) && $balance>0 && $amount>0){
+    if(!empty($name) && !empty($balance) && !empty($name1) && $balance>0 &&  $amount>0){
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
 		$balance=$balance * -1;		
-		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
+		$stmt = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:accnum,:accnum1, :typ,:balance,:exp_balance)");
             $result = $stmt->execute(array(
 		    ":accnum" => $name,
 		    ":accnum1" => $name1,
@@ -71,9 +71,10 @@ if(isset($_POST["Transfer"])){
 		$e = $stmt->errorInfo();
             if($e[0] != "00000"){
 		    var_dump($e);
+		    echo "setting eee ".$e."<br>";
             }
 		$balance =$balance * -1;
-		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Transaction_Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
+		$stmt2 = $db->prepare("INSERT INTO Transactions (Acc_Src, Acc_Dst,Type,Amount,Expected_total) VALUES (:acc1,:acc, :typ,:balance,:exp_balance)");
             $result1 = $stmt2->execute(array(
 		    ":acc1" => $name1,
 		    ":acc" => $name,
@@ -85,6 +86,7 @@ if(isset($_POST["Transfer"])){
             if($e[0] != "00000"){
 		    var_dump($e);
 		    $stmt2->debugDumpParams();
+		    echo "setting AAAAAeee ".$e."<br>";
             }
 		$stmt = $db->prepare("update Bank_Accounts set Balance= (SELECT sum(Amount) FROM Transactions WHERE Acc_Src=:accnum) where Account_Number=:accnum");
             $result = $stmt->execute(array(
@@ -95,19 +97,20 @@ if(isset($_POST["Transfer"])){
             ));
                 if ($result){
                     echo "Successfully transferred ".$balance." from account " . $name." to account ".$name1;
-			header("Location: home.php");
+			//header("Location: home.php");
                 }
                 else{
                     echo "Error inserting record";
                 }
             }
         catch (Exception $e){
+		echo "Error inserting record 1";
             echo $e->getMessage();
         }
     }
 	
     else{
-        echo "Account and Amount must not be empty. Amount has to be greater than zero.";
+        echo "Account and Amount must not be empty. Amount has to be greater than zero. As a result of transfer accounts should maintain 5 Dollar balance.";
     }
 }
 $stmt = $db->prepare("SELECT * FROM Bank_Accounts");
