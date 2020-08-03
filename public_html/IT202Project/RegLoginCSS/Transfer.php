@@ -57,7 +57,7 @@ if(isset($_POST["Transfer"])){
 	$amount1=$result[0]["Balance"];
 	$amount1=$amount1+$balance;
 
-    if(!empty($name) && !empty($balance) && $balance>0 &&  $amount>0){
+    if(!empty($name) && !empty($balance) && $balance>0 &&  $amount>=0){
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
         try{
             $db = new PDO($connection_string, $dbuser, $dbpass);
